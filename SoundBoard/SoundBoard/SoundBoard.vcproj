@@ -200,6 +200,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Player.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SoundBoard.cpp"
 				>
 			</File>

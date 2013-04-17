@@ -1,7 +1,22 @@
-using namespace SoundBoard;
+#include "stdafx.h"
 
-
-class Player
+namespace SoundBoard
 {
-	int isInitialized;
+	ref class Player
+	{
+			
+	public:
+		int isInitialized;
+
+
+	public:
+		Player(void)
+		{
+
+	
+		}
+	};
+
+
+
 }
