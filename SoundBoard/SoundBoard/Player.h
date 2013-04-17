@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 namespace SoundBoard
-// Penis Penis lol
+// Philip ist GAY!!!
 // selber 123123
 {
 	ref class Player
