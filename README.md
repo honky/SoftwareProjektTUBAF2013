@@ -8,3 +8,5 @@ http://kdiff3.sourceforge.net/
 
 Visual Studio 2008 with gitHub Howto
 http://www.youtube.com/watch?v=OcjMg8sQg5I 
+
+###Error in merging!
