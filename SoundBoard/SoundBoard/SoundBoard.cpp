@@ -16,7 +16,7 @@ int main(array<System::String ^> ^args)
 	
 	Boolean bla = false;
 
-	Player mainPlayer = gcnew Player();
+	Player^ mainPlayer = gcnew Player();
 	
 
 	// Create the main window and run it

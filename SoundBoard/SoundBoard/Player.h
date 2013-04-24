@@ -1,22 +1,25 @@
+/*
+	Player Class Definition
+	=======================
+
+	to edit methods of this class, please see Player.cpp @PP
+	
+*/
+
 #include "stdafx.h"
 
+
+
 namespace SoundBoard
-// Philip ist GAY!!!
-// selber 123123
 {
 	ref class Player
 	{
-			
-	public:
-		int isInitialized;
-
 
 	public:
-		Player(void)
-		{
-
+		int isInitialized; //dummy
 	
-		}
+	public:
+		Player(void); //construktor
 	};
 
 
