@@ -3,16 +3,39 @@ SoftwareProjektTUBAF2013
 
 currently in work, readme will be updated, when there is something to talk about :)
 
-Git merging with kdiff3 
-http://kdiff3.sourceforge.net/ 
-
 Visual Studio 2008 with gitHub Howto
 http://www.youtube.com/watch?v=OcjMg8sQg5I 
 
-###Error in merging!
- 
-###Nice 
-I didn't know that github includes a markdown editor. (did this for merging testing)
+Git merging with kdiff3 
+http://kdiff3.sourceforge.net/ 
 
-###once more
+###Programming Conventions
+
+* variables
+	*start with small letter
+	*generic lists start with list_*
+
+* methods 
+	* i.g. getSound(), drawWaveform(), playSound()
+
+* comments
+	* srsly use them!
+	* code is written for the next person reading it
+
+* github
+	* only push working code
+	* merging is caring, if you are not quite sure
+		* a) contact counterpart
+		* b) comment code out but do not delete it
+
+* exceptions
+	* catch them
+	* be friendly
+	
+* general
+	*easy is beautiful, to fancy is nasty :)
+		
+* suggestions are welcome
+
+
 

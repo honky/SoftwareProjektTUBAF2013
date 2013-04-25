@@ -10,6 +10,7 @@ namespace SoundBoard
 	public:
 		SoundContext(void);
 		List<String^>^ list_sounds;
+		String^ path;
 	};
 
 }
