@@ -1,6 +1,11 @@
 #include "StdAfx.h"
 #include "SoundContext.h"
 
-SoundContext::SoundContext(void)
+namespace SoundBoard
 {
+	SoundContext::SoundContext(void)
+	{
+
+
+	}
 }

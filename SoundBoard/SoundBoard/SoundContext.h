@@ -1,7 +1,15 @@
 #pragma once
+#include "Sound.h"
 
-ref class SoundContext
+namespace SoundBoard
 {
-public:
-	SoundContext(void);
-};
+	using namespace System;
+	using namespace System::Collections::Generic;
+	ref class SoundContext
+	{
+	public:
+		SoundContext(void);
+		List<String^>^ list_sounds;
+	};
+
+}
