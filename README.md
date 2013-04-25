@@ -28,12 +28,20 @@ http://kdiff3.sourceforge.net/
 		* a) contact counterpart
 		* b) comment code out but do not delete it
 
+* formcontrols
+	* naming naming naming
+
 * exceptions
 	* catch them
 	* be friendly
 	
 * general
-	*easy is beautiful, to fancy is nasty :)
+	* use VisualStudio2008
+	* easy is beautiful, to fancy is nasty :)
+	* eleminate all warnings and errors before commiting into master branch
+	* CamelCase is your friend
+	* use VS2008 Shortcuts ´[Ctrl]´ +´[A]´  in combination with ´[Ctrl]´ +´[K]´ +´[F]´ to format code
+	
 		
 * suggestions are welcome
 

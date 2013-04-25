@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Form1.h"
 #include "Player.h"
+#include "Sound.h"
 
 using namespace SoundBoard;
 using namespace System;
@@ -15,8 +16,11 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 	
 	Boolean bla = false;
+	
+	
+	Sound^ exampleSound = gcnew Sound();
 
-	Player^ mainPlayer = gcnew Player();
+	Player^ mainPlayer = gcnew Player(exampleSound);
 	
 
 	// Create the main window and run it

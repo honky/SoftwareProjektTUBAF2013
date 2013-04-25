@@ -1,6 +1,9 @@
 #include "StdAfx.h"
 #include "Sound.h"
 
-Sound::Sound(void)
+namespace SoundBoard
 {
+	Sound::Sound(void)
+	{
+	}
 }

@@ -1,7 +1,10 @@
 #pragma once
 
-ref class Sound
+namespace SoundBoard
 {
-public:
-	Sound(void);
-};
+	ref class Sound
+	{
+	public:
+		Sound(void);
+	};
+}

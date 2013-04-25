@@ -3,9 +3,11 @@
 
 namespace SoundBoard
 {
-	SoundContext::SoundContext(void)
-	{
+	using namespace System;
 
+	SoundContext::SoundContext(String^ path2Folder)
+	{
+		//SoundButton should use this Constructor
 
 	}
 }

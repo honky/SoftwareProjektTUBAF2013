@@ -7,7 +7,7 @@
 */
 
 #include "stdafx.h"
-
+#include "Sound.h"
 
 
 namespace SoundBoard
@@ -15,11 +15,15 @@ namespace SoundBoard
 	ref class Player
 	{
 
-	public:
+	private:
 		int isInitialized; //dummy
 	
 	public:
-		Player(void); //construktor
+		Player(Sound^ givenSound); //constructor
+		void playSound(void);
+		void stopSound(void);
+		void pauseSound(void);
+		void drawGuiPanel(void);
 	};
 
 

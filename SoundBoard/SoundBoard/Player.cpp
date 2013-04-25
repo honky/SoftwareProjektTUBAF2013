@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Windows.h"
+#include "Sound.h"
 #pragma comment(lib, "winmm.lib")
 
 
@@ -11,7 +12,8 @@ namespace SoundBoard
 	using namespace System::Threading;
 	using namespace SoundBoard;
 
-	Player::Player(void)
+
+	Player::Player(Sound^ givenSound)
 	{
 		//the required dataType of mciSendString i LPCWSTR, 
 		//actually like a String but wir L" in the beginning
@@ -22,16 +24,35 @@ namespace SoundBoard
 
 		//go for a nap of 2 seconds
 		Thread::Sleep(2000);
-		
+
 		//putting something into an Message Box
 		Windows::Forms::MessageBox::Show("Visual C++ sucks and is not worth beeing used.");
-		
+
 		//all over to close CDDoor again.
 		LPCWSTR closeCDCommand = L"set cdaudio door closed";
 		mciSendString(closeCDCommand, 0, 0, 0);
 		System::Threading::Thread::Sleep(2000);
-		
+
 	}
 
+	void Player::playSound(void)
+	{
+
+	}
+
+	void Player::stopSound(void)
+	{
+
+	}
+
+	void Player::pauseSound(void)
+	{
+
+	}
+
+	void Player::drawGuiPanel(void)
+	{
+
+	}
 
 }
