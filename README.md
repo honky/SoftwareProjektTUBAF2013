@@ -4,7 +4,7 @@ SoftwareProjektTUBAF2013
 currently in work, readme will be updated, when there is something to talk about :)
 
 Visual Studio 2008 with gitHub Howto
-http://www.youtube.com/watch?v=OcjMg8sQg5I 
+http://www.youtubhttps://github.com/honky/SoftwareProjektTUBAF2013/edit/master/README.md#e.com/watch?v=OcjMg8sQg5I 
 
 Git merging with kdiff3 
 http://kdiff3.sourceforge.net/ 
@@ -40,7 +40,7 @@ http://kdiff3.sourceforge.net/
 	* easy is beautiful, to fancy is nasty :)
 	* eleminate all warnings and errors before commiting into master branch
 	* CamelCase is your friend
-	* use VS2008 Shortcuts ´[Ctrl]´ +´[A]´  in combination with ´[Ctrl]´ +´[K]´ +´[F]´ to format code
+	* use VS2008 Shortcuts '[Ctrl]' + '[A]'  in combination with '[Ctrl]' + '[K]' + '[F]' to format code
 	
 		
 * suggestions are welcome
