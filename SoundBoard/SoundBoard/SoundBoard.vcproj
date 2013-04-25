@@ -293,6 +293,10 @@
 				RelativePath=".\app.rc"
 				>
 			</File>
+			<Filter
+				Name="123"
+				>
+			</Filter>
 		</Filter>
 		<File
 			RelativePath="..\..\LICENCE.md"
