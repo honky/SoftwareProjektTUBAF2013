@@ -3,6 +3,7 @@
 #include "Windows.h"
 #include "Sound.h"
 #pragma comment(lib, "winmm.lib")
+#include "vcclr.h"
 
 
 namespace SoundBoard
@@ -13,6 +14,8 @@ namespace SoundBoard
 	using namespace System::Text;
 	using namespace SoundBoard;
 	using namespace Windows::Forms;
+	using namespace System;
+	using namespace System::Runtime::InteropServices;
 
 
 	Player::Player(Sound^ givenSound)
@@ -25,24 +28,28 @@ namespace SoundBoard
 		this->openCdDoor();
 		Thread::Sleep(2000);
 		this->closeCdDoor();
-
-
-
 	}
+	
+	int Player::mciSendStringHandle(String ^ givenHandle)
+	{
+		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
+		// http://stackoverflow.com/questions/16216386/mcisendstring-with-visual-c-parameters/16322700#16322700
+		// http://msdn.microsoft.com/de-de/library/585whdf9(v=vs.80).aspx
+		pin_ptr<const wchar_t> wch = PtrToStringChars(givenHandle);
+		return mciSendString(wch, 0, 0, 0);
+	}
+
 
 	void Player::playSound(void)
 	{
-		
+
 	}
 
 	void Player::playSound(Sound^ givenSound)
-	{
-		/*
-		LPCWSTR cmd = L"play \"\""; //" + Convert::ToChar(currentAlias)::c_  +L"\"";
-		char^ cmd = Convert::ToChar(bla);
-		int errCode = mciSendString((cmd, 0, 0, 0);
+	{		
+		String^ cmd = "play \""+ Environment::CurrentDirectory +"\\sounds\\test.mp3\" alias"; // + this->currentAlias++; 	
+		int errCode = mciSendStringHandle(cmd);
 		checkError(errCode);
-		*/
 	}
 
 	void Player::stopSound(void)
@@ -103,23 +110,23 @@ namespace SoundBoard
 	{
 		//the required dataType of mciSendString i LPCWSTR, 
 		//actually like a String but wir L" in the beginning
-		LPCWSTR openCDCommand = L"set cdaudio door open";
+		//LPCWSTR openCDCommand = L"set cdaudio door open";
 		//comes from Windows.h, needs winmm.lib see header includes
-		int errCode = mciSendString(openCDCommand, 0, 0, 0);
-		if(errCode==0) { isOpen = true; }
-		checkError(errCode);
+		//int errCode = mciSendString(openCDCommand, 0, 0, 0);
+		//if(errCode==0) { isOpen = true; }
+		//checkError(errCode);
 	}
 
 	void Player::closeCdDoor(void)
 	{
 		//the required dataType of mciSendString i LPCWSTR, 
 		//actually like a String but wir L" in the beginning
-		LPCWSTR closeCDCommand = L"set cdaudio door closed";
+		//LPCWSTR closeCDCommand = L"set cdaudio door closed";
 
 		//comes from Windows.h, needs winmm.lib see header includes
-		int errCode = mciSendString(closeCDCommand, 0, 0, 0);
-		if(errCode==0) { isOpen = false; }
-		checkError(errCode);
+		//int errCode = mciSendString(closeCDCommand, 0, 0, 0);
+		//if(errCode==0) { isOpen = false; }
+		//checkError(errCode);
 	}
 
 	void Player::drawGuiPanel(void)

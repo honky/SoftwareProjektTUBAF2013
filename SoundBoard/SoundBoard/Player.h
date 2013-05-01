@@ -35,6 +35,8 @@ namespace SoundBoard
 		void playSound(void);
 		void playSound(Sound^ givenSound);
 		
+		int mciSendStringHandle(String ^ givenHandle);
+
 		void pauseSound(void);
 		void resumeSound(void);
 		void stopSound(void);
