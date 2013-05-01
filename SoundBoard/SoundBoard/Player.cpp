@@ -22,12 +22,6 @@ namespace SoundBoard
 	{
 		currentAlias = aliasCounter++;
 		currentSound = givenSound;
-
-
-
-		this->openCdDoor();
-		Thread::Sleep(2000);
-		this->closeCdDoor();
 	}
 	
 	int Player::mciSendStringHandle(String ^ givenHandle)
@@ -35,6 +29,7 @@ namespace SoundBoard
 		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
 		// http://stackoverflow.com/questions/16216386/mcisendstring-with-visual-c-parameters/16322700#16322700
 		// http://msdn.microsoft.com/de-de/library/585whdf9(v=vs.80).aspx
+		// makes gc handle pinned and adressable by unmanaged system		
 		pin_ptr<const wchar_t> wch = PtrToStringChars(givenHandle);
 		return mciSendString(wch, 0, 0, 0);
 	}
