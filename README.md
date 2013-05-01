@@ -4,13 +4,12 @@ SoftwareProjektTUBAF2013
 currently in work, readme will be updated, when there is something to talk about :)
 
 Visual Studio 2008 with gitHub Howto
-http://www.youtubhttps://github.com/honky/SoftwareProjektTUBAF2013/edit/master/README.md#e.com/watch?v=OcjMg8sQg5I 
+http://www.youtube.com/watch?v=OcjMg8sQg5I 
 
-GitHub explained
-http://rogerdudler.github.io/git-guide/index.de.html [german]
+GitHub explained:
+- http://rogerdudler.github.io/git-guide/index.de.html [german]
+- http://git-scm.com/book
 
-Git merging with kdiff3 
-http://kdiff3.sourceforge.net/ 
 
 ###Programming Conventions
 
