@@ -23,6 +23,8 @@ namespace SoundBoard
 		static int rightVolumeOverall = 1000;
 		static int leftVolumeOverall = 1000;
 		static int totalVolumeOverall = 1000;
+		static int trebleVolumeOverall = 1000;
+		static int bassVolumeOverall = 1000;
 		static int aliasCounter = 0;
 		static List<String^>^ list_active_aliases = gcnew List<String^>();
 
@@ -37,8 +39,8 @@ namespace SoundBoard
 		int rightVolume; 
 		int leftVolume;
 		int totalVolume;		
-		//int tVolume = 1000; antibass
-		//int bVolume = 1000; bass
+		int trebleVolume;
+		int bassVolume;
 
 	private:		
 		String^ alias;

@@ -33,10 +33,11 @@ namespace SoundBoard
 		//we take the Programms overall Volume vor the current sound
 		//this might be changed to to value of the last sound startet, 
 		// but that might be a bit confusing
-
 		rightVolume = rightVolumeOverall; 
 		leftVolume = leftVolumeOverall;
 		totalVolume = totalVolumeOverall;
+		trebleVolume = trebleVolumeOverall;
+		bassVolume = bassVolumeOverall;
 
 		//now open sound and give him its alias
 		openSound(givenSound);
@@ -100,6 +101,7 @@ namespace SoundBoard
 			if(errCode==0)
 			{
 				isPlaying = true;
+				isPaused = false;
 			}
 			checkError(errCode);
 		}
@@ -113,25 +115,38 @@ namespace SoundBoard
 		if(errCode==0)
 		{
 			isPlaying = true;
+			isPaused = false;
 		}
 		checkError(errCode);
 	}
 
 	void Player::stopSound(void)
 	{
-		if(!isPlaying)
+		//reset position to start
+		String^ cmd = "seek " + alias + " to start";	
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
 		{
-			return;			
+			isPlaying = true;
+			isPaused = false;
 		}
+		checkError(errCode);
 
-
-		// "seek " + alias + " to start"
-		// "stop " + alias + "";
+		//and now stop
+		cmd = "stop " + alias;	
+		errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isPlaying = true;
+			isPaused = false;
+		}
+		checkError(errCode);
 	}
 
 	void Player::restartSound(void)
 	{
-
+		stopSound();
+		playSound();
 	}
 
 
@@ -170,12 +185,19 @@ namespace SoundBoard
 
 	void Player::pauseSound(void)
 	{
-		//"pause " + alias + ""
+		String^ cmd = "pauso " + alias;	
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isPlaying = false;
+			isPaused = true;
+		}
+		checkError(errCode);
 	}
 
 	void Player::resumeSound(void)
 	{
-		//"play " + alias + "";
+		this->playSound();
 	}
 
 	void Player::openCdDoor(void)
