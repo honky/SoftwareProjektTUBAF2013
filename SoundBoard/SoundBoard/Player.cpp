@@ -50,7 +50,7 @@ namespace SoundBoard
 		int errCode = mciSendStringHandle(cmd);
 		if(errCode==0)
 		{
-			isPlaying = true;
+			isOpen = true;
 		}
 		checkError(errCode);
 	}
@@ -58,7 +58,7 @@ namespace SoundBoard
 	String^ Player::getUniqueAlias()
 	{
 		aliasCounter = aliasCounter++;
-		String^ alias = "alias"+Convert::ToString(aliasCounter);
+		String^ alias = "SoundBoardSound"+Convert::ToString(aliasCounter);
 		return alias;
 	}
 
@@ -161,7 +161,7 @@ namespace SoundBoard
 		if(code!=0)
 		{
 			LPWSTR errorText = L"";
-			mciGetErrorString(code,errorText,256);
+			//mciGetErrorString(code,errorText,256);
 			// Throwing Exception would be nice here
 			//Windows::Forms::MessageBox::Show(errorText);			
 		}
