@@ -20,8 +20,23 @@ namespace SoundBoard
 
 	Player::Player(Sound^ givenSound)
 	{
+		//setting default values of this instance
 		currentAlias = aliasCounter++;
 		currentSound = givenSound;
+		isPlaying = false;
+		isPaused = false;
+		isOpen = false;
+		isLoop = false;
+		isMutedAll = false; //should be a property
+		isMutedRight = false; // this too
+
+		//we take the Programms overall Volume vor the current sound
+		//this might be changed to to value of the last sound startet, 
+		// but that might be a bit confusing
+
+		rightVolume = rightVolumeOverall; 
+		leftVolume = leftVolumeOverall;
+		totalVolume = totalVolumeOverall;
 	}
 	
 	int Player::mciSendStringHandle(String ^ givenHandle)

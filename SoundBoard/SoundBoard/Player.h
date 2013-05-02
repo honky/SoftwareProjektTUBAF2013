@@ -20,9 +20,25 @@ namespace SoundBoard
 	{
 	private: //static
 		static Boolean^ isOpen = false;
+		static int rightVolumeOverall = 1000;
+		static int leftVolumeOverall = 1000;
+		static int totalVolumeOverall = 1000;
+		Boolean^ isPlaying;
+		Boolean^ isPaused;
+		Boolean^ isLoop;
+		Boolean^ isMutedAll; //should be a property
+		Boolean^ isMutedRight; // this too
+
 		static int aliasCounter = 0;
 		static List<String^>^ list_active_aliases = gcnew List<String^>();
+		
+		int rightVolume; 
+		int leftVolume;
+		int totalVolume;
 
+		
+		//int tVolume = 1000; antibass
+		//int bVolume = 1000; bass
 
 	private:		
 		int currentAlias;
