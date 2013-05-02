@@ -1,9 +1,9 @@
 /*
-	Player Class Definition
-	=======================
+Player Class Definition
+=======================
 
-	to edit methods of this class, please see Player.cpp @PP
-	
+to edit methods of this class, please see Player.cpp @PP
+
 */
 
 #include "stdafx.h"
@@ -23,35 +23,37 @@ namespace SoundBoard
 		static int rightVolumeOverall = 1000;
 		static int leftVolumeOverall = 1000;
 		static int totalVolumeOverall = 1000;
+		static int aliasCounter = 0;
+		static List<String^>^ list_active_aliases = gcnew List<String^>();
+
+
 		Boolean^ isPlaying;
 		Boolean^ isPaused;
 		Boolean^ isLoop;
 		Boolean^ isMutedAll; //should be a property
 		Boolean^ isMutedRight; // this too
 
-		static int aliasCounter = 0;
-		static List<String^>^ list_active_aliases = gcnew List<String^>();
-		
+
 		int rightVolume; 
 		int leftVolume;
-		int totalVolume;
-
-		
+		int totalVolume;		
 		//int tVolume = 1000; antibass
 		//int bVolume = 1000; bass
 
 	private:		
-		int currentAlias;
+		String^ alias;
 		Sound^ currentSound;
-	
+
 	public:
 
 		Player(Sound^ givenSound); //constructor
-		
+
+
 		void playSound(void);
 		void playSound(Sound^ givenSound);
-		
+
 		int mciSendStringHandle(String ^ givenHandle);
+		String^ getUniqueAlias();
 
 		void pauseSound(void);
 		void resumeSound(void);
@@ -67,8 +69,12 @@ namespace SoundBoard
 
 		void openCdDoor(void);
 		void closeCdDoor(void);
-		
+
 		void drawGuiPanel(void);
+
+	private:
+
+		void openSound(Sound^ givenSound);
 	};
 
 

@@ -21,7 +21,7 @@ namespace SoundBoard
 	Player::Player(Sound^ givenSound)
 	{
 		//setting default values of this instance
-		currentAlias = aliasCounter++;
+		alias = getUniqueAlias();
 		currentSound = givenSound;
 		isPlaying = false;
 		isPaused = false;
@@ -37,8 +37,31 @@ namespace SoundBoard
 		rightVolume = rightVolumeOverall; 
 		leftVolume = leftVolumeOverall;
 		totalVolume = totalVolumeOverall;
+
+		//now open sound and give him its alias
+		openSound(givenSound);
+
+		//probably done
 	}
-	
+
+	void Player::openSound(Sound^ givenSound)
+	{
+		String^ cmd = "play \""+givenSound->Path +"\" " + alias;	
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isPlaying = true;
+		}
+		checkError(errCode);
+	}
+
+	String^ Player::getUniqueAlias()
+	{
+		aliasCounter = aliasCounter++;
+		String^ alias = "alias"+Convert::ToString(aliasCounter);
+		return alias;
+	}
+
 	int Player::mciSendStringHandle(String ^ givenHandle)
 	{
 		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
@@ -52,19 +75,58 @@ namespace SoundBoard
 
 	void Player::playSound(void)
 	{
+		//if empty dont do anything
+		if(currentSound== nullptr)
+		{
+			return;
+		}
 
+		//if paused restart
+		if(isPaused)
+		{
+			String^ cmd = "seek " + alias + " to start";	
+			int errCode = mciSendStringHandle(cmd);
+			if(errCode==0)
+			{
+				isPlaying = true;
+			}
+			checkError(errCode);
+		}
+
+		if(!isPlaying)
+		{
+			String^ cmd = "play " + alias;	
+			int errCode = mciSendStringHandle(cmd);
+			if(errCode==0)
+			{
+				isPlaying = true;
+			}
+			checkError(errCode);
+		}
 	}
 
 	void Player::playSound(Sound^ givenSound)
 	{		
-		String^ cmd = "play \""+ Environment::CurrentDirectory +"\\sounds\\test.mp3\" alias"; // + this->currentAlias++; 	
+		currentSound = givenSound;
+		String^ cmd = "play \""+givenSound->Path+"\" " + alias;	
 		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isPlaying = true;
+		}
 		checkError(errCode);
 	}
 
 	void Player::stopSound(void)
 	{
+		if(!isPlaying)
+		{
+			return;			
+		}
 
+
+		// "seek " + alias + " to start"
+		// "stop " + alias + "";
 	}
 
 	void Player::restartSound(void)
@@ -80,7 +142,7 @@ namespace SoundBoard
 
 	void Player::getCurrentPosition(void)
 	{
-
+		// "status " + alias + " position";
 	}
 
 	void Player::getLength(void)
@@ -108,35 +170,34 @@ namespace SoundBoard
 
 	void Player::pauseSound(void)
 	{
-
+		//"pause " + alias + ""
 	}
 
 	void Player::resumeSound(void)
 	{
-
+		//"play " + alias + "";
 	}
 
 	void Player::openCdDoor(void)
 	{
-		//the required dataType of mciSendString i LPCWSTR, 
-		//actually like a String but wir L" in the beginning
-		//LPCWSTR openCDCommand = L"set cdaudio door open";
-		//comes from Windows.h, needs winmm.lib see header includes
-		//int errCode = mciSendString(openCDCommand, 0, 0, 0);
-		//if(errCode==0) { isOpen = true; }
-		//checkError(errCode);
+		if(isOpen)
+		{
+			return;
+		}
+		String^ cmd = "set cdaudio door open"; // + this->currentAlias++; 	
+		int errCode = mciSendStringHandle(cmd);
+		checkError(errCode);
 	}
 
 	void Player::closeCdDoor(void)
 	{
-		//the required dataType of mciSendString i LPCWSTR, 
-		//actually like a String but wir L" in the beginning
-		//LPCWSTR closeCDCommand = L"set cdaudio door closed";
-
-		//comes from Windows.h, needs winmm.lib see header includes
-		//int errCode = mciSendString(closeCDCommand, 0, 0, 0);
-		//if(errCode==0) { isOpen = false; }
-		//checkError(errCode);
+		if(!isOpen)
+		{
+			return;
+		}
+		String^ cmd = "set cdaudio door closed"; // + this->currentAlias++; 	
+		int errCode = mciSendStringHandle(cmd);
+		checkError(errCode);
 	}
 
 	void Player::drawGuiPanel(void)
