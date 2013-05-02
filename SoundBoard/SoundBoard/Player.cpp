@@ -63,7 +63,7 @@ namespace SoundBoard
 		return alias;
 	}
 
-	int Player::mciSendStringHandle(String ^ givenHandle)
+	int Player::mciSendStringHandle(String^ givenHandle)
 	{
 		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
 		// http://stackoverflow.com/questions/16216386/mcisendstring-with-visual-c-parameters/16322700#16322700
@@ -204,10 +204,14 @@ namespace SoundBoard
 	{
 		if(isOpen)
 		{
-			return;
+			//return;
 		}
 		String^ cmd = "set cdaudio door open"; // + this->currentAlias++; 	
 		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isOpen = true;
+		}
 		checkError(errCode);
 	}
 

@@ -27,7 +27,8 @@ namespace SoundBoard
 		static int bassVolumeOverall = 1000;
 		static int aliasCounter = 0;
 		static List<String^>^ list_active_aliases = gcnew List<String^>();
-
+		String^ alias;
+		Sound^ currentSound;
 
 		Boolean^ isPlaying;
 		Boolean^ isPaused;
@@ -41,10 +42,6 @@ namespace SoundBoard
 		int totalVolume;		
 		int trebleVolume;
 		int bassVolume;
-
-	private:		
-		String^ alias;
-		Sound^ currentSound;
 
 	public:
 
