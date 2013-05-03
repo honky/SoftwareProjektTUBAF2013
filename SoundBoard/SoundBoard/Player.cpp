@@ -29,6 +29,7 @@ namespace SoundBoard
 		isLoop = false;
 		isMutedAll = false; //should be a property
 		isMutedRight = false; // this too
+		isMutedLeft = false; // this too
 
 		//we take the Programms overall Volume vor the current sound
 		//this might be changed to to value of the last sound startet, 
@@ -38,6 +39,9 @@ namespace SoundBoard
 		totalVolume = totalVolumeOverall;
 		trebleVolume = trebleVolumeOverall;
 		bassVolume = bassVolumeOverall;
+
+		//
+
 
 		//now open sound and give him its alias
 		openSound(givenSound);

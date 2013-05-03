@@ -35,6 +35,7 @@ namespace SoundBoard
 		Boolean^ isLoop;
 		Boolean^ isMutedAll; //should be a property
 		Boolean^ isMutedRight; // this too
+		Boolean^ isMutedLeft; // this too
 
 
 		int rightVolume; 
@@ -46,8 +47,7 @@ namespace SoundBoard
 	public:
 
 		Player(Sound^ givenSound); //constructor
-
-
+		
 		void playSound(void);
 		void playSound(Sound^ givenSound);
 

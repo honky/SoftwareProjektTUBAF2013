@@ -16,7 +16,7 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	Sound^ exampleSound = gcnew Sound();
-	exampleSound->Path = "W:\\Documents\\GitHub\\SoftwareProjektTUBAF2013\\SoundBoard\\SoundBoard\\sounds\\nelson_haha.mp3";
+	exampleSound->Path = "C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
 
 	Player^ mainPlayer =gcnew Player(exampleSound);
 	mainPlayer->openCdDoor();
