@@ -3,7 +3,7 @@ SoftwareProjektTUBAF2013
 
 currently in work, readme will be updated, when there is something to talk about :)
 
-![alt text]("https://github.com/honky/SoftwareProjektTUBAF2013/blob/master/design_soundboard.png" "Design Scetch")
+![alt text](./design_soundboard.png "Design Scetch")
 
 Visual Studio 2008 with gitHub Howto
 http://www.youtube.com/watch?v=OcjMg8sQg5I 
