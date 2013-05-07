@@ -16,11 +16,11 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	Sound^ exampleSound = gcnew Sound();
-	exampleSound->Path = "C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
+	exampleSound->Path = Environment::CurrentDirectory + "sounds\\flush.mp3";//"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
 
 	Player^ mainPlayer =gcnew Player(exampleSound);
-	mainPlayer->openCdDoor();
-	//mainPlayer->playSound();
+	//mainPlayer->openCdDoor();
+	mainPlayer->playSound();
 
 
 	// Create the main window and run it

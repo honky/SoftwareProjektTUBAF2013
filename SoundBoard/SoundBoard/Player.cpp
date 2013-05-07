@@ -98,7 +98,7 @@ namespace SoundBoard
 			checkError(errCode);
 		}
 
-		if(!isPlaying)
+		if(isPlaying == false)
 		{
 			String^ cmd = "play " + alias;	
 			int errCode = mciSendStringHandle(cmd);
