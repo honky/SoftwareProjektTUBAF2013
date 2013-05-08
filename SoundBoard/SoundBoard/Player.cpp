@@ -51,7 +51,8 @@ namespace SoundBoard
 
 	void Player::openSound(Sound^ givenSound)
 	{
-		String^ cmd = "play \""+givenSound->Path +"\" " + alias;	
+		String^ cmd = "open \""+givenSound->Path +"\" type mpegvideo alias " + alias;
+		//String^ cmd = "play \""+givenSound->Path +"\" " + alias;	
 		int errCode = mciSendStringHandle(cmd);
 		if(errCode==0)
 		{
