@@ -22,6 +22,7 @@ int main(array<System::String ^> ^args)
 	mainPlayer->openCdDoor();
 	mainPlayer->playSound();
 	Threading::Thread::Sleep(1000);
+	mainPlayer->getLength();
 	mainPlayer->stopSound();
 	Threading::Thread::Sleep(1000);	
 	
