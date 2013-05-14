@@ -44,7 +44,14 @@ namespace SoundBoard
 		int trebleVolume;
 		int bassVolume;
 
+
+
 	public:
+		
+		property int propTest {
+			public: int get() { return bassVolume; }
+			public: void set(int value) { bassVolume = value; }
+		}
 
 		Player(Sound^ givenSound); //constructor
 		
@@ -58,6 +65,12 @@ namespace SoundBoard
 		void resumeSound(void);
 		void stopSound(void);
 		void restartSound(void);
+		void muteSound(void);
+		void unmuteSound(void);
+		void muteSoundLeft(void);
+		void unmuteSoundLeft(void);
+		void muteSoundRight(void);
+		void unmuteSoundRight(void);
 
 		void setPosition(void);
 		void getCurrentPosition(void);
