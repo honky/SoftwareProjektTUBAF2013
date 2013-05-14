@@ -19,7 +19,7 @@ namespace SoundBoard
 	ref class Player
 	{
 	private: //static
-		static bool isOpen = false;
+		static bool cdIsOpen = false;
 		static int rightVolumeOverall = 1000;
 		static int leftVolumeOverall = 1000;
 		static int totalVolumeOverall = 1000;
@@ -30,6 +30,7 @@ namespace SoundBoard
 		String^ alias;
 		Sound^ currentSound;
 
+		bool isOpen;
 		bool isPlaying;
 		bool isPaused;
 		bool isLoop;
@@ -38,21 +39,17 @@ namespace SoundBoard
 		bool isMutedLeft; // this too
 
 
-		int rightVolume; 
-		int leftVolume;
-		int totalVolume;		
-		int trebleVolume;
-		int bassVolume;
+	public: 
+		virtual property int rightVolume { int get(); void set(int value); } 
+		virtual property int leftVolume{ int get(); void set(int value); }
+        virtual property int totalVolume{ int get(); void set(int value); }		
+		virtual property int trebleVolume{ int get(); void set(int value); } ;
+		virtual property int bassVolume{ int get(); void set(int value); } ;
 
 
 
 	public:
 		
-		property int propTest {
-			public: int get() { return bassVolume; }
-			public: void set(int value) { bassVolume = value; }
-		}
-
 		Player(Sound^ givenSound); //constructor
 		
 		void playSound(void);

@@ -165,6 +165,60 @@ namespace SoundBoard
 			checkError(errCode);
 	}
 
+	int Player::rightVolume::get() { return rightVolume; }
+	void Player::rightVolume::set(int value) { 
+		if(isOpen && value >= 0 && value < 1000)
+		{
+			rightVolume = value; 
+			String^ cmd = "setaudio " + alias + " right volume to " + rightVolume.ToString();	
+			int errCode = mciSendStringHandle(cmd);
+			checkError(errCode);
+		}				
+	}
+	int Player::leftVolume::get() { return rightVolume; }
+	void Player::leftVolume::set(int value) { 
+		if(isOpen && value >= 0 && value < 1000)
+		{
+			leftVolume = value; 
+			String^ cmd = "setaudio " + alias + " left volume to " + leftVolume.ToString();	
+			int errCode = mciSendStringHandle(cmd);
+			checkError(errCode);
+		}				
+	}
+
+	int Player::totalVolume::get() { return rightVolume; }
+	void Player::totalVolume::set(int value) { 
+		if(isOpen && value >= 0 && value < 1000)
+		{
+			totalVolume = value; 
+			String^ cmd = "setaudio " + alias + " volume to " + totalVolume.ToString();	
+			int errCode = mciSendStringHandle(cmd);
+			checkError(errCode);
+		}				
+	}
+	
+	int Player::trebleVolume::get() { return rightVolume; }
+	void Player::trebleVolume::set(int value) { 
+		if(isOpen && value >= 0 && value < 1000)
+		{
+			trebleVolume = value; 
+			String^ cmd = "setaudio " + alias + " treble to " + trebleVolume.ToString();	
+			int errCode = mciSendStringHandle(cmd);
+			checkError(errCode);
+		}				
+	}	
+
+	int Player::bassVolume::get() { return rightVolume; }
+	void Player::bassVolume::set(int value) { 
+		if(isOpen && value >= 0 && value < 1000)
+		{
+			bassVolume = value; 
+			String^ cmd = "setaudio " + alias + " bass to " + bassVolume.ToString();	
+			int errCode = mciSendStringHandle(cmd);
+			checkError(errCode);
+		}				
+	}
+
 
 	
 	void Player::unmuteSound(void)
@@ -619,7 +673,7 @@ namespace SoundBoard
 
 	void Player::openCdDoor(void)
 	{
-		if(isOpen)
+		if(cdIsOpen)
 		{
 			//return;
 		}
@@ -627,14 +681,14 @@ namespace SoundBoard
 		int errCode = mciSendStringHandle(cmd);
 		if(errCode==0)
 		{
-			isOpen = true;
+			cdIsOpen = true;
 		}
 		checkError(errCode);
 	}
 
 	void Player::closeCdDoor(void)
 	{
-		if(!isOpen)
+		if(!cdIsOpen)
 		{
 			return;
 		}
