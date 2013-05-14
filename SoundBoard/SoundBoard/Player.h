@@ -56,6 +56,7 @@ namespace SoundBoard
 		void playSound(Sound^ givenSound);
 
 		int mciSendStringHandle(String ^ givenHandle);
+		String^ mciSendStringHandleResponse(String ^ givenHandle);
 		String^ getUniqueAlias();
 
 		void pauseSound(void);

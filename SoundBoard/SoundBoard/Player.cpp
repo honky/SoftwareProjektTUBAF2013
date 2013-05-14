@@ -77,6 +77,19 @@ namespace SoundBoard
 		return mciSendString(wch, 0, 0, 0);
 	}
 
+	String^ Player::mciSendStringHandleResponse(String^ givenHandle)
+	{ 
+		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
+		// http://stackoverflow.com/questions/16216386/mcisendstring-with-visual-c-parameters/16322700#16322700
+		// http://msdn.microsoft.com/de-de/library/585whdf9(v=vs.80).aspx
+		// makes gc handle pinned and adressable by unmanaged system
+		String^ response = " ";
+		pin_ptr<const wchar_t> wch = PtrToStringChars(givenHandle);
+		//pin_ptr<const char> rch = PtrToStringChars(response);
+		//mciSendString(wch,rch,0,0);
+		return ""; // Convert::ToString(rch);
+	}
+
 
 	void Player::playSound(void)
 	{
