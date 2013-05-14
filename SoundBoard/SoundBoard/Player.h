@@ -19,7 +19,7 @@ namespace SoundBoard
 	ref class Player
 	{
 	private: //static
-		static Boolean^ isOpen = false;
+		static bool isOpen = false;
 		static int rightVolumeOverall = 1000;
 		static int leftVolumeOverall = 1000;
 		static int totalVolumeOverall = 1000;
@@ -30,12 +30,12 @@ namespace SoundBoard
 		String^ alias;
 		Sound^ currentSound;
 
-		Boolean^ isPlaying;
-		Boolean^ isPaused;
-		Boolean^ isLoop;
-		Boolean^ isMutedAll; //should be a property
-		Boolean^ isMutedRight; // this too
-		Boolean^ isMutedLeft; // this too
+		bool isPlaying;
+		bool isPaused;
+		bool isLoop;
+		bool isMutedAll; //should be a property
+		bool isMutedRight; // this too
+		bool isMutedLeft; // this too
 
 
 		int rightVolume; 

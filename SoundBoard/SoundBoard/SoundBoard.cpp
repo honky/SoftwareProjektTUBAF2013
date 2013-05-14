@@ -21,9 +21,13 @@ int main(array<System::String ^> ^args)
 	Player^ mainPlayer =gcnew Player(exampleSound);
 	mainPlayer->openCdDoor();
 	mainPlayer->playSound();
+	Threading::Thread::Sleep(1000);
+	mainPlayer->stopSound();
+	Threading::Thread::Sleep(1000);	
+	
 
 
 	// Create the main window and run it
-	Application::Run(gcnew Form1());
+	//Application::Run(gcnew Form1()); //not needed yet
 	return 0;
 }

@@ -52,7 +52,6 @@ namespace SoundBoard
 	void Player::openSound(Sound^ givenSound)
 	{
 		String^ cmd = "open \""+givenSound->Path +"\" type mpegvideo alias " + alias;
-		//String^ cmd = "play \""+givenSound->Path +"\" " + alias;	
 		int errCode = mciSendStringHandle(cmd);
 		if(errCode==0)
 		{
@@ -94,12 +93,12 @@ namespace SoundBoard
 			int errCode = mciSendStringHandle(cmd);
 			if(errCode==0)
 			{
-				isPlaying = true;
+				isPaused = false;
 			}
 			checkError(errCode);
 		}
 
-		if(true) //(isPlaying == false)
+		if(!isPlaying)
 		{
 			String^ cmd = "play " + alias;	
 			int errCode = mciSendStringHandle(cmd);
@@ -115,14 +114,7 @@ namespace SoundBoard
 	void Player::playSound(Sound^ givenSound)
 	{		
 		currentSound = givenSound;
-		String^ cmd = "play \""+givenSound->Path+"\" " + alias;	
-		int errCode = mciSendStringHandle(cmd);
-		if(errCode==0)
-		{
-			isPlaying = true;
-			isPaused = false;
-		}
-		checkError(errCode);
+		this->playSound();
 	}
 
 	void Player::stopSound(void)
