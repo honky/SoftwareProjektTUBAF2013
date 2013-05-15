@@ -1,7 +1,6 @@
 #include "stdafx.h"
-#include "Player.h"
+
 #include "Windows.h"
-#include "Sound.h"
 #pragma comment(lib, "winmm.lib")
 #include "vcclr.h"
 
@@ -198,7 +197,7 @@ void Player::closeSound()
 	}
 
 	//muting and volume control might be expanded for toggling each other
-	int Player::rightVolume::get() { return rightVolume; }
+	int Player::rightVolume::get() { return _rightVolume; }
 	void Player::rightVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{
@@ -207,7 +206,7 @@ void Player::closeSound()
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
-	int Player::leftVolume::get() { return rightVolume; }
+	int Player::leftVolume::get() { return _leftVolume; }
 	void Player::leftVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{

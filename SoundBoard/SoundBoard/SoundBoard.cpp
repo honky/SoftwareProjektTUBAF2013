@@ -2,8 +2,6 @@
 
 #include "stdafx.h"
 #include "Form1.h"
-#include "Player.h"
-#include "Sound.h"
 
 using namespace SoundBoard;
 using namespace System;
@@ -23,13 +21,13 @@ int main(array<System::String ^> ^args)
 	exampleSound->Path = Environment::CurrentDirectory + "\\sounds\\flush.mp3";//"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
 
 	int i = 0;
-
+	/*
 	List<Player^>^ list_player = gcnew List<Player^>();	
 
-	while (i++<100)
+	while (i++<2)
 	{
 		Player^ mainPlayer =gcnew Player(exampleSound);
-		mainPlayer->openCdDoor();
+		//mainPlayer->openCdDoor();
 		mainPlayer->playSound();
 		Threading::Thread::Sleep(1000);
 		mainPlayer->pauseSound();
@@ -39,12 +37,13 @@ int main(array<System::String ^> ^args)
 		mainPlayer->balanceVolume = 500;
 		mainPlayer->stopSound();
 		Threading::Thread::Sleep(1000);	
-		mainPlayer->closeCdDoor();
+		//mainPlayer->closeCdDoor();
 		list_player->Add(mainPlayer);
 	}
+	*/
 
 	// Create the main window and run it
-	//Application::Run(gcnew Form1()); //not needed yet
+	Application::Run(gcnew Form1()); //not needed yet
 	return 0;
 }
 }

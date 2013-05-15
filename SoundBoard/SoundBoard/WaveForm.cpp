@@ -1,6 +1,5 @@
 #include "StdAfx.h"
-#include "WaveForm.h"
-#include "Sound.h"
+
 
 
 namespace SoundBoard
