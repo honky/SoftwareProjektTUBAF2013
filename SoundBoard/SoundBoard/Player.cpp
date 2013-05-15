@@ -48,25 +48,7 @@ namespace SoundBoard
 
 		//probably done
 	}
-
-	void Player::openSound(Sound^ givenSound)
-	{
-		String^ cmd = "open \""+givenSound->Path +"\" type mpegvideo alias " + alias;
-		int errCode = mciSendStringHandle(cmd);
-		if(errCode==0)
-		{
-			isOpen = true;
-		}
-		checkError(errCode);
-	}
-
-	String^ Player::getUniqueAlias()
-	{
-		aliasCounter = aliasCounter++;
-		String^ alias = "SoundBoardSound"+Convert::ToString(aliasCounter);
-		return alias;
-	}
-
+	
 	int Player::mciSendStringHandle(String^ givenHandle)
 	{
 		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
@@ -108,7 +90,8 @@ namespace SoundBoard
 				isPaused = false;
 			}
 		}
-
+		
+		//if it doesn't already play so try playing it
 		if(!isPlaying)
 		{
 			String^ cmd = "play " + alias;	
@@ -120,56 +103,85 @@ namespace SoundBoard
 			}
 		}
 	}
+	void Player::openSound(Sound^ givenSound)
+	{
+		//we are using mpegvideo for most compatibility available, it just plays everything even videos
+		String^ cmd = "open \""+givenSound->Path +"\" type mpegvideo alias " + alias;
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isOpen = true;
+		}
+		checkError(errCode);
+	}
 
-	
+	String^ Player::getUniqueAlias()
+	{
+		aliasCounter = aliasCounter++;
+		String^ alias = "SoundBoardSound"+Convert::ToString(aliasCounter);
+		return alias;
+	}
+
 	void Player::muteSound(void)
 	{
 		String^ cmd = "setaudio " + alias + " off";	
-			int errCode = mciSendStringHandle(cmd);
-			if(errCode==0)
-			{
-				isMutedAll = true;
-			}
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isMutedAll = true;
+		}
 	}
+
 	void Player::muteSoundLeft(void)
 	{
 		String^ cmd = "setaudio " + alias + " left off";	
-			int errCode = mciSendStringHandle(cmd);
-			if(errCode==0)
-			{
-				isMutedLeft = true;
-			}
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isMutedLeft = true;
+		}
 	}	
 	void Player::unmuteSoundLeft(void)
 	{
 		String^ cmd = "setaudio " + alias + " left on";	
-			int errCode = mciSendStringHandle(cmd);
-			if(errCode==0)
-			{
-				isMutedLeft = false;
-			}
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isMutedLeft = false;
+		}
 	}
-	
+
 	void Player::muteSoundRight(void)
 	{
 		String^ cmd = "setaudio " + alias + " right off";	
-			int errCode = mciSendStringHandle(cmd);
-			if(errCode==0)
-			{
-				isMutedRight = true;
-			}
-	}	
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isMutedRight = true;
+		}
+	}
 	
+	void Player::unmuteSound(void)
+	{
+		String^ cmd = "setaudio " + alias + " on";	
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isMutedAll = false;
+		}
+	}
+
 	void Player::unmuteSoundRight(void)
 	{
 		String^ cmd = "setaudio " + alias + " right on";	
-			int errCode = mciSendStringHandle(cmd);
-			if(errCode==0)
-			{
-				isMutedRight = false;
-			}
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isMutedRight = false;
+		}
 	}
 
+	//muting and volume control might be expanded for toggling each other
 	int Player::rightVolume::get() { return rightVolume; }
 	void Player::rightVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
@@ -198,7 +210,7 @@ namespace SoundBoard
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
-	
+
 	int Player::trebleVolume::get() { return rightVolume; }
 	void Player::trebleVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
@@ -220,16 +232,7 @@ namespace SoundBoard
 	}
 
 
-	
-	void Player::unmuteSound(void)
-	{
-		String^ cmd = "setaudio " + alias + " on";	
-		int errCode = mciSendStringHandle(cmd);
-		if(errCode==0)
-		{
-			isMutedAll = false;
-		}
-	}
+
 
 	void Player::playSound(Sound^ givenSound)
 	{		
@@ -238,7 +241,6 @@ namespace SoundBoard
 		playSound();
 	}
 
-	
 	void Player::stopSound(void)
 	{
 		//reset position to start
@@ -262,6 +264,24 @@ namespace SoundBoard
 	}
 
 
+	void Player::pauseSound(void)
+	{
+		String^ cmd = "pause " + alias;	
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isPlaying = false;
+			isPaused = true;
+		}
+	}
+
+	void Player::resumeSound(void)
+	{
+		String^ cmd = "resume " + alias;	
+		int errCode = mciSendStringHandle(cmd);
+	}
+	
+	
 	void Player::setPosition(int givenPosition)
 	{
 		stopSound();
@@ -659,22 +679,7 @@ namespace SoundBoard
 
 	}
 
-	void Player::pauseSound(void)
-	{
-		String^ cmd = "pause " + alias;	
-		int errCode = mciSendStringHandle(cmd);
-		if(errCode==0)
-		{
-			isPlaying = false;
-			isPaused = true;
-		}
-	}
-
-	void Player::resumeSound(void)
-	{
-		String^ cmd = "resume " + alias;	
-		int errCode = mciSendStringHandle(cmd);
-	}
+	
 
 	void Player::openCdDoor(void)
 	{
@@ -700,6 +705,8 @@ namespace SoundBoard
 		int errCode = mciSendStringHandle(cmd);
 	}
 
+	
+	
 	void Player::drawGuiPanel(void)
 	{
 
