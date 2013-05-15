@@ -45,8 +45,15 @@ namespace SoundBoard
         virtual property int totalVolume{ int get(); void set(int value); }		
 		virtual property int trebleVolume{ int get(); void set(int value); } ;
 		virtual property int bassVolume{ int get(); void set(int value); } ;
-
-
+		virtual property int balanceVolume{ int get(); void set(int value); } ;
+	
+	private:
+		int _rightVolume;
+		int _leftVolume;
+		int _totalVolume;
+		int _trebleVolume;
+		int _bassVolume;
+		int _balanceVolume;
 
 	public:
 		
@@ -62,6 +69,7 @@ namespace SoundBoard
 		void pauseSound(void);
 		void resumeSound(void);
 		void stopSound(void);
+		void closeSound(void);
 		void restartSound(void);
 		void muteSound(void);
 		void unmuteSound(void);
@@ -71,7 +79,7 @@ namespace SoundBoard
 		void unmuteSoundRight(void);
 
 		void setPosition(int position);
-		void getCurrentPosition(void);
+		int getCurrentPosition(void);
 		void getLength(void);
 		void setTimeFormat(String^ timeFormat);
 
