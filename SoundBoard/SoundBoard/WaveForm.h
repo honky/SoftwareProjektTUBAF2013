@@ -5,6 +5,7 @@ namespace SoundBoard
 {
 	
 	using namespace System;
+	using namespace Windows::Forms;
 	ref class WaveForm
 	{ //google supports a lot of stuff to this topic
 	public:
@@ -12,7 +13,7 @@ namespace SoundBoard
 		WaveForm(Sound givenSound, Boolean force);
 		
 	private:
-		String^ getWaveForm();
+		PictureBox^ getWaveForm();
 		String^ path2image;
 
 	};
