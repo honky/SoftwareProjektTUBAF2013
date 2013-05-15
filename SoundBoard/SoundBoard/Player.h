@@ -70,10 +70,10 @@ namespace SoundBoard
 		void muteSoundRight(void);
 		void unmuteSoundRight(void);
 
-		void setPosition(void);
+		void setPosition(int position);
 		void getCurrentPosition(void);
 		void getLength(void);
-		void setTimeFormat(void);
+		void setTimeFormat(String^ timeFormat);
 
 		void checkError(int code);		
 

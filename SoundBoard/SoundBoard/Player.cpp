@@ -245,9 +245,11 @@ namespace SoundBoard
 	void Player::playSound(Sound^ givenSound)
 	{		
 		currentSound = givenSound;
-		this->playSound();
+		openSound(givenSound);
+		playSound();
 	}
 
+	
 	void Player::stopSound(void)
 	{
 		//reset position to start
@@ -273,14 +275,19 @@ namespace SoundBoard
 	}
 
 
-	void Player::setPosition(void)
+	void Player::setPosition(int givenPosition)
 	{
-
+		stopSound();
+		String^ cmd = "seek " + alias + " to " + givenPosition.ToString();	
+		int errCode = mciSendStringHandle(cmd);
+		checkError(errCode);
+		resumeSound();
 	}
 
 	void Player::getCurrentPosition(void)
 	{
-		// "status " + alias + " position";
+		String^ cmd = "status " + alias + " position";	
+		String^ response = mciSendStringHandleResponse(cmd);
 	}
 
 	void Player::getLength(void)
@@ -289,9 +296,11 @@ namespace SoundBoard
 		String^ response = mciSendStringHandleResponse(cmd);
 	}
 
-	void Player::setTimeFormat(void)
+	void Player::setTimeFormat(String^ timeFormat)
 	{
-
+		String^ cmd = "set " + alias + " time format to " + timeFormat;	
+		int errCode = mciSendStringHandle(cmd);
+		checkError(errCode);
 	}
 
 
@@ -679,7 +688,9 @@ namespace SoundBoard
 
 	void Player::resumeSound(void)
 	{
-		this->playSound();
+		String^ cmd = "resume " + alias;	
+		int errCode = mciSendStringHandle(cmd);
+		checkError(errCode);
 	}
 
 	void Player::openCdDoor(void)
