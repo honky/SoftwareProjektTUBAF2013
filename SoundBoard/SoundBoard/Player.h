@@ -7,7 +7,7 @@ to edit methods of this class, please see Player.cpp @PP
 */
 
 #include "stdafx.h"
-#include "Sound.h"
+
 
 
 namespace SoundBoard
