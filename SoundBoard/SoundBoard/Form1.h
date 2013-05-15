@@ -50,7 +50,7 @@ namespace SoundBoard {
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Button^  button5;
-	private: System::Windows::Forms::ProgressBar^  progressBar1;
+
 	private: System::Windows::Forms::TrackBar^  trackBar1;
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label6;
@@ -62,6 +62,11 @@ namespace SoundBoard {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TrackBar^  trackBar2;
 	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Panel^  panel2;
+	private: System::Windows::Forms::Button^  button6;
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::Button^  button7;
+	private: System::Windows::Forms::Button^  button8;
 
 	private:
 		/// <summary>
@@ -76,6 +81,7 @@ namespace SoundBoard {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
@@ -83,9 +89,9 @@ namespace SoundBoard {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -95,12 +101,17 @@ namespace SoundBoard {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar1))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar6))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -164,13 +175,6 @@ namespace SoundBoard {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &Form1::button5_Click);
 			// 
-			// progressBar1
-			// 
-			this->progressBar1->Location = System::Drawing::Point(136, 214);
-			this->progressBar1->Name = L"progressBar1";
-			this->progressBar1->Size = System::Drawing::Size(100, 23);
-			this->progressBar1->TabIndex = 6;
-			// 
 			// trackBar1
 			// 
 			this->trackBar1->Location = System::Drawing::Point(19, 93);
@@ -184,6 +188,8 @@ namespace SoundBoard {
 			// 
 			// panel1
 			// 
+			this->panel1->Controls->Add(this->button8);
+			this->panel1->Controls->Add(this->button7);
 			this->panel1->Controls->Add(this->label6);
 			this->panel1->Controls->Add(this->trackBar6);
 			this->panel1->Controls->Add(this->label5);
@@ -205,6 +211,16 @@ namespace SoundBoard {
 			this->panel1->Size = System::Drawing::Size(430, 384);
 			this->panel1->TabIndex = 8;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel1_Paint);
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(328, 29);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(75, 23);
+			this->button7->TabIndex = 17;
+			this->button7->Text = L"getPCM";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &Form1::button7_Click);
 			// 
 			// label6
 			// 
@@ -295,13 +311,52 @@ namespace SoundBoard {
 			this->label1->TabIndex = 8;
 			this->label1->Text = L"Volume";
 			// 
+			// panel2
+			// 
+			this->panel2->Location = System::Drawing::Point(12, 12);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(560, 280);
+			this->panel2->TabIndex = 9;
+			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(12, 298);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(75, 23);
+			this->button6->TabIndex = 10;
+			this->button6->Text = L"button6";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &Form1::button6_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::Desktop;
+			this->pictureBox1->InitialImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"pictureBox1.InitialImage")));
+			this->pictureBox1->Location = System::Drawing::Point(229, 368);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(264, 74);
+			this->pictureBox1->TabIndex = 11;
+			this->pictureBox1->TabStop = false;
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(327, 58);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(75, 23);
+			this->button8->TabIndex = 18;
+			this->button8->Text = L"getPosition";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1017, 596);
+			this->Controls->Add(this->panel2);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->panel1);
-			this->Controls->Add(this->progressBar1);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
@@ -312,6 +367,7 @@ namespace SoundBoard {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -366,6 +422,23 @@ private: System::Void trackBar5_Scroll(System::Object^  sender, System::EventArg
 private: System::Void trackBar6_Scroll(System::Object^  sender, System::EventArgs^  e) {
 
 			 testPlayer->bassVolume = trackBar6->Value;
+		 }
+private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+			 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
+			 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
+			 Windows::Forms::PictureBox^ pb = wf->getWaveForm(); 
+			 pb->BackColor = System::Drawing::Color::Fuchsia;
+			 panel2->Controls->Add(pb);
+			 pb->Visible = true;
+			 //pb->Width = 500;
+			 //pb->Height = 200;
+			 
+		 }
+private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+			int gu =testPlayer->getPcmValue();
+		 }
+private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+			 int bla = testPlayer->getCurrentPosition();
 		 }
 };
 }

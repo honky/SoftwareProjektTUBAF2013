@@ -334,6 +334,12 @@ void Player::closeSound()
 		String^ response = mciSendStringHandleResponse(cmd);
 		return Convert::ToInt32(response);
 	}
+	int Player::getPcmValue(void)
+	{
+		String^ cmd = "status " + alias + " audio bitspersample";	
+		String^ response = mciSendStringHandleResponse(cmd);
+		return Convert::ToInt32(response);
+	}
 
 	void Player::getLength(void)
 	{

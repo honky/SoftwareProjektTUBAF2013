@@ -8,10 +8,10 @@ namespace SoundBoard
 	ref class WaveForm
 	{ //google supports a lot of stuff to this topic
 	public:
-		WaveForm(Sound givenSound);
-		WaveForm(Sound givenSound, Boolean force);
+		WaveForm(Sound^ givenSound);
+		WaveForm(Sound^ givenSound, bool force);
 		
-	private:
+	public:
 		PictureBox^ getWaveForm();
 		String^ path2image;
 
