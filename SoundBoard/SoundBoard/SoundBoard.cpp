@@ -7,6 +7,10 @@
 
 using namespace SoundBoard;
 using namespace System;
+using namespace System::Collections::Generic;
+
+namespace SoundBoard
+{
 
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
@@ -18,20 +22,30 @@ int main(array<System::String ^> ^args)
 	Sound^ exampleSound = gcnew Sound();
 	exampleSound->Path = Environment::CurrentDirectory + "\\sounds\\flush.mp3";//"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
 
-	Player^ mainPlayer =gcnew Player(exampleSound);
-	mainPlayer->openCdDoor();
-	mainPlayer->playSound();
-	Threading::Thread::Sleep(1000);
-	mainPlayer->pauseSound();
-	mainPlayer->getLength();
-	mainPlayer->trebleVolume = 500;
-	mainPlayer->bassVolume = 500;
-	mainPlayer->balanceVolume = 500;
-	mainPlayer->stopSound();
-	Threading::Thread::Sleep(1000);	
-	mainPlayer->closeCdDoor();
+	int i = 0;
+
+	List<Player^>^ list_player = gcnew List<Player^>();	
+
+	while (i++<100)
+	{
+		Player^ mainPlayer =gcnew Player(exampleSound);
+		mainPlayer->openCdDoor();
+		mainPlayer->playSound();
+		Threading::Thread::Sleep(1000);
+		mainPlayer->pauseSound();
+		mainPlayer->getLength();
+		mainPlayer->trebleVolume = 500;
+		mainPlayer->bassVolume = 500;
+		mainPlayer->balanceVolume = 500;
+		mainPlayer->stopSound();
+		Threading::Thread::Sleep(1000);	
+		mainPlayer->closeCdDoor();
+		list_player->Add(mainPlayer);
+	}
 
 	// Create the main window and run it
 	//Application::Run(gcnew Form1()); //not needed yet
 	return 0;
 }
+}
+
