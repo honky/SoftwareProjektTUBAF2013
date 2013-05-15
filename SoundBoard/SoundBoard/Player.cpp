@@ -74,7 +74,9 @@ namespace SoundBoard
 		// http://msdn.microsoft.com/de-de/library/585whdf9(v=vs.80).aspx
 		// makes gc handle pinned and adressable by unmanaged system		
 		pin_ptr<const wchar_t> wch = PtrToStringChars(givenHandle);
-		return mciSendString(wch, 0, 0, 0);
+		int errorCode = mciSendString(wch, 0, 0, 0);
+		checkError(errorCode);
+		return errorCode;
 	}
 
 	String^ Player::mciSendStringHandleResponse(String^ givenHandle)
@@ -105,7 +107,6 @@ namespace SoundBoard
 			{
 				isPaused = false;
 			}
-			checkError(errCode);
 		}
 
 		if(!isPlaying)
@@ -117,7 +118,6 @@ namespace SoundBoard
 				isPlaying = true;
 				isPaused = false;
 			}
-			checkError(errCode);
 		}
 	}
 
@@ -130,7 +130,6 @@ namespace SoundBoard
 			{
 				isMutedAll = true;
 			}
-			checkError(errCode);
 	}
 	void Player::muteSoundLeft(void)
 	{
@@ -140,7 +139,6 @@ namespace SoundBoard
 			{
 				isMutedLeft = true;
 			}
-			checkError(errCode);
 	}	
 	void Player::unmuteSoundLeft(void)
 	{
@@ -150,7 +148,6 @@ namespace SoundBoard
 			{
 				isMutedLeft = false;
 			}
-			checkError(errCode);
 	}
 	
 	void Player::muteSoundRight(void)
@@ -161,7 +158,6 @@ namespace SoundBoard
 			{
 				isMutedRight = true;
 			}
-			checkError(errCode);
 	}	
 	
 	void Player::unmuteSoundRight(void)
@@ -172,7 +168,6 @@ namespace SoundBoard
 			{
 				isMutedRight = false;
 			}
-			checkError(errCode);
 	}
 
 	int Player::rightVolume::get() { return rightVolume; }
@@ -182,7 +177,6 @@ namespace SoundBoard
 			rightVolume = value; 
 			String^ cmd = "setaudio " + alias + " right volume to " + rightVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
-			checkError(errCode);
 		}				
 	}
 	int Player::leftVolume::get() { return rightVolume; }
@@ -192,7 +186,6 @@ namespace SoundBoard
 			leftVolume = value; 
 			String^ cmd = "setaudio " + alias + " left volume to " + leftVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
-			checkError(errCode);
 		}				
 	}
 
@@ -203,7 +196,6 @@ namespace SoundBoard
 			totalVolume = value; 
 			String^ cmd = "setaudio " + alias + " volume to " + totalVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
-			checkError(errCode);
 		}				
 	}
 	
@@ -214,7 +206,6 @@ namespace SoundBoard
 			trebleVolume = value; 
 			String^ cmd = "setaudio " + alias + " treble to " + trebleVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
-			checkError(errCode);
 		}				
 	}	
 
@@ -225,7 +216,6 @@ namespace SoundBoard
 			bassVolume = value; 
 			String^ cmd = "setaudio " + alias + " bass to " + bassVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
-			checkError(errCode);
 		}				
 	}
 
@@ -239,7 +229,6 @@ namespace SoundBoard
 		{
 			isMutedAll = false;
 		}
-		checkError(errCode);
 	}
 
 	void Player::playSound(Sound^ givenSound)
@@ -255,7 +244,6 @@ namespace SoundBoard
 		//reset position to start
 		String^ cmd = "seek " + alias + " to start";	
 		int errCode = mciSendStringHandle(cmd);
-		checkError(errCode);
 
 		//and now stop
 		cmd = "stop " + alias;	
@@ -265,7 +253,6 @@ namespace SoundBoard
 			isPlaying = false;
 			isPaused = false;
 		}
-		checkError(errCode);
 	}
 
 	void Player::restartSound(void)
@@ -280,7 +267,6 @@ namespace SoundBoard
 		stopSound();
 		String^ cmd = "seek " + alias + " to " + givenPosition.ToString();	
 		int errCode = mciSendStringHandle(cmd);
-		checkError(errCode);
 		resumeSound();
 	}
 
@@ -300,7 +286,6 @@ namespace SoundBoard
 	{
 		String^ cmd = "set " + alias + " time format to " + timeFormat;	
 		int errCode = mciSendStringHandle(cmd);
-		checkError(errCode);
 	}
 
 
@@ -683,14 +668,12 @@ namespace SoundBoard
 			isPlaying = false;
 			isPaused = true;
 		}
-		checkError(errCode);
 	}
 
 	void Player::resumeSound(void)
 	{
 		String^ cmd = "resume " + alias;	
 		int errCode = mciSendStringHandle(cmd);
-		checkError(errCode);
 	}
 
 	void Player::openCdDoor(void)
@@ -705,7 +688,6 @@ namespace SoundBoard
 		{
 			cdIsOpen = true;
 		}
-		checkError(errCode);
 	}
 
 	void Player::closeCdDoor(void)
@@ -716,7 +698,6 @@ namespace SoundBoard
 		}
 		String^ cmd = "set cdaudio door closed"; // + this->currentAlias++; 	
 		int errCode = mciSendStringHandle(cmd);
-		checkError(errCode);
 	}
 
 	void Player::drawGuiPanel(void)
