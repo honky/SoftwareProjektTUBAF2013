@@ -34,6 +34,7 @@ namespace SoundBoard
 		//we take the Programms overall Volume vor the current sound
 		//this might be changed to to value of the last sound startet, 
 		// but that might be a bit confusing
+		// please recognize that we are using Properties for Volumes
 		rightVolume = rightVolumeOverall; 
 		leftVolume = leftVolumeOverall;
 		totalVolume = totalVolumeOverall;
@@ -114,6 +115,21 @@ namespace SoundBoard
 		}
 		checkError(errCode);
 	}
+	
+void Player::closeSound()
+	{
+		//we are using mpegvideo for most compatibility available, it just plays everything even videos
+		String^ cmd = "close "+alias;
+		int errCode = mciSendStringHandle(cmd);
+		if(errCode==0)
+		{
+			isOpen = false;
+			isPlaying = false;
+			isPaused = false;
+			
+		}
+		checkError(errCode);
+	}
 
 	String^ Player::getUniqueAlias()
 	{
@@ -186,8 +202,8 @@ namespace SoundBoard
 	void Player::rightVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{
-			rightVolume = value; 
-			String^ cmd = "setaudio " + alias + " right volume to " + rightVolume.ToString();	
+			_rightVolume = value; 
+			String^ cmd = "setaudio " + alias + " right volume to " + _rightVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
@@ -195,8 +211,8 @@ namespace SoundBoard
 	void Player::leftVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{
-			leftVolume = value; 
-			String^ cmd = "setaudio " + alias + " left volume to " + leftVolume.ToString();	
+			_leftVolume = value; 
+			String^ cmd = "setaudio " + alias + " left volume to " + _leftVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
@@ -205,8 +221,8 @@ namespace SoundBoard
 	void Player::totalVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{
-			totalVolume = value; 
-			String^ cmd = "setaudio " + alias + " volume to " + totalVolume.ToString();	
+			_totalVolume = value; 
+			String^ cmd = "setaudio " + alias + " volume to " + _totalVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
@@ -215,8 +231,8 @@ namespace SoundBoard
 	void Player::trebleVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{
-			trebleVolume = value; 
-			String^ cmd = "setaudio " + alias + " treble to " + trebleVolume.ToString();	
+			_trebleVolume = value; 
+			String^ cmd = "setaudio " + alias + " treble to " + _trebleVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}	
@@ -225,9 +241,32 @@ namespace SoundBoard
 	void Player::bassVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
 		{
-			bassVolume = value; 
-			String^ cmd = "setaudio " + alias + " bass to " + bassVolume.ToString();	
+			_bassVolume = value; 
+			String^ cmd = "setaudio " + alias + " bass to " + _bassVolume.ToString();	
 			int errCode = mciSendStringHandle(cmd);
+		}				
+	}
+	
+	int Player::balanceVolume::get() { return rightVolume; }
+	void Player::balanceVolume::set(int value) { 
+		if(isOpen && value >= -1000 && value < 1000)
+		{
+			_balanceVolume = value; 
+			if(value>0)
+			{				
+				String^ cmd = "setaudio " + alias + " left volume to 1000"; //this could be better	thinking of prev Volume?
+				int errCode = mciSendStringHandle(cmd);
+				cmd = "setaudio " + alias + " right volume to " + _balanceVolume.ToString();	
+				errCode = mciSendStringHandle(cmd);
+			}
+			else
+			{
+				String^ cmd = "setaudio " + alias + " right volume to 1000"; //this could be better thinking of prev Volume?
+				int errCode = mciSendStringHandle(cmd);
+				cmd = "setaudio " + alias + " left volume to " + _balanceVolume.ToString();	
+				errCode = mciSendStringHandle(cmd);
+			}
+			
 		}				
 	}
 
@@ -290,10 +329,11 @@ namespace SoundBoard
 		resumeSound();
 	}
 
-	void Player::getCurrentPosition(void)
+	int Player::getCurrentPosition(void)
 	{
 		String^ cmd = "status " + alias + " position";	
 		String^ response = mciSendStringHandleResponse(cmd);
+		return Convert::ToInt32(response);
 	}
 
 	void Player::getLength(void)

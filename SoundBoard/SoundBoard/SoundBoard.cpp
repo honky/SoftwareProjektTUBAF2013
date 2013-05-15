@@ -22,11 +22,14 @@ int main(array<System::String ^> ^args)
 	mainPlayer->openCdDoor();
 	mainPlayer->playSound();
 	Threading::Thread::Sleep(1000);
+	mainPlayer->pauseSound();
 	mainPlayer->getLength();
+	mainPlayer->trebleVolume = 500;
+	mainPlayer->bassVolume = 500;
+	mainPlayer->balanceVolume = 500;
 	mainPlayer->stopSound();
 	Threading::Thread::Sleep(1000);	
-	
-
+	mainPlayer->closeCdDoor();
 
 	// Create the main window and run it
 	//Application::Run(gcnew Form1()); //not needed yet
