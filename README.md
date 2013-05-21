@@ -11,6 +11,7 @@ http://www.youtube.com/watch?v=OcjMg8sQg5I
 GitHub explained:
 - http://rogerdudler.github.io/git-guide/index.de.html [german]
 - http://git-scm.com/book
+- http://pcottle.github.io/learnGitBranching/
 
 MCI Error Codes:
 
