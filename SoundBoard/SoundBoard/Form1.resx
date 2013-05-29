@@ -124,8 +124,8 @@
   <data name="pictureBox1.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA2MAAAJtCAIAAAA0Lj+aAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEAAA
-        CxABrSO9dQAA/3lJREFUeF7sXQdgFUX6D733IiAiVgS9U+6Oa57lTk89e6UJSG/2RhVsCAiiVEF6JyEE
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDwAA
+        Cw8BkvkDpQAA/3lJREFUeF7sXQdgFUX6D733IiAiVgS9U+6Oa57lTk89e6UJSG/2RhVsCAiiVEF6JyEE
         SE9I7ySBUBUsoGKhiBSxe/f3/5uys7P7dvft60mccQzv7ZvyzTezO7/92tQ4ePDgKZq+punEiRMJCQlR
         gaRff/1Vr/5rFPnPItWoUSOQTvS6QWuIN2kg30cSzbTYtCUVqxFF/pP4JTGP1Zb/epLDmrLjgbl/fEeb
         +P///g85SvzFRXzVemK9kDZprlGzJvlbq1ZUzZr4zL+yn2hBMQCNdvIvaZJOPu1Q+8Ba5u3TtklH5AMu
@@ -1920,4 +1920,7 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>

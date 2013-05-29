@@ -200,6 +200,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MainForm.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Player.cpp"
 				>
 			</File>
@@ -251,6 +255,16 @@
 				>
 				<File
 					RelativePath=".\Form1.resX"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
+				RelativePath=".\MainForm.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\MainForm.resx"
 					SubType="Designer"
 					>
 				</File>

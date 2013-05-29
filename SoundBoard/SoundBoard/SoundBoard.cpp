@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "Form1.h"
+#include "MainForm.h"
 
 using namespace SoundBoard;
 using namespace System;
@@ -43,7 +44,9 @@ int main(array<System::String ^> ^args)
 	*/
 
 	// Create the main window and run it
-	Application::Run(gcnew Form1()); //not needed yet
+	//Application::Run(gcnew Form1()); //not needed yet
+
+	Application::Run(gcnew MainForm());
 	return 0;
 }
 }

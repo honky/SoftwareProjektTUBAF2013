@@ -91,6 +91,7 @@ namespace SoundBoard {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
@@ -104,7 +105,6 @@ namespace SoundBoard {
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->button8 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar1))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar6))->BeginInit();
@@ -181,7 +181,7 @@ namespace SoundBoard {
 			this->trackBar1->Maximum = 1000;
 			this->trackBar1->Name = L"trackBar1";
 			this->trackBar1->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar1->Size = System::Drawing::Size(42, 104);
+			this->trackBar1->Size = System::Drawing::Size(45, 104);
 			this->trackBar1->TabIndex = 7;
 			this->trackBar1->Value = 500;
 			this->trackBar1->ValueChanged += gcnew System::EventHandler(this, &Form1::trackBar1_ValueChanged);
@@ -212,6 +212,16 @@ namespace SoundBoard {
 			this->panel1->TabIndex = 8;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel1_Paint);
 			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(327, 58);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(75, 23);
+			this->button8->TabIndex = 18;
+			this->button8->Text = L"getPosition";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
+			// 
 			// button7
 			// 
 			this->button7->Location = System::Drawing::Point(328, 29);
@@ -237,7 +247,7 @@ namespace SoundBoard {
 			this->trackBar6->Maximum = 1000;
 			this->trackBar6->Name = L"trackBar6";
 			this->trackBar6->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar6->Size = System::Drawing::Size(42, 104);
+			this->trackBar6->Size = System::Drawing::Size(45, 104);
 			this->trackBar6->TabIndex = 15;
 			this->trackBar6->Value = 500;
 			this->trackBar6->Scroll += gcnew System::EventHandler(this, &Form1::trackBar6_Scroll);
@@ -257,7 +267,7 @@ namespace SoundBoard {
 			this->trackBar5->Maximum = 1000;
 			this->trackBar5->Name = L"trackBar5";
 			this->trackBar5->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar5->Size = System::Drawing::Size(42, 104);
+			this->trackBar5->Size = System::Drawing::Size(45, 104);
 			this->trackBar5->TabIndex = 13;
 			this->trackBar5->Value = 500;
 			this->trackBar5->Scroll += gcnew System::EventHandler(this, &Form1::trackBar5_Scroll);
@@ -277,7 +287,7 @@ namespace SoundBoard {
 			this->trackBar3->Maximum = 1000;
 			this->trackBar3->Name = L"trackBar3";
 			this->trackBar3->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar3->Size = System::Drawing::Size(42, 104);
+			this->trackBar3->Size = System::Drawing::Size(45, 104);
 			this->trackBar3->TabIndex = 11;
 			this->trackBar3->Value = 500;
 			this->trackBar3->Scroll += gcnew System::EventHandler(this, &Form1::trackBar3_Scroll);
@@ -297,7 +307,7 @@ namespace SoundBoard {
 			this->trackBar2->Maximum = 1000;
 			this->trackBar2->Name = L"trackBar2";
 			this->trackBar2->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar2->Size = System::Drawing::Size(42, 104);
+			this->trackBar2->Size = System::Drawing::Size(45, 104);
 			this->trackBar2->TabIndex = 9;
 			this->trackBar2->Value = 500;
 			this->trackBar2->Scroll += gcnew System::EventHandler(this, &Form1::trackBar2_Scroll);
@@ -337,16 +347,6 @@ namespace SoundBoard {
 			this->pictureBox1->Size = System::Drawing::Size(264, 74);
 			this->pictureBox1->TabIndex = 11;
 			this->pictureBox1->TabStop = false;
-			// 
-			// button8
-			// 
-			this->button8->Location = System::Drawing::Point(327, 58);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(75, 23);
-			this->button8->TabIndex = 18;
-			this->button8->Text = L"getPosition";
-			this->button8->UseVisualStyleBackColor = true;
-			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
 			// 
 			// Form1
 			// 
