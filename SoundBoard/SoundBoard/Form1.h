@@ -91,6 +91,7 @@ namespace SoundBoard {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
@@ -104,7 +105,6 @@ namespace SoundBoard {
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->button8 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar1))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBar6))->BeginInit();
@@ -212,6 +212,16 @@ namespace SoundBoard {
 			this->panel1->TabIndex = 8;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::panel1_Paint);
 			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(327, 58);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(75, 23);
+			this->button8->TabIndex = 18;
+			this->button8->Text = L"getPosition";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
+			// 
 			// button7
 			// 
 			this->button7->Location = System::Drawing::Point(328, 29);
@@ -313,9 +323,9 @@ namespace SoundBoard {
 			// 
 			// panel2
 			// 
-			this->panel2->Location = System::Drawing::Point(12, 12);
+			this->panel2->Location = System::Drawing::Point(380, 218);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(560, 280);
+			this->panel2->Size = System::Drawing::Size(192, 74);
 			this->panel2->TabIndex = 9;
 			// 
 			// button6
@@ -337,16 +347,6 @@ namespace SoundBoard {
 			this->pictureBox1->Size = System::Drawing::Size(264, 74);
 			this->pictureBox1->TabIndex = 11;
 			this->pictureBox1->TabStop = false;
-			// 
-			// button8
-			// 
-			this->button8->Location = System::Drawing::Point(327, 58);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(75, 23);
-			this->button8->TabIndex = 18;
-			this->button8->Text = L"getPosition";
-			this->button8->UseVisualStyleBackColor = true;
-			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
 			// 
 			// Form1
 			// 
@@ -379,67 +379,91 @@ namespace SoundBoard {
 
 			 }
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				
+
 				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
-				 
+
 				 testSound->Path = textBox1->Text->Trim();
 				 testPlayer = gcnew Player(testSound);
 				 testPlayer->playSound();
 
-		
+
 			 }
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-				System::Windows::Forms::DialogResult^ d1 = openFileDialog1->ShowDialog();
-				textBox1->Text = openFileDialog1->FileName;
+				 System::Windows::Forms::DialogResult^ d1 = openFileDialog1->ShowDialog();
+				 textBox1->Text = openFileDialog1->FileName;
 			 }
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-				testPlayer->pauseSound();
-		 }
-private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-			 testPlayer->resumeSound ();
-		 }
-private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-			 testPlayer->stopSound ();
-		 }
-private: System::Void trackBar1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->pauseSound();
+			 }
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->resumeSound ();
+			 }
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->stopSound ();
+			 }
+	private: System::Void trackBar1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 
-			 testPlayer->totalVolume = trackBar1->Value;
-		 }
-private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		 }
-private: System::Void trackBar2_Scroll(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->totalVolume = trackBar1->Value;
+			 }
+	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+			 }
+	private: System::Void trackBar2_Scroll(System::Object^  sender, System::EventArgs^  e) {
 
-			 testPlayer->leftVolume = trackBar2->Value;
-		 }
-private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->leftVolume = trackBar2->Value;
+			 }
+	private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArgs^  e) {
 
-			testPlayer->rightVolume = trackBar3->Value;
-		 }
-private: System::Void trackBar5_Scroll(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->rightVolume = trackBar3->Value;
+			 }
+	private: System::Void trackBar5_Scroll(System::Object^  sender, System::EventArgs^  e) {
 
-			 testPlayer->trebleVolume = trackBar5->Value;
-		 }
-private: System::Void trackBar6_Scroll(System::Object^  sender, System::EventArgs^  e) {
+				 testPlayer->trebleVolume = trackBar5->Value;
+			 }
+	private: System::Void trackBar6_Scroll(System::Object^  sender, System::EventArgs^  e) {
 
-			 testPlayer->bassVolume = trackBar6->Value;
-		 }
-private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-			 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
-			 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
-			 Windows::Forms::PictureBox^ pb = wf->getWaveForm(); 
-			 pb->BackColor = System::Drawing::Color::Fuchsia;
-			 panel2->Controls->Add(pb);
-			 pb->Visible = true;
-			 //pb->Width = 500;
-			 //pb->Height = 200;
-			 
-		 }
-private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
-			int gu =testPlayer->getPcmValue();
-		 }
-private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
-			 int bla = testPlayer->getCurrentPosition();
-		 }
-};
+				 testPlayer->bassVolume = trackBar6->Value;
+			 }
+	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
+				 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
+				 Windows::Forms::PictureBox^ pb = wf->getWaveForm(); 
+				 pb->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;	
+				 
+				 pb->Location = Point(10,10);
+				 pb->BringToFront();
+				 //panel2->Controls->Add(pb);
+				 Bitmap^ bmp = gcnew Bitmap(pb->Width,pb->Height);
+				 Graphics^ g = Graphics::FromImage(bmp); //pb->CreateGraphics();
+				 System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
+				 System::Random^ rnd = gcnew System::Random();
+				 int random;
+				 for(int i = 0;i < pb->Width;i++){
+					 random = rnd->Next(pb->Height);
+					 g->DrawLine(MyBluePen, i, (int) ((pb->Height - random)/2), i, ((pb->Height + random)/2));
+
+				 }
+				 pb->Image = bmp;
+
+				 this->Controls->Add(pb);
+/*
+				g = pictureBox1->CreateGraphics();
+				for(int i = 0;i < pictureBox1->Width;i++){
+					 random = rnd->Next(pictureBox1->Height);
+					 g->DrawLine(MyBluePen, i, (int) ((pictureBox1->Height - random)/2), i, ((pictureBox1->Height + random)/2));
+
+				 }
+*/				
+				// pb->Visible = true;
+				 //pb->Width = 500;
+				 //pb->Height = 200;
+
+			 }
+	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+				 int gu =testPlayer->getPcmValue();
+			 }
+	private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+				 int bla = testPlayer->getCurrentPosition();
+			 }
+	};
 }
 

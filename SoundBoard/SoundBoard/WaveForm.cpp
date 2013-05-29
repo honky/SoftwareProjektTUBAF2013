@@ -23,8 +23,8 @@ namespace SoundBoard
 
 		//here is the place where the WaveForm should be generated
 		PictureBox^ pictureBox1 = gcnew PictureBox();
-		pictureBox1->Height = 125;
-		pictureBox1->Width = 200;
+		pictureBox1->Height = 74;
+		pictureBox1->Width = 264;
 				System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
 				System::Random^ rnd = gcnew System::Random();
 				int random;
