@@ -16,5 +16,7 @@ namespace SoundBoard
 		String^ path2image;
 
 	};
+	void ExecuteShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage);
+	array<short^> ^ CreateSamples(String^ fileName);
 
 }

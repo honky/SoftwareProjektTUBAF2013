@@ -424,6 +424,11 @@ namespace SoundBoard {
 				 testPlayer->bassVolume = trackBar6->Value;
 			 }
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+				 String^ _Output = nullptr;
+				 String^ _Error = nullptr;
+				 array<short^> ^ Samples;
+				 ExecuteShellCommand("C:\\Users\\Philip\\Desktop\\sox\\sox", this->textBox1->Text + " -r 1000" + " C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", _Output, _Error);
+				 Samples = CreateSamples("C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw");
 				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
 				 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
 				 Windows::Forms::PictureBox^ pb = wf->getWaveForm(); 
@@ -433,29 +438,14 @@ namespace SoundBoard {
 				 pb->BringToFront();
 				 //panel2->Controls->Add(pb);
 				 Bitmap^ bmp = gcnew Bitmap(pb->Width,pb->Height);
-				 Graphics^ g = Graphics::FromImage(bmp); //pb->CreateGraphics();
+				 Graphics^ g = Graphics::FromImage(bmp);
 				 System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
-				 System::Random^ rnd = gcnew System::Random();
-				 int random;
-				 for(int i = 0;i < pb->Width;i++){
-					 random = rnd->Next(pb->Height);
-					 g->DrawLine(MyBluePen, i, (int) ((pb->Height - random)/2), i, ((pb->Height + random)/2));
-
+				 for(int i = 0;i < Samples->Length && i < pb->Width;i++){
+					 g->DrawLine(MyBluePen, i, ((pb->Height - System::Int16::Parse(Samples[i]->ToString()))/2), i, ((pb->Height + System::Int16::Parse(Samples[i]->ToString()))/2));
 				 }
 				 pb->Image = bmp;
 
 				 this->Controls->Add(pb);
-/*
-				g = pictureBox1->CreateGraphics();
-				for(int i = 0;i < pictureBox1->Width;i++){
-					 random = rnd->Next(pictureBox1->Height);
-					 g->DrawLine(MyBluePen, i, (int) ((pictureBox1->Height - random)/2), i, ((pictureBox1->Height + random)/2));
-
-				 }
-*/				
-				// pb->Visible = true;
-				 //pb->Width = 500;
-				 //pb->Height = 200;
 
 			 }
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
