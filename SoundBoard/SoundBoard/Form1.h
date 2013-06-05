@@ -435,13 +435,12 @@ namespace SoundBoard {
 				 pb->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;	
 				 
 				 pb->Location = Point(10,10);
-				 pb->BringToFront();
 				 //panel2->Controls->Add(pb);
 				 Bitmap^ bmp = gcnew Bitmap(pb->Width,pb->Height);
 				 Graphics^ g = Graphics::FromImage(bmp);
 				 System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
 				 for(int i = 0;i < Samples->Length && i < pb->Width;i++){
-					 g->DrawLine(MyBluePen, i, ((pb->Height - System::Int16::Parse(Samples[i]->ToString()))/2), i, ((pb->Height + System::Int16::Parse(Samples[i]->ToString()))/2));
+					 g->DrawLine(MyBluePen, i, 35 - (*Samples[i])/64, i, 35 + (*Samples[i])/64);
 				 }
 				 pb->Image = bmp;
 
