@@ -71,6 +71,17 @@ namespace SoundBoard {
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Panel^  panelButtonGroups;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel2;
+	private: System::Windows::Forms::Button^  buttonPlayCustom1;
+	private: System::Windows::Forms::Button^  buttonPlayCustom2;
+	private: System::Windows::Forms::Button^  buttonPlayCustom3;
+	private: System::Windows::Forms::TextBox^  textBoxPlayCustom1;
+	private: System::Windows::Forms::TextBox^  textBoxPlayCustom2;
+	private: System::Windows::Forms::TextBox^  textBoxPlayCustom3;
+
+
 
 
 
@@ -118,6 +129,15 @@ namespace SoundBoard {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->panelButtonGroups = (gcnew System::Windows::Forms::Panel());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->buttonPlayCustom1 = (gcnew System::Windows::Forms::Button());
+			this->buttonPlayCustom2 = (gcnew System::Windows::Forms::Button());
+			this->buttonPlayCustom3 = (gcnew System::Windows::Forms::Button());
+			this->textBoxPlayCustom1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxPlayCustom2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxPlayCustom3 = (gcnew System::Windows::Forms::TextBox());
 			this->tableLayoutPanelMain->SuspendLayout();
 			this->flowLayoutPanelLeft->SuspendLayout();
 			this->groupBoxMasterVolumeControl->SuspendLayout();
@@ -136,6 +156,8 @@ namespace SoundBoard {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBarMasterVolumeBalance))->BeginInit();
 			this->groupBoxMasterPlayer->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
+			this->groupBox1->SuspendLayout();
+			this->tableLayoutPanel2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// tableLayoutPanelMain
@@ -154,7 +176,7 @@ namespace SoundBoard {
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 
 				366)));
-			this->tableLayoutPanelMain->Size = System::Drawing::Size(792, 366);
+			this->tableLayoutPanelMain->Size = System::Drawing::Size(792, 540);
 			this->tableLayoutPanelMain->TabIndex = 0;
 			// 
 			// flowLayoutPanelRight
@@ -164,7 +186,7 @@ namespace SoundBoard {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->flowLayoutPanelRight->Location = System::Drawing::Point(399, 3);
 			this->flowLayoutPanelRight->Name = L"flowLayoutPanelRight";
-			this->flowLayoutPanelRight->Size = System::Drawing::Size(390, 360);
+			this->flowLayoutPanelRight->Size = System::Drawing::Size(390, 534);
 			this->flowLayoutPanelRight->TabIndex = 1;
 			// 
 			// flowLayoutPanelLeft
@@ -175,9 +197,11 @@ namespace SoundBoard {
 			this->flowLayoutPanelLeft->AutoScroll = true;
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBoxMasterVolumeControl);
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBoxMasterPlayer);
+			this->flowLayoutPanelLeft->Controls->Add(this->panelButtonGroups);
+			this->flowLayoutPanelLeft->Controls->Add(this->groupBox1);
 			this->flowLayoutPanelLeft->Location = System::Drawing::Point(3, 3);
 			this->flowLayoutPanelLeft->Name = L"flowLayoutPanelLeft";
-			this->flowLayoutPanelLeft->Size = System::Drawing::Size(390, 360);
+			this->flowLayoutPanelLeft->Size = System::Drawing::Size(390, 534);
 			this->flowLayoutPanelLeft->TabIndex = 2;
 			this->flowLayoutPanelLeft->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::flowLayoutPanelLeft_Paint);
 			// 
@@ -460,11 +484,106 @@ namespace SoundBoard {
 			this->button6->Text = L"Stop Last";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
+			// panelButtonGroups
+			// 
+			this->panelButtonGroups->Location = System::Drawing::Point(3, 243);
+			this->panelButtonGroups->Name = L"panelButtonGroups";
+			this->panelButtonGroups->Size = System::Drawing::Size(377, 140);
+			this->panelButtonGroups->TabIndex = 2;
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->tableLayoutPanel2);
+			this->groupBox1->Location = System::Drawing::Point(3, 389);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(377, 125);
+			this->groupBox1->TabIndex = 3;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"CustomSounds";
+			// 
+			// tableLayoutPanel2
+			// 
+			this->tableLayoutPanel2->ColumnCount = 2;
+			this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
+				75)));
+			this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
+				25)));
+			this->tableLayoutPanel2->Controls->Add(this->buttonPlayCustom1, 1, 0);
+			this->tableLayoutPanel2->Controls->Add(this->buttonPlayCustom2, 1, 1);
+			this->tableLayoutPanel2->Controls->Add(this->buttonPlayCustom3, 1, 2);
+			this->tableLayoutPanel2->Controls->Add(this->textBoxPlayCustom1, 0, 0);
+			this->tableLayoutPanel2->Controls->Add(this->textBoxPlayCustom2, 0, 1);
+			this->tableLayoutPanel2->Controls->Add(this->textBoxPlayCustom3, 0, 2);
+			this->tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tableLayoutPanel2->Location = System::Drawing::Point(3, 16);
+			this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
+			this->tableLayoutPanel2->RowCount = 3;
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.33333F)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.33333F)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 33.33333F)));
+			this->tableLayoutPanel2->Size = System::Drawing::Size(371, 106);
+			this->tableLayoutPanel2->TabIndex = 0;
+			this->tableLayoutPanel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::tableLayoutPanel2_Paint);
+			// 
+			// buttonPlayCustom1
+			// 
+			this->buttonPlayCustom1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->buttonPlayCustom1->Location = System::Drawing::Point(281, 3);
+			this->buttonPlayCustom1->Name = L"buttonPlayCustom1";
+			this->buttonPlayCustom1->Size = System::Drawing::Size(87, 29);
+			this->buttonPlayCustom1->TabIndex = 0;
+			this->buttonPlayCustom1->Text = L"Play Custom 1";
+			this->buttonPlayCustom1->UseVisualStyleBackColor = true;
+			// 
+			// buttonPlayCustom2
+			// 
+			this->buttonPlayCustom2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->buttonPlayCustom2->Location = System::Drawing::Point(281, 38);
+			this->buttonPlayCustom2->Name = L"buttonPlayCustom2";
+			this->buttonPlayCustom2->Size = System::Drawing::Size(87, 29);
+			this->buttonPlayCustom2->TabIndex = 1;
+			this->buttonPlayCustom2->Text = L"Play Custom 2";
+			this->buttonPlayCustom2->UseVisualStyleBackColor = true;
+			// 
+			// buttonPlayCustom3
+			// 
+			this->buttonPlayCustom3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->buttonPlayCustom3->Location = System::Drawing::Point(281, 73);
+			this->buttonPlayCustom3->Name = L"buttonPlayCustom3";
+			this->buttonPlayCustom3->Size = System::Drawing::Size(87, 30);
+			this->buttonPlayCustom3->TabIndex = 2;
+			this->buttonPlayCustom3->Text = L"Play Custom 3";
+			this->buttonPlayCustom3->UseVisualStyleBackColor = true;
+			// 
+			// textBoxPlayCustom1
+			// 
+			this->textBoxPlayCustom1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->textBoxPlayCustom1->Location = System::Drawing::Point(3, 3);
+			this->textBoxPlayCustom1->Name = L"textBoxPlayCustom1";
+			this->textBoxPlayCustom1->Size = System::Drawing::Size(272, 20);
+			this->textBoxPlayCustom1->TabIndex = 3;
+			// 
+			// textBoxPlayCustom2
+			// 
+			this->textBoxPlayCustom2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->textBoxPlayCustom2->Location = System::Drawing::Point(3, 38);
+			this->textBoxPlayCustom2->Name = L"textBoxPlayCustom2";
+			this->textBoxPlayCustom2->Size = System::Drawing::Size(272, 20);
+			this->textBoxPlayCustom2->TabIndex = 4;
+			// 
+			// textBoxPlayCustom3
+			// 
+			this->textBoxPlayCustom3->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->textBoxPlayCustom3->Location = System::Drawing::Point(3, 73);
+			this->textBoxPlayCustom3->Name = L"textBoxPlayCustom3";
+			this->textBoxPlayCustom3->Size = System::Drawing::Size(272, 20);
+			this->textBoxPlayCustom3->TabIndex = 5;
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(792, 366);
+			this->ClientSize = System::Drawing::Size(792, 540);
 			this->Controls->Add(this->tableLayoutPanelMain);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
@@ -494,6 +613,9 @@ namespace SoundBoard {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBarMasterVolumeBalance))->EndInit();
 			this->groupBoxMasterPlayer->ResumeLayout(false);
 			this->tableLayoutPanel1->ResumeLayout(false);
+			this->groupBox1->ResumeLayout(false);
+			this->tableLayoutPanel2->ResumeLayout(false);
+			this->tableLayoutPanel2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -503,6 +625,8 @@ namespace SoundBoard {
 			 }
 
 private: System::Void flowLayoutPanelLeft_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		 }
+private: System::Void tableLayoutPanel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 		 }
 };
 }
