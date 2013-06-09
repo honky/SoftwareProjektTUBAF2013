@@ -951,11 +951,27 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 			 
 			
 
-			 Windows::Forms::GroupBox^ gB = gcnew GroupBox();
+			Windows::Forms::GroupBox^ gB = gcnew GroupBox();
+			
+			//System::Object^ sysClone = groupBoxSoundTemplate->Controls->MemberwiseClone();			 
+	        //gB->Controls = groupBoxSoundTemplate->Controls;
+			
+			
+			int i = 0;
 			for each(Control^ eC in groupBoxSoundTemplate->Controls)
 			{
-				gB->Controls->Add(eC);
+				
+
+				Control^ copyControl = gcnew Control();
+				copyControl->Location = eC->Location;
+				copyControl->Name = "snafu"+i++;
+				copyControl->Size = eC->Size;
+				copyControl->Dock = eC->Dock;
+				copyControl->Visible = true;
+				copyControl->Text = "C" + copyControl->Text;
+				gB->Controls->Add(copyControl);
 			}
+			
 
 			flowLayoutPanelRight->Controls->Add(gB);
 
