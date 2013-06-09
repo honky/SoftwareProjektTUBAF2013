@@ -257,7 +257,7 @@ namespace SoundBoard {
 			this->groupBoxSoundTemplate->Controls->Add(this->flowLayoutPanel1);
 			this->groupBoxSoundTemplate->Location = System::Drawing::Point(3, 3);
 			this->groupBoxSoundTemplate->Name = L"groupBoxSoundTemplate";
-			this->groupBoxSoundTemplate->Size = System::Drawing::Size(378, 207);
+			this->groupBoxSoundTemplate->Size = System::Drawing::Size(378, 208);
 			this->groupBoxSoundTemplate->TabIndex = 0;
 			this->groupBoxSoundTemplate->TabStop = false;
 			this->groupBoxSoundTemplate->Text = L"groupBoxSoundTemplate";
@@ -277,7 +277,7 @@ namespace SoundBoard {
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->flowLayoutPanel1->Location = System::Drawing::Point(3, 16);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(372, 188);
+			this->flowLayoutPanel1->Size = System::Drawing::Size(372, 189);
 			this->flowLayoutPanel1->TabIndex = 1;
 			// 
 			// panel1
@@ -948,7 +948,22 @@ private: System::Void tableLayoutPanel2_Paint(System::Object^  sender, System::W
 private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 		 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 flowLayoutPanelRight->Controls->Add(groupBoxSoundTemplate);
+			 
+			
+
+			 Windows::Forms::GroupBox^ gB = gcnew GroupBox();
+			for each(Control^ eC in groupBoxSoundTemplate->Controls)
+			{
+				gB->Controls->Add(eC);
+			}
+
+			flowLayoutPanelRight->Controls->Add(gB);
+
+
+
+			// 
+			
+
 		 }
 };
 }
