@@ -960,7 +960,11 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 			int i = 0;
 			for each(Control^ eC in groupBoxSoundTemplate->Controls)
 			{
-				
+				//maybe its that way..
+				if(eC->GetType() == Panel::typeid)
+				{
+
+				}
 
 				Control^ copyControl = gcnew Control();
 				copyControl->Location = eC->Location;
