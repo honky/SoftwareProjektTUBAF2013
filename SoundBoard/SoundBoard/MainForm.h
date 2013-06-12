@@ -947,10 +947,34 @@ private: System::Void tableLayoutPanel2_Paint(System::Object^  sender, System::W
 		 }
 private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 		 }
+private: System::Windows::Forms::Control^ cloneControls(Control^ control)
+		 {
+			 //System::Windows::Forms::Control;
+			 int i = 0;
+			for each(Control^ eC in groupBoxSoundTemplate->Controls)
+			{
+				String^ testFullName = eC->GetType()->FullName;
+				String^ testName = eC->GetType()->Name;
+				//maybe its that way..
+				if(eC->GetType()->Name == "Panel") // Panel::typeid)
+				{	
+					Panel^ newPanel = dynamic_cast<Panel^>(eC); //gcnew Panel();
+					
+					return eC;
+				}
+				if(eC->GetType()->Name == "Button")
+				{	
+					Button^ newButton = dynamic_cast<Button^>(eC); //gcnew Panel();
+					
+					return eC;
+				}
+			}
+				
+
+		 }
+
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 
-			
-
 			Windows::Forms::GroupBox^ gB = gcnew GroupBox();			
 			//System::Object^ sysClone = groupBoxSoundTemplate->Controls->MemberwiseClone();			 
 	        //gB->Controls = groupBoxSoundTemplate->Controls;
@@ -982,15 +1006,7 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 				copyControl->Text = "C" + copyControl->Text;
 				gB->Controls->Add(copyControl);
 			}
-			
-
-			flowLayoutPanelRight->Controls->Add(gB);
-
-
-
-			// 
-			
-
+			flowLayoutPanelRight->Controls->Add(gB);		
 		 }
 };
 }
