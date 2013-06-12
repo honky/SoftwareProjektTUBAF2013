@@ -103,7 +103,7 @@ void ExecuteShellCommand(System::String ^_FileToExecute, System::String ^_Comman
         _Process = nullptr;
     }
 }
-array<short^> ^ CreateSamples(String^ fileName)
+array<short^> ^ CreateSamples(String^ fileName, int lenght)
 {
 	array<short^> ^ Samples;
    try
@@ -113,10 +113,19 @@ array<short^> ^ CreateSamples(String^ fileName)
 
 	  Samples = gcnew array<short ^>((int)br->BaseStream->Length/2);
 	  Console::WriteLine("The Length of the array is: {0}", (int)br->BaseStream->Length/2);
+
 	  while (br->BaseStream->Position < br->BaseStream->Length){
-		  Samples[(int)(br->BaseStream->Position/2)] = br->ReadInt16();
+		  for(int i = 0; i < 40*lenght; i++){
+
+		  }
 	  }
-      fs->Close( );
+
+	  // This function used to read the audio data in a previous version
+	  /*while (br->BaseStream->Position < br->BaseStream->Length){
+		  Samples[(int)(br->BaseStream->Position/2)] = br->ReadInt16();
+	  }*/
+      
+	  fs->Close( );
    }
    catch (Exception^ e)
    {

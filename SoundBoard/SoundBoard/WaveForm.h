@@ -17,6 +17,6 @@ namespace SoundBoard
 
 	};
 	void ExecuteShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage);
-	array<short^> ^ CreateSamples(String^ fileName);
+	array<short^> ^ CreateSamples(String^ fileName, int length);
 
 }
