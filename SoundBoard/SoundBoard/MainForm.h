@@ -951,19 +951,26 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 			 
 			
 
-			Windows::Forms::GroupBox^ gB = gcnew GroupBox();
-			
+			Windows::Forms::GroupBox^ gB = gcnew GroupBox();			
 			//System::Object^ sysClone = groupBoxSoundTemplate->Controls->MemberwiseClone();			 
 	        //gB->Controls = groupBoxSoundTemplate->Controls;
-			
-			
 			int i = 0;
 			for each(Control^ eC in groupBoxSoundTemplate->Controls)
 			{
+				String^ testFullName = eC->GetType()->FullName;
+				String^ testName = eC->GetType()->Name;
 				//maybe its that way..
-				if(eC->GetType() == Panel::typeid)
-				{
-
+				if(eC->GetType()->Name == "Panel") // Panel::typeid)
+				{	
+					Panel^ newPanel = dynamic_cast<Panel^>(eC); //gcnew Panel();
+					
+					gB->Controls->Add(newPanel);
+				}
+				if(eC->GetType()->Name == "Button")
+				{	
+					Button^ newButton = dynamic_cast<Button^>(eC); //gcnew Panel();
+					
+					gB->Controls->Add(newButton);
 				}
 
 				Control^ copyControl = gcnew Control();
