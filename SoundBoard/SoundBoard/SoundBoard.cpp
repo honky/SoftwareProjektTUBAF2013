@@ -19,8 +19,14 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	Sound^ exampleSound = gcnew Sound();
-	exampleSound->Path = Environment::CurrentDirectory + "\\sounds\\flush.mp3";//"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
+	exampleSound->Path = Environment::CurrentDirectory + "\\sounds\\mlc.mp3";//"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
+	
+	System::IO::FileInfo^ fileInfo = gcnew System::IO::FileInfo(exampleSound->Path);
 
+	Player^ examplePlayer = gcnew Player(exampleSound);
+	String^ lengtht = examplePlayer->getLength();
+	Threading::Thread::Sleep(3000);
+	int curPos = examplePlayer->getCurrentPosition();
 	int i = 0;
 	/*
 	List<Player^>^ list_player = gcnew List<Player^>();	
