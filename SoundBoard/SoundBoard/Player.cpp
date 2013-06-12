@@ -65,9 +65,12 @@ namespace SoundBoard
 	{ 
 		// just don't ask for mercy
 		pin_ptr<const wchar_t> wch = PtrToStringChars(givenHandle);
-		char* rch = new char[128];
-		int errorCode = mciSendString(wch,(LPWSTR) rch,128,0);
+		pin_ptr<const wchar_t> rch = PtrToStringChars(""); // new char[512];
+		//System::Char^ snafu = PtrToStringChars(givenHandle);
+		//char* rch = new char[512];
+		int errorCode = mciSendString(wch,(LPWSTR) rch,512,0);
 		checkError(errorCode);
+		
 		return gcnew String(rch);
 	}
 
@@ -341,15 +344,46 @@ void Player::closeSound()
 		return Convert::ToInt32(response);
 	}
 
-	void Player::getLength(void)
-	{
+	String^ Player::getLength(void)
+	{	
+		int snafu = mciSendStringHandle("set " + alias + " time format milliseconds ");
+		
+		String^ length =  mciSendStringHandleResponse("status " + alias + " length ");
+		String^ currentTimeFormat =  mciSendStringHandleResponse("status " + alias + " time format");
+		String^ currentTimeFormat2 =  mciSendStringHandleResponse("status " + alias + " samplespersec");
+
+		String^ alignment =  mciSendStringHandleResponse("status " + alias + " alignment ");
+		String^ bitspersample =  mciSendStringHandleResponse("status " + alias + " bitspersample ");
+		String^ bytespersec =  mciSendStringHandleResponse("status " + alias + " bytespersec ");
+		String^ channels =  mciSendStringHandleResponse("status " + alias + " channels ");
+		String^ current_track =  mciSendStringHandleResponse("status " + alias + " current track ");
+		String^ format_tag =  mciSendStringHandleResponse("status " + alias + " format tag ");
+		String^ input =  mciSendStringHandleResponse("status " + alias + " input ");
+		String^ length_track_number =  mciSendStringHandleResponse("status " + alias + " length track number ");
+		String^ level =  mciSendStringHandleResponse("status " + alias + " level ");
+		String^ media_present =  mciSendStringHandleResponse("status " + alias + " media present ");
+		String^ mode =  mciSendStringHandleResponse("status " + alias + " mode ");
+		String^ number_of_tracks =  mciSendStringHandleResponse("status " + alias + " number of tracks ");
+		String^ output =  mciSendStringHandleResponse("status " + alias + " output ");
+		String^ position =  mciSendStringHandleResponse("status " + alias + " position ");
+		String^ position_track_number =  mciSendStringHandleResponse("status " + alias + " position track number ");
+		String^ ready =  mciSendStringHandleResponse("status " + alias + " ready");
+		String^ samplespersec =  mciSendStringHandleResponse("status " + alias + " samplespersec ");
+		String^ start_position =  mciSendStringHandleResponse("status " + alias + " start position ");
+		String^ time_format =  mciSendStringHandleResponse("status " + alias + " time format ");
+
+
+
+
+
 		String^ cmd = "status " + alias + " length";	
 		String^ response = mciSendStringHandleResponse(cmd);
+		return response;
 	}
 
 	void Player::setTimeFormat(String^ timeFormat)
 	{
-		String^ cmd = "set " + alias + " time format to " + timeFormat;	
+		String^ cmd = "set time format " + timeFormat;	
 		int errCode = mciSendStringHandle(cmd);
 	}
 

@@ -81,7 +81,7 @@ namespace SoundBoard
 		void setPosition(int position);
 		int getCurrentPosition(void);
 		int getPcmValue(void);
-		void getLength(void);
+		String^ getLength(void);
 		void setTimeFormat(String^ timeFormat);
 
 		void checkError(int code);		
