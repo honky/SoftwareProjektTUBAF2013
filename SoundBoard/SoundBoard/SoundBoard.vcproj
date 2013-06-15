@@ -216,6 +216,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PlayerGUI.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Sound.cpp"
 				>
 			</File>
@@ -308,6 +312,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PlayerGUI.h"
+				>
+			</File>
+			<File
 				RelativePath=".\resource.h"
 				>
 			</File>
@@ -317,6 +325,14 @@
 			</File>
 			<File
 				RelativePath=".\SoundButton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SoundButton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SoundButtonGroup.h"
 				>
 			</File>
 			<File

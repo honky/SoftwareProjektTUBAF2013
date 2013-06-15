@@ -5,6 +5,7 @@
 #include "Sound.h"
 #include "WaveForm.h"
 #include "Player.h"
+#include "PlayerGUI.h"
 #include "SoundContext.h"
 #include "SoundController.h"
 #include "SoundButton.h"

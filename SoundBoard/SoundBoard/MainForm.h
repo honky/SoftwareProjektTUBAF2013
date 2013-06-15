@@ -975,7 +975,7 @@ private: System::Windows::Forms::Control^ cloneControls(Control^ control)
 
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 
-			Windows::Forms::GroupBox^ gB = gcnew GroupBox();			
+			PlayerGUI^ gB = gcnew PlayerGUI("snafu");
 			//System::Object^ sysClone = groupBoxSoundTemplate->Controls->MemberwiseClone();			 
 	        //gB->Controls = groupBoxSoundTemplate->Controls;
 			int i = 0;
