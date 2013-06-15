@@ -200,6 +200,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ConfigController.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\editConfigForm.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MainForm.cpp"
 				>
 			</File>
@@ -216,7 +224,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SoundButton.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SoundButtonGroup.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SoundContext.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SoundController.cpp"
 				>
 			</File>
 			<File
@@ -250,6 +270,20 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\ConfigController.h"
+				>
+			</File>
+			<File
+				RelativePath=".\editConfigForm.h"
+				FileType="3"
+				>
+				<File
+					RelativePath=".\editConfigForm.resx"
+					SubType="Designer"
+					>
+				</File>
+			</File>
+			<File
 				RelativePath=".\Form1.h"
 				FileType="3"
 				>
@@ -282,7 +316,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SoundButton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SoundButtonGroup.h"
+				>
+			</File>
+			<File
 				RelativePath=".\SoundContext.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SoundController.h"
 				>
 			</File>
 			<File

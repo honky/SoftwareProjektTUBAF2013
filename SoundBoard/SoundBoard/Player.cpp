@@ -40,9 +40,6 @@ namespace SoundBoard
 		trebleVolume = trebleVolumeOverall;
 		bassVolume = bassVolumeOverall;
 
-		//
-
-
 		//now open sound and give him its alias
 		openSound(givenSound);
 

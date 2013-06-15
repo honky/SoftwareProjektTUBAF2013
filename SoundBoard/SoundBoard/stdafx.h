@@ -5,4 +5,8 @@
 #include "Sound.h"
 #include "WaveForm.h"
 #include "Player.h"
+#include "SoundContext.h"
+#include "SoundController.h"
+#include "SoundButton.h"
+#include "SoundButtonGroup.h"
 // TODO: reference additional headers your program requires here
