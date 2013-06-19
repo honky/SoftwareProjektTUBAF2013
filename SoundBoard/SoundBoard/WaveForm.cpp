@@ -2,6 +2,9 @@
 
 
 
+#define SAMPLINGRATE	10000
+#define PBWIDTH			250
+
 namespace SoundBoard
 {
 	using namespace Windows::Forms;
@@ -27,7 +30,7 @@ namespace SoundBoard
 		//here is the place where the WaveForm should be generated
 		PictureBox^ pictureBox1 = gcnew PictureBox();
 		pictureBox1->Height = 70;
-		pictureBox1->Width = 250;
+		pictureBox1->Width = PBWIDTH;
 				
 
 		return pictureBox1;
@@ -103,7 +106,7 @@ void ExecuteShellCommand(System::String ^_FileToExecute, System::String ^_Comman
         _Process = nullptr;
     }
 }
-array<short^> ^ CreateSamples(String^ fileName, int lenght)
+array<short^> ^ CreateSamples(String^ fileName, int soundLength)
 {
 	array<short^> ^ Samples;
    try
@@ -111,14 +114,16 @@ array<short^> ^ CreateSamples(String^ fileName, int lenght)
       FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
       BinaryReader^ br = gcnew BinaryReader(fs);
 
-	  Samples = gcnew array<short ^>((int)br->BaseStream->Length/2);
+	  Samples = gcnew array<short ^>(PBWIDTH);
 	  Console::WriteLine("The Length of the array is: {0}", (int)br->BaseStream->Length/2);
 
-	  while (br->BaseStream->Position < br->BaseStream->Length){
-		  for(int i = 0; i < 40*lenght; i++){
-
+		  for(int i = 0; i < PBWIDTH; i++){
+			  int temp = 0;
+			  for(int g = 0; g < (SAMPLINGRATE * soundLength)/PBWIDTH ; g++){
+				  temp += br->ReadInt16();
+			  }
+		  *Samples[i] = temp;
 		  }
-	  }
 
 	  // This function used to read the audio data in a previous version
 	  /*while (br->BaseStream->Position < br->BaseStream->Length){
