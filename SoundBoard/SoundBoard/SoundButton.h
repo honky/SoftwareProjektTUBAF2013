@@ -11,7 +11,7 @@ namespace SoundBoard
 	ref class SoundButton
 	{
 	public:
-		SoundButton(String^ text); //, SoundContext^ context);
+		SoundButton(String^ text, SoundContext^ context);
 		System::Drawing::Color^ backgroundColor;
 		String^ text;
 	private:

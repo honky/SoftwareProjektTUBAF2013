@@ -23,6 +23,7 @@ int main(array<System::String ^> ^args)
 	
 	System::IO::FileInfo^ fileInfo = gcnew System::IO::FileInfo(exampleSound->Path);
 
+	SoundContext^ sc = gcnew SoundContext(Environment::CurrentDirectory, SoundContextType::Random);
 	Player^ examplePlayer = gcnew Player(exampleSound);
 	String^ lengtht = examplePlayer->getLength();
 	Threading::Thread::Sleep(3000);

@@ -5,7 +5,7 @@
 namespace SoundBoard
 {
 	using namespace System;
-	SoundContext::SoundContext(String^ path) //, SoundContextType^ sct)
+	SoundContext::SoundContext(String^ path, SoundContextType^ sct)
 	{
 
 

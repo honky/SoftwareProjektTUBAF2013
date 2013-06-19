@@ -7,6 +7,6 @@ namespace SoundBoard
 	ref class SoundContext
 	{
 	public:
-		SoundContext(String^ path); //, SoundContextType^ sct);
+		SoundContext(String^ path, SoundContextType^ sct);
 	};
 }

@@ -2,7 +2,7 @@
 
 namespace SoundBoard
 {
-	SoundButton::SoundButton(String^ text) //, SoundContext^ context)
+	SoundButton::SoundButton(String^ text, SoundContext^ context)
 	{
 			
 	}

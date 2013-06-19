@@ -31,14 +31,29 @@ namespace SoundBoard
 	{
 		if(!File::Exists(configFolder))
 		{
-
+			Directory::CreateDirectory(configFolder);
 		}
+		
+		//we expect all folders in the sound root to be a button group
+		array<String^>^ propablyButtonGroups = Directory::GetDirectories(soundsFolder);
 
-		Directory::CreateDirectory(configFolder);
-		SoundButtonGroup^ generalBG = gcnew SoundButtonGroup("General");
-//		SoundContext^ context = gcnew SoundContext("blafu",SoundContextType::Loop);
-//		generalBG->buttons->Add(gcnew SoundButton());
+		for each (String^ propablyButtonGroup in propablyButtonGroups)
+		{
+			SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetDirectoryName(propablyButtonGroup));
+			array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
+			for each (String^ propablyButton in propablyButtons)
+			{	
+				array<String^>^ probablyButtonFiles = Directory::GetFiles(propablyButton);
+				
+				if(probablyButtonFiles->Length != 0)
+				{
+					SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
+					SoundButton^ sb = gcnew SoundButton(Path::GetDirectoryName(propablyButton), sc);
+				}
 
+			}
+			//ButtonGroup bg = gcnew ButtonGroup();
+		}
 		
 		
 	}
