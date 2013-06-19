@@ -49,10 +49,11 @@ namespace SoundBoard
 				{
 					SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
 					SoundButton^ sb = gcnew SoundButton(Path::GetDirectoryName(propablyButton), sc);
+					sbg->buttons->Add(sb);
 				}
-
+				
 			}
-			//ButtonGroup bg = gcnew ButtonGroup();
+			
 		}
 		
 		
