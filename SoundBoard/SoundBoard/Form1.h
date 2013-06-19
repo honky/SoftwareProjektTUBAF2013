@@ -427,7 +427,7 @@ namespace SoundBoard {
 				 String^ _Output = nullptr;
 				 String^ _Error = nullptr;
 				 array<short^> ^ Samples;
-				 ExecuteShellCommand("C:\\Users\\Philip\\Desktop\\sox\\sox", this->textBox1->Text + " -r 10000" + " C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", _Output, _Error);
+				 ExecuteShellCommand(Environment::CurrentDirectory + "\\sox\\sox", this->textBox1->Text + " -r 10000" + " C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", _Output, _Error);
 				 Samples = CreateSamples("C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", 95);
 				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
 				 testSound->Path= this->textBox1->Text;
