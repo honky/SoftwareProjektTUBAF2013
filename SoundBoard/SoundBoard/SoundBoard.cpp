@@ -53,10 +53,9 @@ int main(array<System::String ^> ^args)
 	*/
 
 	// Create the main window and run it
-	//Application::Run(gcnew Form1()); //not needed yet
+	Application::Run(gcnew Form1()); //not needed yet
 
-	Application::Run(gcnew MainForm());
-	
+	//Application::Run(gcnew MainForm());
 	return 0;
 }
 }
