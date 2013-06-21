@@ -380,9 +380,7 @@ namespace SoundBoard {
 			 }
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
-
-				 testSound->Path = textBox1->Text->Trim();
+				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound(textBox1->Text->Trim());
 				 testPlayer = gcnew Player(testSound);
 				 testPlayer->playSound();
 
@@ -429,8 +427,8 @@ namespace SoundBoard {
 				 array<short^> ^ Samples;
 				 ExecuteShellCommand(Environment::CurrentDirectory + "\\sox\\sox", this->textBox1->Text + " -r 10000" + " C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", _Output, _Error);
 				 Samples = CreateSamples("C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", 95);
-				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound();
-				 testSound->Path= this->textBox1->Text;
+				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound("");
+				 testSound->path= this->textBox1->Text;
 				 Player^ pl = gcnew Player(testSound);
 				 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
 				 Windows::Forms::PictureBox^ pb = wf->getWaveForm(); 

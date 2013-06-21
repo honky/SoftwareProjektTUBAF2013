@@ -18,10 +18,10 @@ int main(array<System::String ^> ^args)
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false); 
 
-	Sound^ exampleSound = gcnew Sound();
-	exampleSound->Path = Environment::CurrentDirectory + "\\sounds\\mlc.mp3";//"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
+	Sound^ exampleSound = gcnew Sound(Environment::CurrentDirectory + "\\sounds\\mlc.mp3");
+	//exampleSound->path = //"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
 	
-	System::IO::FileInfo^ fileInfo = gcnew System::IO::FileInfo(exampleSound->Path);
+	System::IO::FileInfo^ fileInfo = gcnew System::IO::FileInfo(exampleSound->path);
 
 	SoundContext^ sc = gcnew SoundContext(Environment::CurrentDirectory, SoundContextType::Random);
 	Player^ examplePlayer = gcnew Player(exampleSound);

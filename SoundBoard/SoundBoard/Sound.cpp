@@ -2,7 +2,8 @@
 
 namespace SoundBoard
 {
-	Sound::Sound(void)
+	Sound::Sound(String^ path)
 	{
+		this->path = path;
 	}
 }

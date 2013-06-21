@@ -106,7 +106,7 @@ namespace SoundBoard
 	void Player::openSound(Sound^ givenSound)
 	{
 		//we are using mpegvideo for most compatibility available, it just plays everything even videos
-		String^ cmd = "open \""+givenSound->Path +"\" type mpegvideo alias " + alias;
+		String^ cmd = "open \""+givenSound->path +"\" type mpegvideo alias " + alias;
 		int errCode = mciSendStringHandle(cmd);
 		if(errCode==0)
 		{

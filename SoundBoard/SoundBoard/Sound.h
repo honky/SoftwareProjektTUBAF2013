@@ -8,7 +8,7 @@ namespace SoundBoard
 	ref class Sound
 	{
 	public:
-		Sound(void);
-		String^ Path;
+		Sound(String^ path);
+		String^ path;
 	};
 }
