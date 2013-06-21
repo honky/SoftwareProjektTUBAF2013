@@ -77,7 +77,7 @@ namespace SoundBoard {
 
 
 
-	private: System::Windows::Forms::Panel^  panelButtonGroups;
+
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel2;
 	private: System::Windows::Forms::Button^  buttonPlayCustom1;
@@ -105,6 +105,8 @@ namespace SoundBoard {
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanelButtonGroups;
+
 
 
 
@@ -149,6 +151,7 @@ namespace SoundBoard {
 			this->trackBar5 = (gcnew System::Windows::Forms::TrackBar());
 			this->groupBox7 = (gcnew System::Windows::Forms::GroupBox());
 			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanelLeft = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->groupBoxMasterVolumeControl = (gcnew System::Windows::Forms::GroupBox());
 			this->flowLayoutPanelMasterVolumeControl = (gcnew System::Windows::Forms::FlowLayoutPanel());
@@ -172,8 +175,7 @@ namespace SoundBoard {
 			this->buttonStopAll = (gcnew System::Windows::Forms::Button());
 			this->buttonResumeAll = (gcnew System::Windows::Forms::Button());
 			this->buttonPauseAll = (gcnew System::Windows::Forms::Button());
-			this->panelButtonGroups = (gcnew System::Windows::Forms::Panel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->flowLayoutPanelButtonGroups = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->buttonPlayCustom1 = (gcnew System::Windows::Forms::Button());
@@ -217,7 +219,6 @@ namespace SoundBoard {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBarMasterVolumeBalance))->BeginInit();
 			this->groupBoxMasterPlayer->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
-			this->panelButtonGroups->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->tableLayoutPanel2->SuspendLayout();
 			this->SuspendLayout();
@@ -238,7 +239,7 @@ namespace SoundBoard {
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 
 				366)));
-			this->tableLayoutPanelMain->Size = System::Drawing::Size(792, 540);
+			this->tableLayoutPanelMain->Size = System::Drawing::Size(793, 620);
 			this->tableLayoutPanelMain->TabIndex = 0;
 			// 
 			// flowLayoutPanelRight
@@ -246,10 +247,12 @@ namespace SoundBoard {
 			this->flowLayoutPanelRight->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
 				| System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->flowLayoutPanelRight->AutoScroll = true;
 			this->flowLayoutPanelRight->Controls->Add(this->groupBoxSoundTemplate);
+			this->flowLayoutPanelRight->Controls->Add(this->button3);
 			this->flowLayoutPanelRight->Location = System::Drawing::Point(399, 3);
 			this->flowLayoutPanelRight->Name = L"flowLayoutPanelRight";
-			this->flowLayoutPanelRight->Size = System::Drawing::Size(390, 534);
+			this->flowLayoutPanelRight->Size = System::Drawing::Size(391, 614);
 			this->flowLayoutPanelRight->TabIndex = 1;
 			// 
 			// groupBoxSoundTemplate
@@ -470,6 +473,16 @@ namespace SoundBoard {
 			this->trackBar6->TickFrequency = 200;
 			this->trackBar6->TickStyle = System::Windows::Forms::TickStyle::Both;
 			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(3, 217);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->TabIndex = 0;
+			this->button3->Text = L"button3";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
+			// 
 			// flowLayoutPanelLeft
 			// 
 			this->flowLayoutPanelLeft->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
@@ -478,11 +491,11 @@ namespace SoundBoard {
 			this->flowLayoutPanelLeft->AutoScroll = true;
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBoxMasterVolumeControl);
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBoxMasterPlayer);
-			this->flowLayoutPanelLeft->Controls->Add(this->panelButtonGroups);
+			this->flowLayoutPanelLeft->Controls->Add(this->flowLayoutPanelButtonGroups);
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBox1);
 			this->flowLayoutPanelLeft->Location = System::Drawing::Point(3, 3);
 			this->flowLayoutPanelLeft->Name = L"flowLayoutPanelLeft";
-			this->flowLayoutPanelLeft->Size = System::Drawing::Size(390, 534);
+			this->flowLayoutPanelLeft->Size = System::Drawing::Size(390, 614);
 			this->flowLayoutPanelLeft->TabIndex = 2;
 			this->flowLayoutPanelLeft->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::flowLayoutPanelLeft_Paint);
 			// 
@@ -765,28 +778,17 @@ namespace SoundBoard {
 			this->buttonPauseAll->Text = L"Pause All";
 			this->buttonPauseAll->UseVisualStyleBackColor = true;
 			// 
-			// panelButtonGroups
+			// flowLayoutPanelButtonGroups
 			// 
-			this->panelButtonGroups->Controls->Add(this->button3);
-			this->panelButtonGroups->Location = System::Drawing::Point(3, 243);
-			this->panelButtonGroups->Name = L"panelButtonGroups";
-			this->panelButtonGroups->Size = System::Drawing::Size(377, 175);
-			this->panelButtonGroups->TabIndex = 2;
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(296, 3);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 0;
-			this->button3->Text = L"button3";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
+			this->flowLayoutPanelButtonGroups->Location = System::Drawing::Point(3, 243);
+			this->flowLayoutPanelButtonGroups->Name = L"flowLayoutPanelButtonGroups";
+			this->flowLayoutPanelButtonGroups->Size = System::Drawing::Size(377, 254);
+			this->flowLayoutPanelButtonGroups->TabIndex = 4;
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->tableLayoutPanel2);
-			this->groupBox1->Location = System::Drawing::Point(3, 424);
+			this->groupBox1->Location = System::Drawing::Point(3, 503);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(377, 100);
 			this->groupBox1->TabIndex = 3;
@@ -875,10 +877,11 @@ namespace SoundBoard {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(792, 540);
+			this->ClientSize = System::Drawing::Size(793, 620);
 			this->Controls->Add(this->tableLayoutPanelMain);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
+			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->tableLayoutPanelMain->ResumeLayout(false);
 			this->flowLayoutPanelRight->ResumeLayout(false);
 			this->groupBoxSoundTemplate->ResumeLayout(false);
@@ -929,7 +932,6 @@ namespace SoundBoard {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->trackBarMasterVolumeBalance))->EndInit();
 			this->groupBoxMasterPlayer->ResumeLayout(false);
 			this->tableLayoutPanel1->ResumeLayout(false);
-			this->panelButtonGroups->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
 			this->tableLayoutPanel2->ResumeLayout(false);
 			this->tableLayoutPanel2->PerformLayout();
@@ -1007,6 +1009,14 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 				gB->Controls->Add(copyControl);
 			}
 			flowLayoutPanelRight->Controls->Add(gB);		
+		 }
+private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
+
+			 	ConfigController^ configController = gcnew ConfigController();
+				for each (SoundButtonGroup ^ sgb in configController->list_soundButtonGroups)
+				{
+					flowLayoutPanelButtonGroups->Controls->Add(sgb);
+				}
 		 }
 };
 }

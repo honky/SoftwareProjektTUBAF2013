@@ -12,6 +12,8 @@ namespace SoundBoard
 		configFolder = Environment::CurrentDirectory+"/config/";
 		soundsFolder = Environment::CurrentDirectory+"/sounds/";
 
+		list_folderNamesToIgnore = gcnew List<String^>();
+
 		//for git control reasons we do not read the "subversion" files
 		list_folderNamesToIgnore->Add("git");
 		list_folderNamesToIgnore->Add("..");
@@ -50,7 +52,10 @@ namespace SoundBoard
 
 		for each (String^ propablyButtonGroup in propablyButtonGroups)
 		{
-			SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetDirectoryName(propablyButtonGroup));
+			//we skip several folder files
+			if(list_folderNamesToIgnore->Contains(Path::GetFileName(propablyButtonGroup)))	{ continue; }
+
+			SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
 			array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
 			for each (String^ propablyButton in propablyButtons)
 			{	
@@ -59,8 +64,8 @@ namespace SoundBoard
 				if(probablyButtonFiles->Length != 0)
 				{
 					SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
-					SoundButton^ sb = gcnew SoundButton(Path::GetDirectoryName(propablyButton), sc);
-					sbg->buttons->Add(sb);
+					SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc);
+					sbg->addSoundButton(sb);
 				}
 				
 			}

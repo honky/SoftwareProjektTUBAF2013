@@ -12,6 +12,9 @@ namespace SoundBoard
 	public:
 		SoundButtonGroup(String^ name);
 		String^ name;
+		void addSoundButton(SoundButton^ sb);
+	private:
 		List<SoundButton^>^ buttons;
+		Windows::Forms::FlowLayoutPanel^ flPanel;
 	};
 }

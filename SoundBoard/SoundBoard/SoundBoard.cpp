@@ -19,7 +19,6 @@ int main(array<System::String ^> ^args)
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false); 
 
-	ConfigController^ configController = gcnew ConfigController();
 
 	Sound^ exampleSound = gcnew Sound(Environment::CurrentDirectory + "\\sounds\\mlc.mp3");
 	//exampleSound->path = //"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";
@@ -57,6 +56,7 @@ int main(array<System::String ^> ^args)
 	//Application::Run(gcnew Form1()); //not needed yet
 
 	Application::Run(gcnew MainForm());
+	
 	return 0;
 }
 }

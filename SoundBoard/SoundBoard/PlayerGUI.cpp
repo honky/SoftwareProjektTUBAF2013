@@ -102,6 +102,7 @@ void PlayerGUI::buttonStop_Click(System::Object^  sender, System::EventArgs^  e)
 			 {
 				 System::Windows::Forms::MessageBox::Show("Hallo");
 			 }
+
 			 void PlayerGUI::initPictureBox() {
 
 			 }

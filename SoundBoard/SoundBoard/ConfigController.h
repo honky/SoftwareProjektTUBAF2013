@@ -9,7 +9,7 @@ namespace SoundBoard
 	{
 	public:
 		ConfigController(void);
-	private:
+	public:
 		String^ configFolder;
 		String^ soundsFolder;
 		List<SoundButtonGroup^>^ list_soundButtonGroups;
