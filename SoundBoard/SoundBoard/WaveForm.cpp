@@ -2,9 +2,6 @@
 
 
 
-#define SAMPLINGRATE	10000
-#define PBWIDTH			250
-
 namespace SoundBoard
 {
 	using namespace Windows::Forms;
@@ -13,6 +10,7 @@ namespace SoundBoard
 	using namespace System;
 	using namespace System::Diagnostics;
 	using namespace System::ComponentModel;
+	using namespace System::Collections::Generic;
 
 	WaveForm::WaveForm(Sound^ givenSound)
 	{
@@ -43,7 +41,7 @@ namespace SoundBoard
 /// <param name="_CommandLine">Command line parameters to pass</param> 
 /// <param name="_outputMessage">returned string value after executing shell command</param> 
 /// <param name="_errorMessage">Error messages generated during shell execution</param> 
-void ExecuteShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage)
+void executeShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage)
 {
     // Set process variable
     // Provides access to local and remote processes and enables you to start and stop local system processes.
@@ -106,23 +104,21 @@ void ExecuteShellCommand(System::String ^_FileToExecute, System::String ^_Comman
         _Process = nullptr;
     }
 }
-array<short^> ^ CreateSamples(String^ fileName, int soundLength)
+List<int> ^ createSamples(String^ fileName, int soundLength)
 {
-	array<short^> ^ Samples;
+	List<int> ^ Samples = gcnew List<int>();
    try
    {
       FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
       BinaryReader^ br = gcnew BinaryReader(fs);
-
-	  Samples = gcnew array<short ^>(PBWIDTH);
-	  Console::WriteLine("The Length of the array is: {0}", (int)br->BaseStream->Length/2);
-
-		  for(int i = 0; i < PBWIDTH; i++){
-			  int temp = 0;
-			  for(int g = 0; g < (SAMPLINGRATE * soundLength)/PBWIDTH ; g++){
+	  int temp;
+	  int blocksize = (10000 * soundLength)/250;
+		  for(int i = 0; i < 250; i++){
+			  temp = 0;
+			  for(int g = 0; g < blocksize ; g++){
 				  temp += br->ReadInt16();
 			  }
-		  *Samples[i] = temp;
+		  Samples->Add(temp/blocksize);
 		  }
 
 	  // This function used to read the audio data in a previous version
@@ -141,4 +137,5 @@ array<short^> ^ CreateSamples(String^ fileName, int soundLength)
    }
    return Samples;
 }
+
 }

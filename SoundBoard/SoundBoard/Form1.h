@@ -424,23 +424,19 @@ namespace SoundBoard {
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 				 String^ _Output = nullptr;
 				 String^ _Error = nullptr;
-				 array<short^> ^ Samples;
-				 ExecuteShellCommand(Environment::CurrentDirectory + "\\sox\\sox", this->textBox1->Text + " -r 10000" + " C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", _Output, _Error);
-				 Samples = CreateSamples("C:\\Users\\Philip\\Desktop\\sox\\SOUNDBOARD.raw", 95);
-				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound("");
+				 String^ look = Environment::CurrentDirectory + "\\sox\\sox " + this->textBox1->Text + " -r 10000" + Environment::CurrentDirectory + "\\sox\\temp.raw";
+				 executeShellCommand(Environment::CurrentDirectory + "\\sox\\sox", this->textBox1->Text + " -r 10000 " + Environment::CurrentDirectory + "\\sox\\temp.raw", _Output, _Error);
+				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound(this->textBox1->Text);
 				 testSound->path= this->textBox1->Text;
 				 Player^ pl = gcnew Player(testSound);
 				 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
-				 Windows::Forms::PictureBox^ pb = wf->getWaveForm(); 
-				 pb->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;	
-				 
-				 pb->Location = Point(10,10);
-				 //panel2->Controls->Add(pb);
+				 List<int> list_Samples = createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", Convert::ToInt16(pl->getLength())/1000);
+				 Windows::Forms::PictureBox^ pb = wf->getWaveForm();
 				 Bitmap^ bmp = gcnew Bitmap(pb->Width,pb->Height);
 				 Graphics^ g = Graphics::FromImage(bmp);
 				 System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
-				 for(int i = 0;i < Samples->Length && i < pb->Width;i++){
-					 g->DrawLine(MyBluePen, i, 35 - (*Samples[i])/64, i, 35 + (*Samples[i])/64);
+				 for(int i = 0;i < 250;i++){
+					 g->DrawLine(MyBluePen, i, 35 - (list_Samples[i])/32, i, 35 + (list_Samples[i])/32);
 				 }
 				 pb->Image = bmp;
 
