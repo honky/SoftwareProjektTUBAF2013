@@ -3,6 +3,8 @@
 
 namespace SoundBoard
 {
+	using namespace System::Collections::Generic;
+
 	ref class ConfigController
 	{
 	public:
@@ -10,6 +12,9 @@ namespace SoundBoard
 	private:
 		String^ configFolder;
 		String^ soundsFolder;
-		void createDefaultConfig();
+		List<SoundButtonGroup^>^ list_soundButtonGroups;
+
+		List<SoundButtonGroup^>^ createDefaultButtonGroups();
+		List<String^>^ list_folderNamesToIgnore;
 	};
 }

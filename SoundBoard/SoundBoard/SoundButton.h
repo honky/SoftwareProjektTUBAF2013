@@ -15,7 +15,7 @@ namespace SoundBoard
 		System::Drawing::Color^ backgroundColor;
 		String^ text;
 	private:
-		//SoundContext context;
+		SoundContext^ context;
 	};
 
 

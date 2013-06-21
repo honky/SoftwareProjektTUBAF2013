@@ -10,6 +10,7 @@ using namespace System::Collections::Generic;
 
 namespace SoundBoard
 {
+	
 
 [STAThreadAttribute]
 int main(array<System::String ^> ^args)
@@ -17,6 +18,8 @@ int main(array<System::String ^> ^args)
 	// Enabling Windows XP visual effects before any controls are created
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false); 
+
+	ConfigController^ configController = gcnew ConfigController();
 
 	Sound^ exampleSound = gcnew Sound(Environment::CurrentDirectory + "\\sounds\\mlc.mp3");
 	//exampleSound->path = //"C:\Users\petring\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\sounds\flush.mp3";

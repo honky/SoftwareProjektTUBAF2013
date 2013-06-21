@@ -5,11 +5,20 @@ namespace SoundBoard
 {
 	using namespace System;
 	using namespace System::IO;
+	using namespace System::Collections::Generic;
 
 	ConfigController::ConfigController(void)
 	{
 		configFolder = Environment::CurrentDirectory+"/config/";
 		soundsFolder = Environment::CurrentDirectory+"/sounds/";
+
+		//for git control reasons we do not read the "subversion" files
+		list_folderNamesToIgnore->Add("git");
+		list_folderNamesToIgnore->Add("..");
+		list_folderNamesToIgnore->Add(".");
+		list_folderNamesToIgnore->Add(".git");
+		
+
 
 		bool soundFolderChanged = false;
 
@@ -20,19 +29,21 @@ namespace SoundBoard
 
 		if(soundFolderChanged || !File::Exists(configFolder))
 		{
-			createDefaultConfig();
+			
 		}
 		
-
 		
+		this->list_soundButtonGroups = this->createDefaultButtonGroups();
 	}
 
-	void ConfigController::createDefaultConfig()
+	List<SoundButtonGroup^>^ ConfigController::createDefaultButtonGroups()
 	{
 		if(!File::Exists(configFolder))
 		{
 			Directory::CreateDirectory(configFolder);
 		}
+
+		List<SoundButtonGroup^>^ list_return = gcnew List<SoundButtonGroup^>();
 		
 		//we expect all folders in the sound root to be a button group
 		array<String^>^ propablyButtonGroups = Directory::GetDirectories(soundsFolder);
@@ -53,9 +64,11 @@ namespace SoundBoard
 				}
 				
 			}
+			list_return->Add(sbg);
 			
 		}
+
 		
-		
+		return list_return;	
 	}
 }

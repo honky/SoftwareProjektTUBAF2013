@@ -10,4 +10,5 @@
 #include "SoundController.h"
 #include "SoundButton.h"
 #include "SoundButtonGroup.h"
+#include "ConfigController.h"
 // TODO: reference additional headers your program requires here
