@@ -28,7 +28,7 @@ namespace SoundBoard
 		//here is the place where the WaveForm should be generated
 		PictureBox^ pictureBox1 = gcnew PictureBox();
 		pictureBox1->Height = 70;
-		pictureBox1->Width = PBWIDTH;
+		pictureBox1->Width = 250;
 				
 
 		return pictureBox1;
@@ -112,13 +112,23 @@ List<int> ^ createSamples(String^ fileName, int soundLength)
       FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
       BinaryReader^ br = gcnew BinaryReader(fs);
 	  int temp;
-	  int blocksize = (10000 * soundLength)/250;
+	  int max;
+	  int min;
+	  int blocksize = (20000 * soundLength)/250;
 		  for(int i = 0; i < 250; i++){
-			  temp = 0;
+			  max = 0;
+			  min = 0;
 			  for(int g = 0; g < blocksize ; g++){
-				  temp += br->ReadInt16();
+				  temp = br->ReadInt16();
+				  if(temp > max){
+				  max = temp;
+				  }
+				  if(temp < min){
+				  min = temp;
+				  }
 			  }
-		  Samples->Add(temp/blocksize);
+		  Samples->Add(max);
+		  Samples->Add(min);
 		  }
 
 	  // This function used to read the audio data in a previous version
