@@ -429,13 +429,14 @@ namespace SoundBoard {
 				 testSound->path= this->textBox1->Text;
 				 Player^ pl = gcnew Player(testSound);
 				 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
-				 List<int> list_Samples = createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", Convert::ToInt32(pl->getLength())/1000);
+				 List<int>^ list_Samples = createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", Convert::ToInt32(pl->getLength())/1000);
+				 int totalSamples = list_Samples->Count;
 				 Windows::Forms::PictureBox^ pb = wf->getWaveForm();
 				 Bitmap^ bmp = gcnew Bitmap(pb->Width,pb->Height);
 				 Graphics^ g = Graphics::FromImage(bmp);
 				 System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
 				 g->DrawLine(MyBluePen,0,35,250,35);
-				 for(int i = 0;i < 500; i += 2){
+				 for(int i = 0;i < totalSamples; i += 2){
 					 g->DrawLine(MyBluePen, i/2, 35 + (list_Samples[i])/512, i/2, 35 + (list_Samples[i+1])/512);
 				 }
 				 pb->Image = bmp;
