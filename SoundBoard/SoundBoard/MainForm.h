@@ -264,6 +264,7 @@ namespace SoundBoard {
 			this->groupBoxSoundTemplate->TabIndex = 0;
 			this->groupBoxSoundTemplate->TabStop = false;
 			this->groupBoxSoundTemplate->Text = L"groupBoxSoundTemplate";
+			this->groupBoxSoundTemplate->Visible = false;
 			// 
 			// flowLayoutPanel1
 			// 

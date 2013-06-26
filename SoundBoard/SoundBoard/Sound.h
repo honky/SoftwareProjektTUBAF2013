@@ -9,6 +9,7 @@ namespace SoundBoard
 	{
 	public:
 		Sound(String^ path);
+		int length;
 		String^ path;
 	};
 }

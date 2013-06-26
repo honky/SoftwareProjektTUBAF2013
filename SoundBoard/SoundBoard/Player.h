@@ -30,6 +30,8 @@ namespace SoundBoard
 		String^ alias;
 		Sound^ currentSound;
 
+		PlayerGUI^ gui;
+
 		bool isOpen;
 		bool isPlaying;
 		bool isPaused;

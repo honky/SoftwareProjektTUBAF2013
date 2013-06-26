@@ -15,6 +15,8 @@ namespace SoundBoard
 	void SoundButton::soundButton_Click(System::Object ^ sender, System::EventArgs^ e)
 	{
 		SoundButton^ origin = dynamic_cast<SoundButton^>(sender);
+		//Player^buttonsPlayer = gcnew Player();
+
 		MessageBox::Show("I'm a Button \\o/");		
 	}
 }

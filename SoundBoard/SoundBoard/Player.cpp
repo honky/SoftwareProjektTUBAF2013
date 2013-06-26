@@ -29,7 +29,8 @@ namespace SoundBoard
 		isMutedAll = false; //should be a property
 		isMutedRight = false; // this too
 		isMutedLeft = false; // this too
-
+		
+		gui = gcnew PlayerGUI("title");
 		//we take the Programms overall Volume vor the current sound
 		//this might be changed to to value of the last sound startet, 
 		// but that might be a bit confusing
