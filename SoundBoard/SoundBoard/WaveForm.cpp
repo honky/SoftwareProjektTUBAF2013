@@ -22,13 +22,13 @@ namespace SoundBoard
 	{
 		//redraw WaveForm
 	}
-	Bitmap^ WaveForm::getWaveForm(String^ path, int lenght, int pbl, int pbw)
+	Bitmap^ WaveForm::getWaveForm(String^ path, int pbl, int pbw)
 	{
 		//here is the place where the WaveForm should be generated
 		String^ _Output = nullptr;
 		String^ _Error = nullptr;
 		this->executeShellCommand(Environment::CurrentDirectory + "\\sox\\sox", path + " -r 20000 " + Environment::CurrentDirectory + "\\sox\\temp.raw", _Output, _Error);
-		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", lenght/1000, pbl);
+		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", pbl);
 		int totalSamples = list_Samples->Count;
 		Bitmap^ bmp = gcnew Bitmap(pbl, pbw);
 		Graphics^ g = Graphics::FromImage(bmp);
@@ -37,6 +37,13 @@ namespace SoundBoard
 		for(int i = 0;i < totalSamples; i += 2){
 			g->DrawLine(MyBluePen, i/2, pbw/2 + (list_Samples[i])/512, i/2, pbw/2 + (list_Samples[i+1])/512);
 		}		
+		String^ tmpFilePath = Environment::CurrentDirectory + "\\sox\\temp.raw";
+		
+		if(File::Exists(tmpFilePath))
+		{
+			File::Delete(tmpFilePath);
+		}
+		
 		return bmp;
 	}
 
@@ -110,7 +117,7 @@ void WaveForm::executeShellCommand(System::String ^_FileToExecute, System::Strin
         _Process = nullptr;
     }
 }
-List<int> ^ WaveForm::createSamples(String^ fileName, int soundLength, int pbl)
+List<int> ^ WaveForm::createSamples(String^ fileName, int pbl)
 {
 	List<int> ^ Samples = gcnew List<int>();
    try
@@ -120,8 +127,8 @@ List<int> ^ WaveForm::createSamples(String^ fileName, int soundLength, int pbl)
 	  int temp;
 	  int max;
 	  int min;
-	  int blocksize = (20000 * soundLength * 2)/pbl;
-		  for(int i = 0; i < pbl; i++){
+	  int blocksize = ((int)br->BaseStream->Length/2)/250;
+		  for(int i = 0; i < 250; i++){
 			  max = 0;
 			  min = 0;
 			  for(int g = 0; g < blocksize ; g++){
