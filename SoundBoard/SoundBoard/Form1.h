@@ -422,23 +422,13 @@ namespace SoundBoard {
 				 testPlayer->bassVolume = trackBar6->Value;
 			 }
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-				 String^ _Output = nullptr;
-				 String^ _Error = nullptr;
-				 executeShellCommand(Environment::CurrentDirectory + "\\sox\\sox", this->textBox1->Text + " -r 20000 " + Environment::CurrentDirectory + "\\sox\\temp.raw", _Output, _Error);
-				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound(this->textBox1->Text);
-				 testSound->path= this->textBox1->Text;
-				 Player^ pl = gcnew Player(testSound);
-				 SoundBoard::WaveForm^ wf = gcnew SoundBoard::WaveForm(testSound);
-				 List<int>^ list_Samples = createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", Convert::ToInt32(pl->getLength())/1000);
-				 int totalSamples = list_Samples->Count;
-				 Windows::Forms::PictureBox^ pb = wf->getWaveForm();
-				 Bitmap^ bmp = gcnew Bitmap(pb->Width,pb->Height);
-				 Graphics^ g = Graphics::FromImage(bmp);
-				 System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
-				 g->DrawLine(MyBluePen,0,35,250,35);
-				 for(int i = 0;i < totalSamples; i += 2){
-					 g->DrawLine(MyBluePen, i/2, 35 + (list_Samples[i])/512, i/2, 35 + (list_Samples[i+1])/512);
-				 }
+				 Windows::Forms::PictureBox^ pb = gcnew Windows::Forms::PictureBox();
+				 pb->Location = System::Drawing::Point(10,10);
+				 pb->Width = 250;
+				 pb->Height = 70;
+				 SoundBoard::Sound^ test = gcnew SoundBoard::Sound("C:\\Users\\Philip\\Documents\\GitHub\\SoftwareProjektTUBAF2013\\SoundBoard\\SoundBoard\\sounds\\getting_started.mp3");
+				 SoundBoard::WaveForm^ Wf = gcnew SoundBoard::WaveForm(test);
+				 System::Drawing::Bitmap^ bmp = Wf->getWaveForm(test->path, 23, 250, 70);
 				 pb->Image = bmp;
 
 				 this->Controls->Add(pb);

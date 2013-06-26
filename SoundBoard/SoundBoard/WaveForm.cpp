@@ -22,16 +22,22 @@ namespace SoundBoard
 	{
 		//redraw WaveForm
 	}
-	PictureBox^ WaveForm::getWaveForm()
+	Bitmap^ WaveForm::getWaveForm(String^ path, int lenght, int pbl, int pbw)
 	{
-
 		//here is the place where the WaveForm should be generated
-		PictureBox^ pictureBox1 = gcnew PictureBox();
-		pictureBox1->Height = 70;
-		pictureBox1->Width = 250;
-				
-
-		return pictureBox1;
+		String^ _Output = nullptr;
+		String^ _Error = nullptr;
+		this->executeShellCommand(Environment::CurrentDirectory + "\\sox\\sox", path + " -r 20000 " + Environment::CurrentDirectory + "\\sox\\temp.raw", _Output, _Error);
+		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", lenght/1000, pbl);
+		int totalSamples = list_Samples->Count;
+		Bitmap^ bmp = gcnew Bitmap(pbl, pbw);
+		Graphics^ g = Graphics::FromImage(bmp);
+		System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
+		g->DrawLine(MyBluePen,0,pbw/2,pbl,pbw/2);
+		for(int i = 0;i < totalSamples; i += 2){
+			g->DrawLine(MyBluePen, i/2, pbw/2 + (list_Samples[i])/512, i/2, pbw/2 + (list_Samples[i+1])/512);
+		}		
+		return bmp;
 	}
 
 /// <summary>
@@ -41,7 +47,7 @@ namespace SoundBoard
 /// <param name="_CommandLine">Command line parameters to pass</param> 
 /// <param name="_outputMessage">returned string value after executing shell command</param> 
 /// <param name="_errorMessage">Error messages generated during shell execution</param> 
-void executeShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage)
+void WaveForm::executeShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage)
 {
     // Set process variable
     // Provides access to local and remote processes and enables you to start and stop local system processes.
@@ -104,7 +110,7 @@ void executeShellCommand(System::String ^_FileToExecute, System::String ^_Comman
         _Process = nullptr;
     }
 }
-List<int> ^ createSamples(String^ fileName, int soundLength)
+List<int> ^ WaveForm::createSamples(String^ fileName, int soundLength, int pbl)
 {
 	List<int> ^ Samples = gcnew List<int>();
    try
@@ -114,8 +120,8 @@ List<int> ^ createSamples(String^ fileName, int soundLength)
 	  int temp;
 	  int max;
 	  int min;
-	  int blocksize = (20000 * soundLength)/250;
-		  for(int i = 0; i < 250; i++){
+	  int blocksize = (20000 * soundLength * 2)/pbl;
+		  for(int i = 0; i < pbl; i++){
 			  max = 0;
 			  min = 0;
 			  for(int g = 0; g < blocksize ; g++){
