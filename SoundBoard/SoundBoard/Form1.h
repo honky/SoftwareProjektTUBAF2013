@@ -374,17 +374,12 @@ namespace SoundBoard {
 #pragma endregion
 	private:  Player^ testPlayer;
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
-
 				 textBox1->Text = Environment::CurrentDirectory + "\\sounds\\flush.mp3";
-
 			 }
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-
 				 SoundBoard::Sound^ testSound = gcnew SoundBoard::Sound(textBox1->Text->Trim());
 				 testPlayer = gcnew Player(testSound);
 				 testPlayer->playSound();
-
-
 			 }
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 				 System::Windows::Forms::DialogResult^ d1 = openFileDialog1->ShowDialog();

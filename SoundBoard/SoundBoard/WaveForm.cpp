@@ -27,7 +27,12 @@ namespace SoundBoard
 		//here is the place where the WaveForm should be generated
 		String^ _Output = nullptr;
 		String^ _Error = nullptr;
-		this->executeShellCommand(Environment::CurrentDirectory + "\\sox\\sox", path + " -r 20000 " + Environment::CurrentDirectory + "\\sox\\temp.raw", _Output, _Error);
+
+		String^ soxExe = "\""+Environment::CurrentDirectory + "\\sox\\sox\"";
+		String^ soxParams = " \""+ path + "\" -r 20000 \"" + Environment::CurrentDirectory + "\\sox\\temp.raw\"";
+		String^ soxCmd = soxExe + " " + soxParams;
+
+		this->executeShellCommand(soxExe->Replace(" "," "),soxParams->Replace("\"","\"\""), _Output, _Error);
 		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", lenght/1000, pbl);
 		int totalSamples = list_Samples->Count;
 		Bitmap^ bmp = gcnew Bitmap(pbl, pbw);
@@ -120,7 +125,7 @@ List<int> ^ WaveForm::createSamples(String^ fileName, int soundLength, int pbl)
 	  int temp;
 	  int max;
 	  int min;
-	  int blocksize = (20000 * soundLength * 2)/pbl;
+	  int blocksize = ((int) br->BaseStream->Length/2)/pbl;
 		  for(int i = 0; i < pbl; i++){
 			  max = 0;
 			  min = 0;
