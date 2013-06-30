@@ -22,21 +22,36 @@ namespace SoundBoard
 	{
 		//redraw WaveForm
 	}
-	Bitmap^ WaveForm::getWaveForm(String^ path, int lenght, int pbl, int pbw)
+	Bitmap^ WaveForm::getWaveForm(String^ path, int pbl, int pbw)
 	{
 		//here is the place where the WaveForm should be generated
 		String^ _Output = nullptr;
 		String^ _Error = nullptr;
-		this->executeShellCommand(Environment::CurrentDirectory + "\\sox\\sox", path + " -r 20000 " + Environment::CurrentDirectory + "\\sox\\temp.raw", _Output, _Error);
-		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", lenght/1000, pbl);
-		int totalSamples = list_Samples->Count;
+		
+		this->executeShellCommand("\"" + Environment::CurrentDirectory + "\\sox\\sox\"","\"" + path + "\"" + " -r 20000 " + "\"" + Environment::CurrentDirectory + "\\sox\\temp.raw\"", _Output, _Error);
+		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", pbl);
+		
 		Bitmap^ bmp = gcnew Bitmap(pbl, pbw);
 		Graphics^ g = Graphics::FromImage(bmp);
 		System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
+		
 		g->DrawLine(MyBluePen,0,pbw/2,pbl,pbw/2);
-		for(int i = 0;i < totalSamples; i += 2){
+		
+		for(int i = 0;i < list_Samples->Count; i += 2)
+		{
+
 			g->DrawLine(MyBluePen, i/2, pbw/2 + (list_Samples[i])/512, i/2, pbw/2 + (list_Samples[i+1])/512);
-		}		
+		
+		}
+		
+		/*
+		if(File::Exists(Environment::CurrentDirectory + "\\sox\\temp.raw"))
+		{
+
+			File::Delete(Environment::CurrentDirectory + "\\sox\\temp.raw");
+
+		}
+		*/
 		return bmp;
 	}
 
@@ -61,7 +76,7 @@ void WaveForm::executeShellCommand(System::String ^_FileToExecute, System::Strin
 
         // pass executing file to cmd (Windows command interpreter) as a arguments
         // /C tells cmd that we want it to execute the command that follows, and then exit.
-        System::String ^_Arguments = System::String::Format(System::Globalization::CultureInfo::InvariantCulture, "/C {0}", gcnew array<System::Object^> { _FileToExecute });
+        System::String ^_Arguments = System::String::Format(System::Globalization::CultureInfo::InvariantCulture, "/C \"{0}", gcnew array<System::Object^> { _FileToExecute});
 
         // pass any command line parameters for execution
         if (_CommandLine != nullptr && _CommandLine->Length > 0)
@@ -70,7 +85,7 @@ void WaveForm::executeShellCommand(System::String ^_FileToExecute, System::Strin
         }
 
         // Specifies a set of values used when starting a process.
-        System::Diagnostics::ProcessStartInfo ^_ProcessStartInfo = gcnew System::Diagnostics::ProcessStartInfo(_CMDProcess, _Arguments);
+        System::Diagnostics::ProcessStartInfo ^_ProcessStartInfo = gcnew System::Diagnostics::ProcessStartInfo(_CMDProcess, _Arguments + "\"");
         // sets a value indicating not to start the process in a new window. 
         _ProcessStartInfo->CreateNoWindow = true;
         // sets a value indicating not to use the operating system shell to start the process. 
@@ -110,7 +125,7 @@ void WaveForm::executeShellCommand(System::String ^_FileToExecute, System::Strin
         _Process = nullptr;
     }
 }
-List<int> ^ WaveForm::createSamples(String^ fileName, int soundLength, int pbl)
+List<int> ^ WaveForm::createSamples(String^ fileName, int pbl)
 {
 	List<int> ^ Samples = gcnew List<int>();
    try
@@ -120,7 +135,7 @@ List<int> ^ WaveForm::createSamples(String^ fileName, int soundLength, int pbl)
 	  int temp;
 	  int max;
 	  int min;
-	  int blocksize = (20000 * soundLength * 2)/pbl;
+	  int blocksize = ((int)br->BaseStream->Length/2)/pbl;
 		  for(int i = 0; i < pbl; i++){
 			  max = 0;
 			  min = 0;

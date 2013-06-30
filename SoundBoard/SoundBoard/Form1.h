@@ -428,7 +428,7 @@ namespace SoundBoard {
 				 pb->Height = 70;
 				 SoundBoard::Sound^ test = gcnew SoundBoard::Sound(Environment::CurrentDirectory + "\\sounds\\getting_started.mp3");
 				 SoundBoard::WaveForm^ Wf = gcnew SoundBoard::WaveForm(test);
-				 System::Drawing::Bitmap^ bmp = Wf->getWaveForm(test->path, 23, 250, 70);
+				 System::Drawing::Bitmap^ bmp = Wf->getWaveForm(test->path, 250, 70);
 				 pb->Image = bmp;
 
 				 this->Controls->Add(pb);
