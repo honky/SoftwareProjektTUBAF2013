@@ -27,9 +27,10 @@ namespace SoundBoard
 		//here is the place where the WaveForm should be generated
 		String^ _Output = nullptr;
 		String^ _Error = nullptr;
+		String^ temp = path->Substring(Environment::CurrentDirectory->Length + 8,path->Length - Environment::CurrentDirectory->Length - 12);
 		
-		this->executeShellCommand("\"" + Environment::CurrentDirectory + "\\sox\\sox\"","\"" + path + "\"" + " -r 20000 " + "\"" + Environment::CurrentDirectory + "\\sox\\temp.raw\"", _Output, _Error);
-		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\temp.raw", pbl);
+		this->executeShellCommand("\"" + Environment::CurrentDirectory + "\\sox\\sox\"","\"" + path + "\"" + " -r 20000 " + "\"" + Environment::CurrentDirectory + "\\sox\\" + temp + ".raw" + "\"", _Output, _Error);
+		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw", pbl);
 		
 		Bitmap^ bmp = gcnew Bitmap(pbl, pbw);
 		Graphics^ g = Graphics::FromImage(bmp);
@@ -45,10 +46,10 @@ namespace SoundBoard
 		}
 		
 		/*
-		if(File::Exists(Environment::CurrentDirectory + "\\sox\\temp.raw"))
+		if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
 		{
 
-			File::Delete(Environment::CurrentDirectory + "\\sox\\temp.raw");
+			File::Delete(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw");
 
 		}
 		*/
