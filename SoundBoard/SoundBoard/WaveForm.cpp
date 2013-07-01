@@ -24,18 +24,25 @@ namespace SoundBoard
 	}
 	Bitmap^ WaveForm::getWaveForm(String^ path, int pbl, int pbw)
 	{
-		//here is the place where the WaveForm should be generated
+		//here is the place where the WaveForm should be generated.
+		
+		//Setting two strings for the shell command function to return errors and output.
 		String^ _Output = nullptr;
 		String^ _Error = nullptr;
+
+		//this is the actual filename without the extension.
 		String^ temp = path->Substring(Environment::CurrentDirectory->Length + 8,path->Length - Environment::CurrentDirectory->Length - 12);
 		
-		this->executeShellCommand("\"" + Environment::CurrentDirectory + "\\sox\\sox\"","\"" + path + "\"" + " -r 20000 " + "\"" + Environment::CurrentDirectory + "\\sox\\" + temp + ".raw" + "\"", _Output, _Error);
+		//shellcmd tells Sox to create a raw-file of sound data which is then read by createSamples
+		this->shellcmd("\"" + Environment::CurrentDirectory + "\\sox\\sox\"","\"" + path + "\"" + " -r 20000 " + "\"" + Environment::CurrentDirectory + "\\sox\\" + temp + ".raw" + "\"", _Output, _Error);
 		List<int>^ list_Samples = this->createSamples(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw", pbl);
 		
+		//creates necessary drawing objects
 		Bitmap^ bmp = gcnew Bitmap(pbl, pbw);
 		Graphics^ g = Graphics::FromImage(bmp);
 		System::Drawing::Pen^ MyBluePen = gcnew System::Drawing::Pen(System::Drawing::Color::Blue);
 		
+		//actual drawing based on the information given
 		g->DrawLine(MyBluePen,0,pbw/2,pbl,pbw/2);
 		
 		for(int i = 0;i < list_Samples->Count; i += 2)
@@ -45,8 +52,8 @@ namespace SoundBoard
 		
 		}
 		
-		/*
-		if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
+		//deletes the raw-file that was previously created
+		/*if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
 		{
 
 			File::Delete(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw");
@@ -63,7 +70,7 @@ namespace SoundBoard
 /// <param name="_CommandLine">Command line parameters to pass</param> 
 /// <param name="_outputMessage">returned string value after executing shell command</param> 
 /// <param name="_errorMessage">Error messages generated during shell execution</param> 
-void WaveForm::executeShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage)
+void WaveForm::shellcmd(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage)
 {
     // Set process variable
     // Provides access to local and remote processes and enables you to start and stop local system processes.

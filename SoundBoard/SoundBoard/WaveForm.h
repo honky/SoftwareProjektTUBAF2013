@@ -20,7 +20,7 @@ namespace SoundBoard
 	public:
 		Bitmap^ getWaveForm(String^ path, int pbl, int pbw);
 		String^ path2image;
-		static void executeShellCommand(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage);
+		static void shellcmd(System::String ^_FileToExecute, System::String ^_CommandLine, System::String ^%_outputMessage, System::String ^%_errorMessage);
 		static List<int>^ createSamples(String^ fileName, int pbl);
 	};
 }
