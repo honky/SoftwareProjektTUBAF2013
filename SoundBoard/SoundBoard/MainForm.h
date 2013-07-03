@@ -29,7 +29,7 @@ namespace SoundBoard {
 	public:
 		MainForm(void)
 		{
-			soundController =  gcnew SoundController();
+			soundController =  gcnew SoundController(flowLayoutPanelRight);
 			configController = gcnew ConfigController(soundController);
 
 			InitializeComponent();
@@ -272,6 +272,7 @@ namespace SoundBoard {
 			this->groupBoxSoundTemplate->TabIndex = 0;
 			this->groupBoxSoundTemplate->TabStop = false;
 			this->groupBoxSoundTemplate->Text = L"groupBoxSoundTemplate";
+			this->groupBoxSoundTemplate->Visible = false;
 			// 
 			// flowLayoutPanel1
 			// 

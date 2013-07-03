@@ -328,14 +328,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SoundButton.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SoundButtonGroup.h"
-				>
-			</File>
-			<File
 				RelativePath=".\SoundButtonGroup.h"
 				>
 			</File>

@@ -66,7 +66,8 @@ namespace SoundBoard
 				if(probablyButtonFiles->Length != 0)
 				{
 					SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
-					SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc, this->soundController);
+					SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc);
+					soundController->attachPlaySoundEventToSoundButton(sb);
 					sbg->addSoundButton(sb);
 				}
 				

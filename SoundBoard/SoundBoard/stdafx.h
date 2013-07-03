@@ -8,7 +8,7 @@
 #include "PlayerGUI.h"
 #include "SoundContext.h"
 #include "SoundButton.h"
-#include "SoundController.h"
 #include "SoundButtonGroup.h"
+#include "SoundController.h"
 #include "ConfigController.h"
 // TODO: reference additional headers your program requires here
