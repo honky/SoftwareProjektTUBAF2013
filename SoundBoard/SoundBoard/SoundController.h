@@ -1,4 +1,5 @@
 #pragma once
+#include "SoundButton.h"
 #include "StdAfx.h"
 
 
@@ -10,6 +11,7 @@ namespace SoundBoard
 	{
 	public:
 		SoundController(void);
-		bool isKacke;
+		//bool play(String^ path);
+
 	};
 }

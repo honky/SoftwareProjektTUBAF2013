@@ -22,9 +22,13 @@ namespace SoundBoard {
 	/// </summary>
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
+
+
 	public:
 		Form1(void)
 		{
+			//soundController^ =  gcnew SoundController();
+			//configController^ = gcnew ConfigController(soundController);
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here

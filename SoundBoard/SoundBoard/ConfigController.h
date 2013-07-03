@@ -8,11 +8,12 @@ namespace SoundBoard
 	ref class ConfigController
 	{
 	public:
-		ConfigController(void);
+		ConfigController(SoundController^ _soundController);
 	public:
 		String^ configFolder;
 		String^ soundsFolder;
 		List<SoundButtonGroup^>^ list_soundButtonGroups;
+		SoundController^ soundController;
 
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
 		List<String^>^ list_folderNamesToIgnore;

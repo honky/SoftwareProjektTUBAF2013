@@ -7,13 +7,15 @@ namespace SoundBoard
 	using namespace System::IO;
 	using namespace System::Collections::Generic;
 
-	ConfigController::ConfigController(void)
+	ConfigController::ConfigController(SoundController^ _soundController)
 	{
 		configFolder = Environment::CurrentDirectory+"/config/";
 		soundsFolder = Environment::CurrentDirectory+"/sounds/";
+		this->soundController = _soundController;
+
 
 		list_folderNamesToIgnore = gcnew List<String^>();
-
+		
 		//for git control reasons we do not read the "subversion" files
 		list_folderNamesToIgnore->Add("git");
 		list_folderNamesToIgnore->Add("..");
@@ -64,7 +66,7 @@ namespace SoundBoard
 				if(probablyButtonFiles->Length != 0)
 				{
 					SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
-					SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc);
+					SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc, this->soundController);
 					sbg->addSoundButton(sb);
 				}
 				

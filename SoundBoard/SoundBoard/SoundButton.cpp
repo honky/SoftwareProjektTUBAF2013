@@ -2,7 +2,7 @@
 
 namespace SoundBoard
 {
-	SoundButton::SoundButton(String^ text, SoundContext^ context)
+	SoundButton::SoundButton(String^ text, SoundContext^ context,SoundController^ soundController)
 	{
 		this->Text = System::IO::Path::GetFileName(text);
 		this->context = context;
@@ -17,4 +17,5 @@ namespace SoundBoard
 		SoundButton^ origin = dynamic_cast<SoundButton^>(sender);
 		MessageBox::Show("I'm a Button \\o/");		
 	}
+
 }
