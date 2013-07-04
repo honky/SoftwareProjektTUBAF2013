@@ -105,6 +105,8 @@ void PlayerGUI::buttonStop_Click(System::Object^  sender, System::EventArgs^  e)
 
 			 void PlayerGUI::initPictureBox() {
 
+
+
 			 }
 
 			 void PlayerGUI::initDefaultTrackBar(System::Windows::Forms::TrackBar^ bar,System::Windows::Forms::GroupBox^ gb) {

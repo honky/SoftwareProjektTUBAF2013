@@ -31,7 +31,8 @@ namespace SoundBoard
 		String^ _Error = nullptr;
 
 		//this is the actual filename without the extension.
-		String^ temp = path->Substring(Environment::CurrentDirectory->Length + 8,path->Length - Environment::CurrentDirectory->Length - 12);
+		//String^ temp = path->Substring(Environment::CurrentDirectory->Length + 8,path->Length - Environment::CurrentDirectory->Length - 12);
+		String^ temp = Path::GetFileNameWithoutExtension(path);
 		
 		//shellcmd tells Sox to create a raw-file of sound data which is then read by createSamples
 		this->shellcmd("\"" + Environment::CurrentDirectory + "\\sox\\sox\"","\"" + path + "\"" + " -r 20000 " + "\"" + Environment::CurrentDirectory + "\\sox\\" + temp + ".raw" + "\"", _Output, _Error);

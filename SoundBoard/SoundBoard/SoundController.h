@@ -11,10 +11,12 @@ namespace SoundBoard
 	ref class SoundController
 	{
 	public:
-		SoundController(FlowLayoutPanel^ flp);
+		SoundController(FlowLayoutPanel^ _flp);
 		void attachPlaySoundEventToSoundButton(SoundButton^ soundButton);
 		void soundButton_Click(System::Object ^ sender, System::EventArgs^ e);
 		bool play(SoundButton^ sb);
+	private: 
+		FlowLayoutPanel^ flp;
 
 	};
 }

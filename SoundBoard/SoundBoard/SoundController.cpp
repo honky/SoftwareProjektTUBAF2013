@@ -5,8 +5,10 @@ namespace SoundBoard
 	using namespace SoundBoard;
 	using namespace Windows::Forms;
 
-	SoundController::SoundController(FlowLayoutPanel^ flp)
+	SoundController::SoundController(FlowLayoutPanel^ _flp)
 	{
+		flp = _flp;
+
 	}
 	void SoundController::attachPlaySoundEventToSoundButton(SoundButton^ soundButton)
 	{
@@ -18,15 +20,22 @@ namespace SoundBoard
 	void SoundController::soundButton_Click(System::Object ^ sender, System::EventArgs^ e)
 	{
 		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
-		SoundController::play(sb);
-
-					
+		SoundController::play(sb);					
 	}
 
 	
 	bool SoundController::play(SoundButton^ sb)
 	{
 		PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
+		Sound^ blafu = sb->context->list_sounds[0];
+		WaveForm^ wf = gcnew WaveForm(blafu);		
+		gui->pictureBox->Width = 250;
+		gui->pictureBox->Height = 40;
+		gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
+		Player^ player = gcnew Player(blafu);
+		player->playSound();
+		gui->pictureBox->Image = wf->getWaveForm(blafu->path,250,40);
+		flp->Controls->Add(gui);
 
 		return true;
 	}

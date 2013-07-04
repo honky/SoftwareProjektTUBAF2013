@@ -11,6 +11,7 @@ namespace SoundBoard
 	{
 	public:
 		List<Sound^>^ list_sounds;
-		SoundContext(String^ path, SoundContextType^ sct);
+		SoundContext(String^ path, SoundContextType^ _sct);
+		SoundContextType^ sct;
 	};
 }
