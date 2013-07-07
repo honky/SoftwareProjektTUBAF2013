@@ -25,8 +25,9 @@ namespace SoundBoard
 		void resumeLast();
 		void stopLast();
 
+		static List<Player^>^ list_players = gcnew List<Player^>();
+
 	private: 
 		FlowLayoutPanel^ flp;
-		static List<Player^>^ list_players = gcnew List<Player^>();
 	};
 }

@@ -296,6 +296,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeAll->TickFrequency = 100;
 			this->trackBarMasterVolumeAll->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeAll->Value = 500;
+			this->trackBarMasterVolumeAll->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeAll_ValueChanged);
 			// 
 			// groupBoxMasterVolumeLeft
 			// 
@@ -322,6 +323,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeLeft->TickFrequency = 100;
 			this->trackBarMasterVolumeLeft->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeLeft->Value = 500;
+			this->trackBarMasterVolumeLeft->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeLeft_ValueChanged);
 			// 
 			// groupBoxMasterVolumeRight
 			// 
@@ -348,6 +350,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeRight->TickFrequency = 100;
 			this->trackBarMasterVolumeRight->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeRight->Value = 500;
+			this->trackBarMasterVolumeRight->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeRight_ValueChanged);
 			// 
 			// groupBoxMasterVolumeTreble
 			// 
@@ -373,6 +376,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeTreble->TickFrequency = 100;
 			this->trackBarMasterVolumeTreble->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeTreble->Value = 500;
+			this->trackBarMasterVolumeTreble->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeTreble_ValueChanged);
 			// 
 			// groupBoxMasterVolumeBass
 			// 
@@ -398,6 +402,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBass->TickFrequency = 100;
 			this->trackBarMasterVolumeBass->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeBass->Value = 500;
+			this->trackBarMasterVolumeBass->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeBass_ValueChanged);
 			// 
 			// groupBoxMasterVolumeBalance
 			// 
@@ -423,6 +428,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBalance->TabIndex = 0;
 			this->trackBarMasterVolumeBalance->TickFrequency = 200;
 			this->trackBarMasterVolumeBalance->TickStyle = System::Windows::Forms::TickStyle::Both;
+			this->trackBarMasterVolumeBalance->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeBalance_ValueChanged);
 			// 
 			// groupBoxMasterPlayer
 			// 
@@ -702,6 +708,38 @@ private: System::Void buttonResumeLast_Click(System::Object^  sender, System::Ev
 		 }
 private: System::Void buttonStopLast_Click(System::Object^  sender, System::EventArgs^  e) {
 			 soundController->stopLast();
+		 }
+private: System::Void trackBarMasterVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each(Player^ p in this->soundController->list_players){
+				 p->leftVolume = this->trackBarMasterVolumeAll->Value;
+				 p->rightVolume = this->trackBarMasterVolumeAll->Value;
+			 }
+		 }
+private: System::Void trackBarMasterVolumeLeft_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each(Player^ p in this->soundController->list_players){
+				 p->leftVolume = this->trackBarMasterVolumeLeft->Value;
+			 }
+
+		 }
+private: System::Void trackBarMasterVolumeRight_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each(Player^ p in this->soundController->list_players){
+				 p->rightVolume = this->trackBarMasterVolumeRight->Value;
+			 }
+		 }
+private: System::Void trackBarMasterVolumeTreble_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each(Player^ p in this->soundController->list_players){
+				 p->trebleVolume = this->trackBarMasterVolumeTreble->Value;
+			 }
+		 }
+private: System::Void trackBarMasterVolumeBass_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each(Player^ p in this->soundController->list_players){
+				 p->bassVolume = this->trackBarMasterVolumeBass->Value;
+			 }
+		 }
+private: System::Void trackBarMasterVolumeBalance_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 for each(Player^ p in this->soundController->list_players){
+				 p->balanceVolume = this->trackBarMasterVolumeBalance->Value;
+			 }
 		 }
 };
 }
