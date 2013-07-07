@@ -5,7 +5,8 @@ namespace SoundBoard
 	public System::Windows::Forms::GroupBox
 	{
 	public:
-		PlayerGUI(System::String^ title);
+		PlayerGUI(System::String^ title, Player^ _pl);
+
 
 		System::Windows::Forms::TrackBar^ trackBarVolumeAll;
 		System::Windows::Forms::TrackBar^ trackBarVolumeLeft;
@@ -28,8 +29,33 @@ namespace SoundBoard
 		System::Windows::Forms::GroupBox^ groupBoxVolumeLeft;
 		System::Windows::Forms::GroupBox^ groupBoxVolumeRight;
 
+		property Player^ plyr
+		{
+			Player^ get(){return pl;}
+		}
+
 	private :
+		Player^ pl;
 		System::Void buttonStop_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void trackBarVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			pl->leftVolume = this->trackBarVolumeAll->Value;
+			pl->rightVolume = this->trackBarVolumeAll->Value;
+		}
+		System::Void trackBarVolumeLeft_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			pl->leftVolume = this->trackBarVolumeLeft->Value;
+		}
+		System::Void trackBarVolumeRight_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			pl->rightVolume = this->trackBarVolumeRight->Value;
+		}
+		System::Void trackBarVolumeBalance_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			pl->balanceVolume = this->trackBarBalance->Value;
+		}
+		System::Void trackBarVolumeTreble_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			pl->trebleVolume = this->trackBarTreble->Value;
+		}
+		System::Void trackBarVolumeBass_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			pl->bassVolume = this->trackBarBass->Value;
+		}
 				void initTableLayoutPanels(void);
 				void initButtons(void);
 				void initTrackBars(void);

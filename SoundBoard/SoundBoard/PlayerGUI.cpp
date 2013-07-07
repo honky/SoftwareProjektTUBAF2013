@@ -3,9 +3,10 @@
 
 namespace SoundBoard
 {
-	PlayerGUI::PlayerGUI(System::String^ title)
+	PlayerGUI::PlayerGUI(System::String^ title, Player^ _pl)
 	{
 		this->Text=title;
+		this->pl = _pl;
 		this->Size = System::Drawing::Size(380, 200);
 		this->trackBarBalance = gcnew System::Windows::Forms::TrackBar();
 		this->trackBarBass = gcnew System::Windows::Forms::TrackBar();
@@ -87,16 +88,22 @@ namespace SoundBoard
 	void PlayerGUI::initTrackBars() {
 		this->initDefaultTrackBar(this->trackBarBalance,this->groupBoxBalance);
 		this->groupBoxBalance->Text = L"Balance";
+		this->trackBarBalance->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::trackBarVolumeBalance_ValueChanged);
 		this->initDefaultTrackBar(this->trackBarBass,this->groupBoxBass);
 		this->groupBoxBass->Text = L"Bass";
+		this->trackBarBass->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::trackBarVolumeBass_ValueChanged);
 		this->initDefaultTrackBar(this->trackBarTreble,this->groupBoxTreble);
 		this->groupBoxTreble->Text = L"Treble";
+		this->trackBarTreble->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::trackBarVolumeTreble_ValueChanged);
 		this->initDefaultTrackBar(this->trackBarVolumeAll,this->groupBoxVolumeAll);
 		this->groupBoxVolumeAll->Text = L"Master";
+		this->trackBarVolumeAll->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::trackBarVolumeAll_ValueChanged);
 		this->initDefaultTrackBar(this->trackBarVolumeLeft,this->groupBoxVolumeLeft);
 		this->groupBoxVolumeLeft->Text = L"Left";
+		this->trackBarVolumeLeft->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::trackBarVolumeLeft_ValueChanged);
 		this->initDefaultTrackBar(this->trackBarVolumeRight,this->groupBoxVolumeRight);
 		this->groupBoxVolumeRight->Text = L"Right";
+		this->trackBarVolumeRight->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::trackBarVolumeRight_ValueChanged);
 	}
 void PlayerGUI::buttonStop_Click(System::Object^  sender, System::EventArgs^  e) 
 			 {

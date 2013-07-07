@@ -40,7 +40,6 @@ namespace SoundBoard
 
 
 	public: 
-		virtual property PlayerGUI^ gui { PlayerGUI^ get(); void set(PlayerGUI^ value); } 
 		virtual property int rightVolume { int get(); void set(int value); } 
 		virtual property int leftVolume{ int get(); void set(int value); }
         virtual property int totalVolume{ int get(); void set(int value); }		
@@ -49,7 +48,6 @@ namespace SoundBoard
 		virtual property int balanceVolume{ int get(); void set(int value); } ;
 	
 	private:
-		PlayerGUI^ _gui;
 		int _rightVolume;
 		int _leftVolume;
 		int _totalVolume;

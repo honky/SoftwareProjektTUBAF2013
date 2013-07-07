@@ -4,8 +4,8 @@
 #pragma once
 #include "WaveForm.h"
 #include "Sound.h"
-#include "PlayerGUI.h"
 #include "Player.h"
+#include "PlayerGUI.h"
 #include "SoundContext.h"
 #include "SoundButton.h"
 #include "SoundButtonGroup.h"

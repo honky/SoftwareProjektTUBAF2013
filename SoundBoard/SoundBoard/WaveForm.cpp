@@ -48,13 +48,13 @@ namespace SoundBoard
 		}
 		
 		//deletes the raw-file that was previously created
-		/*if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
+		if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
 		{
 
 			File::Delete(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw");
 
 		}
-		*/
+		
 		return bmp;
 	}
 

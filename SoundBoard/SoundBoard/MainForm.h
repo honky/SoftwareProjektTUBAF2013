@@ -681,8 +681,8 @@ private: System::Void panel1_Paint(System::Object^  sender, System::Windows::For
 
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 
-			PlayerGUI^ gB = gcnew PlayerGUI("snafu");			
-			flowLayoutPanelRight->Controls->Add(gB);		
+			//PlayerGUI^ gB = gcnew PlayerGUI("snafu");			
+			//flowLayoutPanelRight->Controls->Add(gB);		
 		 }
 private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
 

@@ -197,18 +197,6 @@ namespace SoundBoard
 	}
 
 	//muting and volume control might be expanded for toggling each other
-	PlayerGUI^ Player::gui::get() 
-	{
-		if(_gui == nullptr)
-		{
-			_gui = gcnew PlayerGUI("");
-		}
-		return _gui; }
-	void Player::gui::set(PlayerGUI^ value) { 
-		_gui = value;			
-	}
-
-	//muting and volume control might be expanded for toggling each other
 	int Player::rightVolume::get() { return _rightVolume; }
 	void Player::rightVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
