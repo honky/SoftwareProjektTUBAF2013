@@ -6,6 +6,7 @@
 namespace SoundBoard
 {
 	using namespace System;
+	using namespace System::Collections::Generic;
 	using namespace SoundBoard;
 	using namespace Windows::Forms; 
 	ref class SoundController
@@ -17,6 +18,6 @@ namespace SoundBoard
 		bool play(SoundButton^ sb);
 	private: 
 		FlowLayoutPanel^ flp;
-
+		static List<Player^>^ list_players = gcnew List<Player^>();
 	};
 }

@@ -26,6 +26,7 @@ namespace SoundBoard
 	
 	bool SoundController::play(SoundButton^ sb)
 	{
+		
 		PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
 		Sound^ blafu = sb->context->list_sounds[0];	
 		gui->pictureBox->Width = 250;
@@ -35,7 +36,7 @@ namespace SoundBoard
 		player->playSound();
 		gui->pictureBox->Image = blafu->wf->Bmp;
 		flp->Controls->Add(gui);
-
+		list_players->Add(player);
 		return true;
 	}
 /*

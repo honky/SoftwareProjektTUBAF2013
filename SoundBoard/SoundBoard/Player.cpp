@@ -45,7 +45,7 @@ namespace SoundBoard
 
 		//probably done
 	}
-	
+
 	int Player::mciSendStringHandle(String^ givenHandle)
 	{
 		// http://msdn.microsoft.com/de-de/library/ms235631(v=vs.80).aspx 
@@ -67,7 +67,7 @@ namespace SoundBoard
 		//char* rch = new char[512];
 		int errorCode = mciSendString(wch,(LPWSTR) rch,512,0);
 		checkError(errorCode);
-		
+
 		return gcnew String(rch);
 	}
 
@@ -90,7 +90,7 @@ namespace SoundBoard
 				isPaused = false;
 			}
 		}
-		
+
 		//if it doesn't already play so try playing it
 		if(!isPlaying)
 		{
@@ -114,8 +114,8 @@ namespace SoundBoard
 		}
 		checkError(errCode);
 	}
-	
-void Player::closeSound()
+
+	void Player::closeSound()
 	{
 		//we are using mpegvideo for most compatibility available, it just plays everything even videos
 		String^ cmd = "close "+alias;
@@ -125,7 +125,7 @@ void Player::closeSound()
 			isOpen = false;
 			isPlaying = false;
 			isPaused = false;
-			
+
 		}
 		checkError(errCode);
 	}
@@ -175,7 +175,7 @@ void Player::closeSound()
 			isMutedRight = true;
 		}
 	}
-	
+
 	void Player::unmuteSound(void)
 	{
 		String^ cmd = "setaudio " + alias + " on";	
@@ -197,6 +197,18 @@ void Player::closeSound()
 	}
 
 	//muting and volume control might be expanded for toggling each other
+	PlayerGUI^ Player::gui::get() 
+	{
+		if(_gui == nullptr)
+		{
+			_gui = gcnew PlayerGUI("");
+		}
+		return _gui; }
+	void Player::gui::set(PlayerGUI^ value) { 
+		_gui = value;			
+	}
+
+	//muting and volume control might be expanded for toggling each other
 	int Player::rightVolume::get() { return _rightVolume; }
 	void Player::rightVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
@@ -206,6 +218,7 @@ void Player::closeSound()
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
+
 	int Player::leftVolume::get() { return _leftVolume; }
 	void Player::leftVolume::set(int value) { 
 		if(isOpen && value >= 0 && value < 1000)
@@ -245,7 +258,7 @@ void Player::closeSound()
 			int errCode = mciSendStringHandle(cmd);
 		}				
 	}
-	
+
 	int Player::balanceVolume::get() { return rightVolume; }
 	void Player::balanceVolume::set(int value) { 
 		if(isOpen && value >= -1000 && value < 1000)
@@ -265,7 +278,7 @@ void Player::closeSound()
 				cmd = "setaudio " + alias + " left volume to " + _balanceVolume.ToString();	
 				errCode = mciSendStringHandle(cmd);
 			}
-			
+
 		}				
 	}
 
@@ -318,8 +331,8 @@ void Player::closeSound()
 		String^ cmd = "resume " + alias;	
 		int errCode = mciSendStringHandle(cmd);
 	}
-	
-	
+
+
 	void Player::setPosition(int givenPosition)
 	{
 		stopSound();
@@ -344,7 +357,7 @@ void Player::closeSound()
 	String^ Player::getLength(void)
 	{	
 		int snafu = mciSendStringHandle("set " + alias + " time format milliseconds ");
-		
+
 		String^ length =  mciSendStringHandleResponse("status " + alias + " length ");
 		String^ currentTimeFormat =  mciSendStringHandleResponse("status " + alias + " time format");
 		String^ currentTimeFormat2 =  mciSendStringHandleResponse("status " + alias + " samplespersec");
@@ -755,7 +768,7 @@ void Player::closeSound()
 
 	}
 
-	
+
 
 	void Player::openCdDoor(void)
 	{
@@ -781,8 +794,8 @@ void Player::closeSound()
 		int errCode = mciSendStringHandle(cmd);
 	}
 
-	
-	
+
+
 	void Player::drawGuiPanel(void)
 	{
 

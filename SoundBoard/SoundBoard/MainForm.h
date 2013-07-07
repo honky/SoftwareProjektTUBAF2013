@@ -111,7 +111,7 @@ namespace SoundBoard {
 
 
 
-	private: System::Windows::Forms::Button^  button3;
+
 	private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanelButtonGroups;
 
 
@@ -140,7 +140,6 @@ namespace SoundBoard {
 		{
 			this->tableLayoutPanelMain = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->flowLayoutPanelRight = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanelLeft = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->groupBoxMasterVolumeControl = (gcnew System::Windows::Forms::GroupBox());
 			this->flowLayoutPanelMasterVolumeControl = (gcnew System::Windows::Forms::FlowLayoutPanel());
@@ -174,7 +173,6 @@ namespace SoundBoard {
 			this->textBoxPlayCustom2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPlayCustom3 = (gcnew System::Windows::Forms::TextBox());
 			this->tableLayoutPanelMain->SuspendLayout();
-			this->flowLayoutPanelRight->SuspendLayout();
 			this->flowLayoutPanelLeft->SuspendLayout();
 			this->groupBoxMasterVolumeControl->SuspendLayout();
 			this->flowLayoutPanelMasterVolumeControl->SuspendLayout();
@@ -221,21 +219,10 @@ namespace SoundBoard {
 				| System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->flowLayoutPanelRight->AutoScroll = true;
-			this->flowLayoutPanelRight->Controls->Add(this->button3);
 			this->flowLayoutPanelRight->Location = System::Drawing::Point(399, 3);
 			this->flowLayoutPanelRight->Name = L"flowLayoutPanelRight";
 			this->flowLayoutPanelRight->Size = System::Drawing::Size(391, 614);
 			this->flowLayoutPanelRight->TabIndex = 1;
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(3, 3);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 0;
-			this->button3->Text = L"button3";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
 			// 
 			// flowLayoutPanelLeft
 			// 
@@ -304,7 +291,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeAll->Maximum = 1000;
 			this->trackBarMasterVolumeAll->Name = L"trackBarMasterVolumeAll";
 			this->trackBarMasterVolumeAll->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeAll->TabIndex = 0;
 			this->trackBarMasterVolumeAll->TickFrequency = 100;
 			this->trackBarMasterVolumeAll->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -330,7 +317,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeLeft->Maximum = 1000;
 			this->trackBarMasterVolumeLeft->Name = L"trackBarMasterVolumeLeft";
 			this->trackBarMasterVolumeLeft->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeLeft->TabIndex = 0;
 			this->trackBarMasterVolumeLeft->TickFrequency = 100;
 			this->trackBarMasterVolumeLeft->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -356,7 +343,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeRight->Maximum = 1000;
 			this->trackBarMasterVolumeRight->Name = L"trackBarMasterVolumeRight";
 			this->trackBarMasterVolumeRight->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeRight->TabIndex = 0;
 			this->trackBarMasterVolumeRight->TickFrequency = 100;
 			this->trackBarMasterVolumeRight->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -381,7 +368,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeTreble->Maximum = 1000;
 			this->trackBarMasterVolumeTreble->Name = L"trackBarMasterVolumeTreble";
 			this->trackBarMasterVolumeTreble->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeTreble->TabIndex = 0;
 			this->trackBarMasterVolumeTreble->TickFrequency = 100;
 			this->trackBarMasterVolumeTreble->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -406,7 +393,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBass->Maximum = 1000;
 			this->trackBarMasterVolumeBass->Name = L"trackBarMasterVolumeBass";
 			this->trackBarMasterVolumeBass->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeBass->TabIndex = 0;
 			this->trackBarMasterVolumeBass->TickFrequency = 100;
 			this->trackBarMasterVolumeBass->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -432,7 +419,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBalance->Minimum = -1000;
 			this->trackBarMasterVolumeBalance->Name = L"trackBarMasterVolumeBalance";
 			this->trackBarMasterVolumeBalance->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeBalance->TabIndex = 0;
 			this->trackBarMasterVolumeBalance->TickFrequency = 200;
 			this->trackBarMasterVolumeBalance->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -637,7 +624,6 @@ namespace SoundBoard {
 			this->Text = L"MainForm";
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->tableLayoutPanelMain->ResumeLayout(false);
-			this->flowLayoutPanelRight->ResumeLayout(false);
 			this->flowLayoutPanelLeft->ResumeLayout(false);
 			this->flowLayoutPanelLeft->PerformLayout();
 			this->groupBoxMasterVolumeControl->ResumeLayout(false);
