@@ -12,15 +12,9 @@ namespace SoundBoard
 	using namespace System::ComponentModel;
 	using namespace System::Collections::Generic;
 
-	WaveForm::WaveForm(Sound^ givenSound)
+	WaveForm::WaveForm(String^ path, int pbl, int pbw)
 	{
-		//check if WaveForm needs to be generated
-		//if yes -> getWaveForm()
-		//else return path2Image
-	}
-	WaveForm::WaveForm(Sound^ givenSound, Boolean force)
-	{
-		//redraw WaveForm
+		this->wave = this->getWaveForm(path, pbl, pbw);
 	}
 	Bitmap^ WaveForm::getWaveForm(String^ path, int pbl, int pbw)
 	{

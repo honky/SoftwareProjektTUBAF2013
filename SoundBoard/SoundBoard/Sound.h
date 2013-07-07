@@ -10,5 +10,6 @@ namespace SoundBoard
 	public:
 		Sound(String^ path);
 		String^ path;
+		WaveForm^ wf;
 	};
 }

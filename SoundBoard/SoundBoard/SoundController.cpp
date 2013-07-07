@@ -27,14 +27,13 @@ namespace SoundBoard
 	bool SoundController::play(SoundButton^ sb)
 	{
 		PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
-		Sound^ blafu = sb->context->list_sounds[0];
-		WaveForm^ wf = gcnew WaveForm(blafu);		
+		Sound^ blafu = sb->context->list_sounds[0];	
 		gui->pictureBox->Width = 250;
 		gui->pictureBox->Height = 40;
 		gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
 		Player^ player = gcnew Player(blafu);
 		player->playSound();
-		gui->pictureBox->Image = wf->getWaveForm(blafu->path,250,40);
+		gui->pictureBox->Image = blafu->wf->Bmp;
 		flp->Controls->Add(gui);
 
 		return true;
