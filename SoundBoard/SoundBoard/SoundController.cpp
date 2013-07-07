@@ -15,15 +15,15 @@ namespace SoundBoard
 		soundButton->Click += gcnew System::EventHandler(this, &SoundBoard::SoundController::soundButton_Click);
 	}
 
-	
-	
+
+
 	void SoundController::soundButton_Click(System::Object ^ sender, System::EventArgs^ e)
 	{
 		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
 		SoundController::play(sb);					
 	}
 
-	
+
 	bool SoundController::play(SoundButton^ sb)
 	{		
 		PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
@@ -66,32 +66,29 @@ namespace SoundBoard
 	void SoundController::pauseLast()
 	{
 		if(list_players->Count != 0) {
-		list_players[list_players->Count-1]->pauseSound();
+			list_players[list_players->Count-1]->pauseSound();
 		}
 	}
 	void SoundController::resumeLast()
 	{
 		if(list_players->Count != 0) {
-		list_players[list_players->Count-1]->resumeSound();
+			list_players[list_players->Count-1]->resumeSound();
 		}
 	}
 	void SoundController::stopLast()
 	{
-			if(list_players->Count != 0) {
-		list_players[list_players->Count-1]->stopSound();
+		//just run if needed
+		if(list_players->Count != 0) {
+			//stopping sound has highest priority
+			list_players[list_players->Count-1]->stopSound();
+			//disabling gui from flp
+			flp->Controls->Remove(list_players[list_players->Count-1]->gui);
+			//actually the next line is not needed but better for garbage collection
+			list_players[list_players->Count-1]->gui = nullptr;
+			//removing player from list
+			list_players->Remove(list_players[list_players->Count-1]);
+			
 		}
 	}
-/*
-	
-	bool play(SoundButton^ soundButton)
-	{
-	return true;
-	}
-
-	bool play(Sound^ sound)
-	{
-	return true;
-	}
-	*/
 
 }

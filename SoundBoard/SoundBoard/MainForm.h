@@ -23,7 +23,8 @@ namespace SoundBoard {
 	{
 
 	SoundController^ soundController;
-	ConfigController^ configController;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialogCustomSounds;
+			 ConfigController^ configController;
 
 
 	public:
@@ -172,6 +173,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPlayCustom2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPlayCustom3 = (gcnew System::Windows::Forms::TextBox());
+			this->openFileDialogCustomSounds = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->tableLayoutPanelMain->SuspendLayout();
 			this->flowLayoutPanelLeft->SuspendLayout();
 			this->groupBoxMasterVolumeControl->SuspendLayout();
@@ -603,6 +605,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom1->Name = L"textBoxPlayCustom1";
 			this->textBoxPlayCustom1->Size = System::Drawing::Size(272, 20);
 			this->textBoxPlayCustom1->TabIndex = 3;
+			this->textBoxPlayCustom1->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom1_DoubleClick);
 			// 
 			// textBoxPlayCustom2
 			// 
@@ -619,6 +622,10 @@ namespace SoundBoard {
 			this->textBoxPlayCustom3->Name = L"textBoxPlayCustom3";
 			this->textBoxPlayCustom3->Size = System::Drawing::Size(272, 20);
 			this->textBoxPlayCustom3->TabIndex = 5;
+			// 
+			// openFileDialogCustomSounds
+			// 
+			this->openFileDialogCustomSounds->FileName = L"openFileDialogCustomSounds";
 			// 
 			// MainForm
 			// 
@@ -702,6 +709,11 @@ private: System::Void buttonResumeLast_Click(System::Object^  sender, System::Ev
 		 }
 private: System::Void buttonStopLast_Click(System::Object^  sender, System::EventArgs^  e) {
 			 soundController->stopLast();
+		 }
+private: System::Void textBoxPlayCustom1_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
+			 System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
+			 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
+			 //saving stuff to config is missing here
 		 }
 };
 }
