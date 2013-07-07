@@ -468,6 +468,7 @@ namespace SoundBoard {
 			this->buttonStopLast->TabIndex = 5;
 			this->buttonStopLast->Text = L"Stop Last";
 			this->buttonStopLast->UseVisualStyleBackColor = true;
+			this->buttonStopLast->Click += gcnew System::EventHandler(this, &MainForm::buttonStopLast_Click);
 			// 
 			// buttonResumeLast
 			// 
@@ -478,6 +479,7 @@ namespace SoundBoard {
 			this->buttonResumeLast->TabIndex = 4;
 			this->buttonResumeLast->Text = L"Resume Last";
 			this->buttonResumeLast->UseVisualStyleBackColor = true;
+			this->buttonResumeLast->Click += gcnew System::EventHandler(this, &MainForm::buttonResumeLast_Click);
 			// 
 			// buttonPauseLast
 			// 
@@ -488,6 +490,7 @@ namespace SoundBoard {
 			this->buttonPauseLast->TabIndex = 3;
 			this->buttonPauseLast->Text = L"Pause Last";
 			this->buttonPauseLast->UseVisualStyleBackColor = true;
+			this->buttonPauseLast->Click += gcnew System::EventHandler(this, &MainForm::buttonPauseLast_Click);
 			// 
 			// buttonStopAll
 			// 
@@ -498,6 +501,7 @@ namespace SoundBoard {
 			this->buttonStopAll->TabIndex = 2;
 			this->buttonStopAll->Text = L"Stop All";
 			this->buttonStopAll->UseVisualStyleBackColor = true;
+			this->buttonStopAll->Click += gcnew System::EventHandler(this, &MainForm::buttonStopAll_Click);
 			// 
 			// buttonResumeAll
 			// 
@@ -508,6 +512,7 @@ namespace SoundBoard {
 			this->buttonResumeAll->TabIndex = 1;
 			this->buttonResumeAll->Text = L"Resume All";
 			this->buttonResumeAll->UseVisualStyleBackColor = true;
+			this->buttonResumeAll->Click += gcnew System::EventHandler(this, &MainForm::buttonResumeAll_Click);
 			// 
 			// buttonPauseAll
 			// 
@@ -518,6 +523,7 @@ namespace SoundBoard {
 			this->buttonPauseAll->TabIndex = 0;
 			this->buttonPauseAll->Text = L"Pause All";
 			this->buttonPauseAll->UseVisualStyleBackColor = true;
+			this->buttonPauseAll->Click += gcnew System::EventHandler(this, &MainForm::buttonPauseAll_Click);
 			// 
 			// flowLayoutPanelButtonGroups
 			// 
@@ -678,6 +684,24 @@ private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^ 
 				{
 					flowLayoutPanelButtonGroups->Controls->Add(sgb);
 				}
+		 }
+private: System::Void buttonStopAll_Click(System::Object^  sender, System::EventArgs^  e) {
+			 soundController->stopAll();
+		 }
+private: System::Void buttonResumeAll_Click(System::Object^  sender, System::EventArgs^  e) {
+			soundController->resumeAll();
+		 }
+private: System::Void buttonPauseAll_Click(System::Object^  sender, System::EventArgs^  e) {
+			soundController->pauseAll();
+		 }
+private: System::Void buttonPauseLast_Click(System::Object^  sender, System::EventArgs^  e) {
+			soundController->pauseLast();
+		 }
+private: System::Void buttonResumeLast_Click(System::Object^  sender, System::EventArgs^  e) {
+			 soundController->resumeLast();
+		 }
+private: System::Void buttonStopLast_Click(System::Object^  sender, System::EventArgs^  e) {
+			 soundController->stopLast();
 		 }
 };
 }

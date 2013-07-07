@@ -16,6 +16,15 @@ namespace SoundBoard
 		void attachPlaySoundEventToSoundButton(SoundButton^ soundButton);
 		void soundButton_Click(System::Object ^ sender, System::EventArgs^ e);
 		bool play(SoundButton^ sb);
+
+		void pauseAll();
+		void resumeAll();
+		void stopAll();
+		
+		void pauseLast();
+		void resumeLast();
+		void stopLast();
+
 	private: 
 		FlowLayoutPanel^ flp;
 		static List<Player^>^ list_players = gcnew List<Player^>();
