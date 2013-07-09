@@ -26,6 +26,8 @@ namespace SoundBoard
 		void resumeLast();
 		void stopLast();
 
+		void static checkPlayingGUIs();
+
 
 	private: 
 		FlowLayoutPanel^ flp;

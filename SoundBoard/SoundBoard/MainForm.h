@@ -24,6 +24,7 @@ namespace SoundBoard {
 
 	SoundController^ soundController;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialogCustomSounds;
+	private: System::ComponentModel::BackgroundWorker^  backgroundWorkerSoundController;
 			 ConfigController^ configController;
 
 
@@ -33,6 +34,7 @@ namespace SoundBoard {
 			InitializeComponent();
 			soundController =  gcnew SoundController(flowLayoutPanelRight);
 			configController = gcnew ConfigController(soundController);
+			backgroundWorkerSoundController->RunWorkerAsync();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -174,6 +176,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPlayCustom3 = (gcnew System::Windows::Forms::TextBox());
 			this->openFileDialogCustomSounds = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->backgroundWorkerSoundController = (gcnew System::ComponentModel::BackgroundWorker());
 			this->tableLayoutPanelMain->SuspendLayout();
 			this->flowLayoutPanelLeft->SuspendLayout();
 			this->groupBoxMasterVolumeControl->SuspendLayout();
@@ -629,6 +632,10 @@ namespace SoundBoard {
 			// 
 			this->openFileDialogCustomSounds->FileName = L"openFileDialogCustomSounds";
 			// 
+			// backgroundWorkerSoundController
+			// 
+			this->backgroundWorkerSoundController->DoWork += gcnew System::ComponentModel::DoWorkEventHandler(this, &MainForm::backgroundWorkerSoundController_DoWork);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -722,6 +729,12 @@ private: System::Void textBoxPlayCustom1_Click(System::Object^  sender, System::
 		 }
 private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 soundController->playCustomSound(textBoxPlayCustom1->Text);
+		 }
+private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
+				
+				SoundController::checkPlayingGUIs();
+
+				System::Threading::Thread::Sleep(1000);
 		 }
 };
 }

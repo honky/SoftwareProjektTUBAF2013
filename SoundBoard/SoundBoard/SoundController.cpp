@@ -10,6 +10,30 @@ namespace SoundBoard
 	{
 		flp = _flp;
 	}
+
+	void SoundController::checkPlayingGUIs()
+	{
+		if(list_players->Count > 0)
+		{
+			List<Player^>^ list_players_remove = gcnew List<Player^>();
+			for each(Player^ eachPlayer in list_players)
+			{
+				int curPos = eachPlayer->getCurrentPosition();
+				int length = Convert::ToInt32(eachPlayer->getLength());
+
+				if(curPos>= length)
+				{
+					//list_players.Remove;
+				}
+			}
+			for each(Player^ eachPlayer in list_players_remove)
+			{
+				//list_players.Remove(eachPlayer);
+			}
+		}
+
+	}
+
 	void SoundController::attachPlaySoundEventToSoundButton(SoundButton^ soundButton)
 	{
 		soundButton->Click += gcnew System::EventHandler(this, &SoundBoard::SoundController::soundButton_Click);
