@@ -577,6 +577,7 @@ namespace SoundBoard {
 			this->buttonPlayCustom1->TabIndex = 0;
 			this->buttonPlayCustom1->Text = L"Play Custom 1";
 			this->buttonPlayCustom1->UseVisualStyleBackColor = true;
+			this->buttonPlayCustom1->Click += gcnew System::EventHandler(this, &MainForm::buttonPlayCustom1_Click);
 			// 
 			// buttonPlayCustom2
 			// 
@@ -606,6 +607,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom1->Size = System::Drawing::Size(272, 20);
 			this->textBoxPlayCustom1->TabIndex = 3;
 			this->textBoxPlayCustom1->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom1_DoubleClick);
+			this->textBoxPlayCustom1->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom1_Click);
 			// 
 			// textBoxPlayCustom2
 			// 
@@ -713,7 +715,13 @@ private: System::Void buttonStopLast_Click(System::Object^  sender, System::Even
 private: System::Void textBoxPlayCustom1_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
 			 System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
 			 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
-			 //saving stuff to config is missing here
+		 }
+private: System::Void textBoxPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
+			System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
+			 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
+		 }
+private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 soundController->playCustomSound(textBoxPlayCustom1->Text);
 		 }
 };
 }

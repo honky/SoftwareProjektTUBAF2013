@@ -4,6 +4,7 @@ namespace SoundBoard
 {
 	using namespace SoundBoard;
 	using namespace Windows::Forms;
+	using namespace System::IO;
 
 	SoundController::SoundController(FlowLayoutPanel^ _flp)
 	{
@@ -23,6 +24,22 @@ namespace SoundBoard
 		SoundController::play(sb);					
 	}
 
+	bool SoundController::playCustomSound(String^ filePath)
+	{
+		try
+		{
+			Sound^ customSound = gcnew Sound(filePath);
+			SoundContext^ customContext = gcnew SoundContext(filePath, SoundContextType::Single);
+			SoundButton^ csb = gcnew SoundButton(Path::GetFileName(filePath),customContext);
+			SoundController::play(csb);
+			return true;
+		}
+		catch (Exception^ e)
+		{
+			MessageBox::Show(e->Message);
+			return false;
+		}
+	}
 
 	bool SoundController::play(SoundButton^ sb)
 	{		
@@ -87,7 +104,7 @@ namespace SoundBoard
 			list_players[list_players->Count-1]->gui = nullptr;
 			//removing player from list
 			list_players->Remove(list_players[list_players->Count-1]);
-			
+
 		}
 	}
 

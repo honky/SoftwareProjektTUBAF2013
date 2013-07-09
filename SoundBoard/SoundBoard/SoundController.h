@@ -16,6 +16,7 @@ namespace SoundBoard
 		void attachPlaySoundEventToSoundButton(SoundButton^ soundButton);
 		void soundButton_Click(System::Object ^ sender, System::EventArgs^ e);
 		bool play(SoundButton^ sb);
+		bool playCustomSound(String^ filePath);
 
 		void pauseAll();
 		void resumeAll();
@@ -24,6 +25,7 @@ namespace SoundBoard
 		void pauseLast();
 		void resumeLast();
 		void stopLast();
+
 
 	private: 
 		FlowLayoutPanel^ flp;

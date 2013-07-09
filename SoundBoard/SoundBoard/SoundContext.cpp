@@ -10,10 +10,18 @@ namespace SoundBoard
 	{ 
 		this->sct = _sct;
 		this->list_sounds = gcnew List<Sound^>();
-		for each (String^ file in System::IO::Directory::GetFiles(path))
+		if(sct == SoundContextType::Single) //doesn't work yet!
 		{
-			Sound^ sound2beAdded = gcnew Sound(file);
-			list_sounds->Add(sound2beAdded);
+			Sound^ sound2beAdded = gcnew Sound(path);
+			list_sounds->Add(sound2beAdded);			
+		}
+		else
+		{
+			for each (String^ file in System::IO::Directory::GetFiles(path))
+			{
+				Sound^ sound2beAdded = gcnew Sound(file);
+				list_sounds->Add(sound2beAdded);
+			}
 		}
 
 	}
