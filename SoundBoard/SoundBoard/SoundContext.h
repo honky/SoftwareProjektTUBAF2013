@@ -3,7 +3,7 @@
 
 namespace SoundBoard
 {
-	enum class SoundContextType { Random, Loop, Single, Playlist, Yaaaawn };
+	public enum class SoundContextType { Random = 0, Loop = 1, Single = 2, Playlist = 3 };
 	using namespace SoundBoard;
 	using namespace System::Collections::Generic;
 	[Serializable]

@@ -131,6 +131,8 @@ void WaveForm::shellcmd(System::String ^_FileToExecute, System::String ^_Command
 List<int> ^ WaveForm::createSamples(String^ fileName, int pbl)
 {
 	List<int> ^ Samples = gcnew List<int>();
+	if(File::Exists(fileName) == false) { return Samples; }
+
    try
    {
       FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);

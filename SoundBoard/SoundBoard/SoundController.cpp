@@ -9,7 +9,6 @@ namespace SoundBoard
 	SoundController::SoundController(FlowLayoutPanel^ _flp)
 	{
 		flp = _flp;
-
 	}
 	void SoundController::attachPlaySoundEventToSoundButton(SoundButton^ soundButton)
 	{
