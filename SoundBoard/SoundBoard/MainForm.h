@@ -302,7 +302,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeAll->Maximum = 1000;
 			this->trackBarMasterVolumeAll->Name = L"trackBarMasterVolumeAll";
 			this->trackBarMasterVolumeAll->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeAll->TabIndex = 0;
 			this->trackBarMasterVolumeAll->TickFrequency = 100;
 			this->trackBarMasterVolumeAll->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -329,7 +329,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeLeft->Maximum = 1000;
 			this->trackBarMasterVolumeLeft->Name = L"trackBarMasterVolumeLeft";
 			this->trackBarMasterVolumeLeft->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeLeft->TabIndex = 0;
 			this->trackBarMasterVolumeLeft->TickFrequency = 100;
 			this->trackBarMasterVolumeLeft->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -356,7 +356,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeRight->Maximum = 1000;
 			this->trackBarMasterVolumeRight->Name = L"trackBarMasterVolumeRight";
 			this->trackBarMasterVolumeRight->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeRight->TabIndex = 0;
 			this->trackBarMasterVolumeRight->TickFrequency = 100;
 			this->trackBarMasterVolumeRight->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -382,7 +382,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeTreble->Maximum = 1000;
 			this->trackBarMasterVolumeTreble->Name = L"trackBarMasterVolumeTreble";
 			this->trackBarMasterVolumeTreble->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeTreble->TabIndex = 0;
 			this->trackBarMasterVolumeTreble->TickFrequency = 100;
 			this->trackBarMasterVolumeTreble->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -408,7 +408,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBass->Maximum = 1000;
 			this->trackBarMasterVolumeBass->Name = L"trackBarMasterVolumeBass";
 			this->trackBarMasterVolumeBass->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeBass->TabIndex = 0;
 			this->trackBarMasterVolumeBass->TickFrequency = 100;
 			this->trackBarMasterVolumeBass->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -435,7 +435,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBalance->Minimum = -1000;
 			this->trackBarMasterVolumeBalance->Name = L"trackBarMasterVolumeBalance";
 			this->trackBarMasterVolumeBalance->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(42, 100);
+			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(45, 100);
 			this->trackBarMasterVolumeBalance->TabIndex = 0;
 			this->trackBarMasterVolumeBalance->TickFrequency = 200;
 			this->trackBarMasterVolumeBalance->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -663,6 +663,7 @@ namespace SoundBoard {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(802, 623);
 			this->Controls->Add(this->tableLayoutPanelMain);
+			this->MinimumSize = System::Drawing::Size(818, 661);
 			this->Name = L"MainForm";
 			this->Text = L"SoundBoard SoftwareProjekt TUBAF 2013";
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
@@ -782,19 +783,21 @@ namespace SoundBoard {
 				 tt->Show("Please click on this TextBox to change the path of the CustomSound3",textBoxPlayCustom3,0,0,2000);
 			 }
 	private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
-
+				
+				 /*
 				 while(true) //(backgroundWorkerSoundController->ChancellationPending oder so
 				 {
 					 try
 					 {
-						 //SoundController::checkPlayingGUIs();
+						//SoundController::checkPlayingGUIs();
 					 }
 					 catch (Exception^ e)
 					 {
 						 MessageBox::Show(e->Message);
 					 }
-					 System::Threading::Thread::Sleep(100000);
+					 System::Threading::Thread::Sleep(1000);
 				 }
+				 */
 			 }
 private: System::Void trackBarMasterVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 			 this->soundController->changeVolumeMasterAll(this->trackBarMasterVolumeAll->Value);
