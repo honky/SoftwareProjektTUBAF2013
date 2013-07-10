@@ -28,10 +28,10 @@ namespace SoundBoard
 
 		void static checkPlayingGUIs();
 		void changeVolumeMasterAll(int value);
-		void changeVolumeLeftAll(int
-		void changeVolumeRightAll(int
-		void changeBalanceAll(int
-		void changeTrebleAll(int
+		void changeVolumeLeftAll(int value);
+		void changeVolumeRightAll(int value);
+		void changeBalanceAll(int value);
+		void changeTrebleAll(int value);
 		void changeBassAll(int value);
 
 	private: 
