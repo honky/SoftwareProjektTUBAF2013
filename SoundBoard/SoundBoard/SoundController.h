@@ -9,7 +9,7 @@ namespace SoundBoard
 	using namespace System::Collections::Generic;
 	using namespace SoundBoard;
 	using namespace Windows::Forms; 
-	ref class SoundController
+	public ref class SoundController
 	{
 	public:
 		SoundController(FlowLayoutPanel^ _flp);

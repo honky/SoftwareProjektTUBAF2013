@@ -1,4 +1,5 @@
 #pragma once
+#include "editConfigForm.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -25,6 +26,7 @@ namespace SoundBoard {
 		SoundController^ soundController;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialogCustomSounds;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorkerSoundController;
+	private: System::Windows::Forms::Button^  button1;
 			 ConfigController^ configController;
 
 
@@ -181,6 +183,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPlayCustom2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPlayCustom3 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->openFileDialogCustomSounds = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->backgroundWorkerSoundController = (gcnew System::ComponentModel::BackgroundWorker());
 			this->tableLayoutPanelMain->SuspendLayout();
@@ -221,7 +224,7 @@ namespace SoundBoard {
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 
 				366)));
-			this->tableLayoutPanelMain->Size = System::Drawing::Size(802, 623);
+			this->tableLayoutPanelMain->Size = System::Drawing::Size(802, 664);
 			this->tableLayoutPanelMain->TabIndex = 0;
 			// 
 			// flowLayoutPanelRight
@@ -232,7 +235,7 @@ namespace SoundBoard {
 			this->flowLayoutPanelRight->AutoScroll = true;
 			this->flowLayoutPanelRight->Location = System::Drawing::Point(404, 3);
 			this->flowLayoutPanelRight->Name = L"flowLayoutPanelRight";
-			this->flowLayoutPanelRight->Size = System::Drawing::Size(395, 617);
+			this->flowLayoutPanelRight->Size = System::Drawing::Size(395, 658);
 			this->flowLayoutPanelRight->TabIndex = 1;
 			// 
 			// flowLayoutPanelLeft
@@ -245,9 +248,10 @@ namespace SoundBoard {
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBoxMasterPlayer);
 			this->flowLayoutPanelLeft->Controls->Add(this->flowLayoutPanelButtonGroups);
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBox1);
+			this->flowLayoutPanelLeft->Controls->Add(this->button1);
 			this->flowLayoutPanelLeft->Location = System::Drawing::Point(3, 3);
 			this->flowLayoutPanelLeft->Name = L"flowLayoutPanelLeft";
-			this->flowLayoutPanelLeft->Size = System::Drawing::Size(395, 617);
+			this->flowLayoutPanelLeft->Size = System::Drawing::Size(395, 658);
 			this->flowLayoutPanelLeft->TabIndex = 2;
 			this->flowLayoutPanelLeft->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::flowLayoutPanelLeft_Paint);
 			// 
@@ -649,6 +653,16 @@ namespace SoundBoard {
 			this->textBoxPlayCustom3->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_Click);
 			this->textBoxPlayCustom3->MouseEnter += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_MouseEnter);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(3, 609);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 5;
+			this->button1->Text = L"Edit Config";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
+			// 
 			// openFileDialogCustomSounds
 			// 
 			this->openFileDialogCustomSounds->FileName = L"openFileDialogCustomSounds";
@@ -661,7 +675,7 @@ namespace SoundBoard {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(802, 623);
+			this->ClientSize = System::Drawing::Size(802, 664);
 			this->Controls->Add(this->tableLayoutPanelMain);
 			this->MinimumSize = System::Drawing::Size(818, 661);
 			this->Name = L"MainForm";
@@ -746,7 +760,9 @@ namespace SoundBoard {
 				 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
 			 }
 	private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 soundController->playCustomSound(textBoxPlayCustom1->Text);
+				 //soundController->playCustomSound(textBoxPlayCustom1->Text);
+				 Form^ edit = gcnew editConfigForm();
+				 edit->Show();
 			 }
 	private: System::Void textBoxPlayCustom2_Click(System::Object^  sender, System::EventArgs^  e) {
 				 System::Windows::Forms::DialogResult^ d2 = openFileDialogCustomSounds->ShowDialog();
@@ -816,6 +832,10 @@ private: System::Void trackBarMasterVolumeBass_ValueChanged(System::Object^  sen
 		 }
 private: System::Void trackBarMasterVolumeBalance_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 			 this->soundController->changeBalanceAll(this->trackBarMasterVolumeBalance->Value);
+		 }
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Form^ edit = gcnew editConfigForm();
+			 edit->Show();
 		 }
 };
 }

@@ -7,7 +7,7 @@ namespace SoundBoard
 	using namespace SoundBoard;
 	using namespace System::Collections::Generic;
 	[Serializable]
-	ref class SoundContext
+	public ref class SoundContext
 	{
 	public:
 		List<Sound^>^ list_sounds;

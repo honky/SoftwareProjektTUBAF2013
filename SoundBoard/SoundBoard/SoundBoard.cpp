@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Form1.h"
 #include "MainForm.h"
+#include "editConfigForm.h"
 
 using namespace SoundBoard;
 using namespace System;
