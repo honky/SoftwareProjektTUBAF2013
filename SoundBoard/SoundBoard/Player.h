@@ -47,7 +47,8 @@ namespace SoundBoard
 		virtual property int trebleVolume{ int get(); void set(int value); } ;
 		virtual property int bassVolume{ int get(); void set(int value); } ;
 		virtual property int balanceVolume{ int get(); void set(int value); } ;
-	
+		
+		virtual property int msLength{ int get(); void set(int value); } ;
 	private:
 		PlayerGUI^ _gui;
 		int _rightVolume;
@@ -56,6 +57,7 @@ namespace SoundBoard
 		int _trebleVolume;
 		int _bassVolume;
 		int _balanceVolume;
+		int _msLength;
 
 	public:
 		
@@ -66,6 +68,7 @@ namespace SoundBoard
 
 		int mciSendStringHandle(String ^ givenHandle);
 		String^ mciSendStringHandleResponse(String ^ givenHandle);
+		String^ mciSendStringHandleResponse128(String ^ givenHandle);
 		String^ getUniqueAlias();
 
 		void pauseSound(void);

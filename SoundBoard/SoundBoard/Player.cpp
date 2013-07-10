@@ -29,7 +29,7 @@ namespace SoundBoard
 		isMutedAll = false; //should be a property
 		isMutedRight = false; // this too
 		isMutedLeft = false; // this too
-
+		_msLength = 0;
 		//we take the Programms overall Volume vor the current sound
 		//this might be changed to to value of the last sound startet, 
 		// but that might be a bit confusing
@@ -43,6 +43,8 @@ namespace SoundBoard
 		//now open sound and give him its alias
 		openSound(givenSound);
 
+		int snafu = mciSendStringHandle("set " + alias + " time format milliseconds ");
+		_msLength = Convert::ToInt32(getLength());
 		//probably done
 	}
 
@@ -66,6 +68,17 @@ namespace SoundBoard
 		//System::Char^ snafu = PtrToStringChars(givenHandle);
 		//char* rch = new char[512];
 		int errorCode = mciSendString(wch,(LPWSTR) rch,512,0);
+		checkError(errorCode);
+
+		return gcnew String(rch);
+	}
+	
+	String^ Player::mciSendStringHandleResponse128(String^ givenHandle)
+	{ 
+		// just don't ask for mercy
+		pin_ptr<const wchar_t> wch = PtrToStringChars(givenHandle);
+		pin_ptr<const wchar_t> rch = PtrToStringChars(""); // new char[512];
+		int errorCode = mciSendString(wch,(LPWSTR) rch,128,0);
 		checkError(errorCode);
 
 		return gcnew String(rch);
@@ -195,6 +208,19 @@ namespace SoundBoard
 			isMutedRight = false;
 		}
 	}
+
+	//muting and volume control might be expanded for toggling each other
+	int Player::msLength::get() { 
+		if(_msLength==0 || _msLength== -1)
+		{
+			_msLength = Convert::ToInt32(getLength());
+		}
+		return _msLength; 
+	}
+	void Player::msLength::set(int value) { 
+		//nothing just a placeholder		
+	}
+
 
 	//muting and volume control might be expanded for toggling each other
 	PlayerGUI^ Player::gui::get() 
@@ -344,8 +370,15 @@ namespace SoundBoard
 	int Player::getCurrentPosition(void)
 	{
 		String^ cmd = "status " + alias + " position";	
-		String^ response = mciSendStringHandleResponse(cmd);
-		return Convert::ToInt32(response);
+		String^ response = mciSendStringHandleResponse128(cmd);
+		if(!String::IsNullOrEmpty(response)) 
+		{
+			return Convert::ToInt32(response);
+		}
+		else
+		{
+			return 0;	
+		}
 	}
 	int Player::getPcmValue(void)
 	{
@@ -358,6 +391,7 @@ namespace SoundBoard
 	{	
 		int snafu = mciSendStringHandle("set " + alias + " time format milliseconds ");
 
+		/*
 		String^ length =  mciSendStringHandleResponse("status " + alias + " length ");
 		String^ currentTimeFormat =  mciSendStringHandleResponse("status " + alias + " time format");
 		String^ currentTimeFormat2 =  mciSendStringHandleResponse("status " + alias + " samplespersec");
@@ -381,14 +415,21 @@ namespace SoundBoard
 		String^ samplespersec =  mciSendStringHandleResponse("status " + alias + " samplespersec ");
 		String^ start_position =  mciSendStringHandleResponse("status " + alias + " start position ");
 		String^ time_format =  mciSendStringHandleResponse("status " + alias + " time format ");
-
+		*/
 
 
 
 
 		String^ cmd = "status " + alias + " length";	
 		String^ response = mciSendStringHandleResponse(cmd);
-		return response;
+		if(!String::IsNullOrEmpty(response)) 
+		{
+			return response;
+		}
+		else
+		{
+			return "-1";	
+		}
 	}
 
 	void Player::setTimeFormat(String^ timeFormat)

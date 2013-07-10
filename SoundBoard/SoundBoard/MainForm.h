@@ -22,7 +22,7 @@ namespace SoundBoard {
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
 
-	SoundController^ soundController;
+		SoundController^ soundController;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialogCustomSounds;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorkerSoundController;
 			 ConfigController^ configController;
@@ -31,6 +31,8 @@ namespace SoundBoard {
 	public:
 		MainForm(void)
 		{
+
+
 			InitializeComponent();
 			soundController =  gcnew SoundController(flowLayoutPanelRight);
 			configController = gcnew ConfigController(soundController);
@@ -678,63 +680,72 @@ namespace SoundBoard {
 
 		}
 #pragma endregion
-	
+
 	private: System::Void splitContainer1_Panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 			 }
 
-private: System::Void flowLayoutPanelLeft_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		 }
-private: System::Void tableLayoutPanel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		 }
-private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		 }
+	private: System::Void flowLayoutPanelLeft_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+			 }
+	private: System::Void tableLayoutPanel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+			 }
+	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+			 }
 
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-			PlayerGUI^ gB = gcnew PlayerGUI("snafu");			
-			flowLayoutPanelRight->Controls->Add(gB);		
-		 }
-private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				for each (SoundButtonGroup ^ sgb in configController->list_soundButtonGroups)
-				{
-					flowLayoutPanelButtonGroups->Controls->Add(sgb);
-				}
-		 }
-private: System::Void buttonStopAll_Click(System::Object^  sender, System::EventArgs^  e) {
-			 soundController->stopAll();
-		 }
-private: System::Void buttonResumeAll_Click(System::Object^  sender, System::EventArgs^  e) {
-			soundController->resumeAll();
-		 }
-private: System::Void buttonPauseAll_Click(System::Object^  sender, System::EventArgs^  e) {
-			soundController->pauseAll();
-		 }
-private: System::Void buttonPauseLast_Click(System::Object^  sender, System::EventArgs^  e) {
-			soundController->pauseLast();
-		 }
-private: System::Void buttonResumeLast_Click(System::Object^  sender, System::EventArgs^  e) {
-			 soundController->resumeLast();
-		 }
-private: System::Void buttonStopLast_Click(System::Object^  sender, System::EventArgs^  e) {
-			 soundController->stopLast();
-		 }
-private: System::Void textBoxPlayCustom1_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
-			 System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
-			 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
-		 }
-private: System::Void textBoxPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
-			System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
-			 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
-		 }
-private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 soundController->playCustomSound(textBoxPlayCustom1->Text);
-		 }
-private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
-				
-				SoundController::checkPlayingGUIs();
+				 PlayerGUI^ gB = gcnew PlayerGUI("snafu");			
+				 flowLayoutPanelRight->Controls->Add(gB);		
+			 }
+	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
 
-				System::Threading::Thread::Sleep(1000);
-		 }
-};
+				 for each (SoundButtonGroup ^ sgb in configController->list_soundButtonGroups)
+				 {
+					 flowLayoutPanelButtonGroups->Controls->Add(sgb);
+				 }
+			 }
+	private: System::Void buttonStopAll_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->stopAll();
+			 }
+	private: System::Void buttonResumeAll_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->resumeAll();
+			 }
+	private: System::Void buttonPauseAll_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->pauseAll();
+			 }
+	private: System::Void buttonPauseLast_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->pauseLast();
+			 }
+	private: System::Void buttonResumeLast_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->resumeLast();
+			 }
+	private: System::Void buttonStopLast_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->stopLast();
+			 }
+	private: System::Void textBoxPlayCustom1_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
+				 System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
+				 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
+			 }
+	private: System::Void textBoxPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 System::Windows::Forms::DialogResult^ d1 = openFileDialogCustomSounds->ShowDialog();
+				 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
+			 }
+	private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->playCustomSound(textBoxPlayCustom1->Text);
+			 }
+	private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
+
+				 while(true) //(backgroundWorkerSoundController->ChancellationPending oder so
+				 {
+					 try
+					 {
+						SoundController::checkPlayingGUIs();
+					 }
+					 catch (Exception^ e)
+					 {
+						 MessageBox::Show(e->Message);
+					 }
+					 System::Threading::Thread::Sleep(1000);
+				 }
+			 }
+	};
 }

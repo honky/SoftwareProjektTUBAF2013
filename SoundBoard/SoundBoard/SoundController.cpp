@@ -18,11 +18,12 @@ namespace SoundBoard
 			List<Player^>^ list_players_remove = gcnew List<Player^>();
 			for each(Player^ eachPlayer in list_players)
 			{
-				int curPos = eachPlayer->getCurrentPosition();
-				int length = Convert::ToInt32(eachPlayer->getLength());
+				int length = eachPlayer->msLength; //eachPlayer->msLength;
+				int curPos = eachPlayer->getCurrentPosition(); //not working yet
 
-				if(curPos>= length)
+				if(length > 0 && curPos>= length)
 				{
+					MessageBox::Show("a player needs to be removed!");
 					//list_players.Remove;
 				}
 			}
