@@ -15,22 +15,24 @@ namespace SoundBoard
 	{
 		if(list_players->Count > 0)
 		{
+			
 			List<Player^>^ list_players_remove = gcnew List<Player^>();
 			for each(Player^ eachPlayer in list_players)
 			{
 				int length = eachPlayer->msLength; //eachPlayer->msLength;
-				int curPos = eachPlayer->getCurrentPosition(); //not working yet
+				int curPos = eachPlayer->currentPosition; //not working yet
 
 				if(length > 0 && curPos>= length)
 				{
-					MessageBox::Show("a player needs to be removed!");
-					//list_players.Remove;
+					flp->Controls->Remove(eachPlayer->gui);
+					list_players_remove->Add(eachPlayer);
 				}
 			}
 			for each(Player^ eachPlayer in list_players_remove)
 			{
-				//list_players.Remove(eachPlayer);
+				list_players->Remove(eachPlayer);
 			}
+			
 		}
 
 	}

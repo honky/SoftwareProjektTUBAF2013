@@ -6,6 +6,7 @@ namespace SoundBoard
 	PlayerGUI::PlayerGUI(System::String^ title)
 	{
 		this->Text=title;
+		this->CheckForIllegalCrossThreadCalls = false;
 		this->Size = System::Drawing::Size(380, 200);
 		this->trackBarBalance = gcnew System::Windows::Forms::TrackBar();
 		this->trackBarBass = gcnew System::Windows::Forms::TrackBar();

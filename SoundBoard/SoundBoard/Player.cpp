@@ -30,6 +30,7 @@ namespace SoundBoard
 		isMutedRight = false; // this too
 		isMutedLeft = false; // this too
 		_msLength = 0;
+
 		//we take the Programms overall Volume vor the current sound
 		//this might be changed to to value of the last sound startet, 
 		// but that might be a bit confusing
@@ -45,6 +46,8 @@ namespace SoundBoard
 
 		int snafu = mciSendStringHandle("set " + alias + " time format milliseconds ");
 		_msLength = Convert::ToInt32(getLength());
+		started = DateTime::Now;		
+		willEnd = started.AddMilliseconds(_msLength);
 		//probably done
 	}
 
@@ -87,6 +90,7 @@ namespace SoundBoard
 
 	void Player::playSound(void)
 	{
+		
 		//if empty dont do anything
 		if(currentSound== nullptr)
 		{
@@ -107,6 +111,8 @@ namespace SoundBoard
 		//if it doesn't already play so try playing it
 		if(!isPlaying)
 		{
+			started = DateTime::Now;
+			willEnd = started.AddMilliseconds(_msLength);
 			String^ cmd = "play " + alias;	
 			int errCode = mciSendStringHandle(cmd);
 			if(errCode==0)
@@ -219,6 +225,25 @@ namespace SoundBoard
 	}
 	void Player::msLength::set(int value) { 
 		//nothing just a placeholder		
+	}
+
+	
+	//muting and volume control might be expanded for toggling each other
+	int Player::currentPosition::get() { 
+		int currentPosition = 0;
+		DateTime snapShot = DateTime::Now;
+		if(DateTime::Compare(willEnd,willEnd) >= 0  )
+		{
+			return msLength;
+		}
+		else
+		{
+			currentPosition =  willEnd.Subtract(snapShot).Milliseconds; 
+		}
+		return currentPosition; 
+	}
+	void Player::currentPosition::set(int value) { 
+		this->setPosition(value);	
 	}
 
 

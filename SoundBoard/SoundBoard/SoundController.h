@@ -30,7 +30,7 @@ namespace SoundBoard
 
 
 	private: 
-		FlowLayoutPanel^ flp;
+		static FlowLayoutPanel^ flp;
 		static List<Player^>^ list_players = gcnew List<Player^>();
 	};
 }

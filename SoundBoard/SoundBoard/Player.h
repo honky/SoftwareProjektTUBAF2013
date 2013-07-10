@@ -38,6 +38,9 @@ namespace SoundBoard
 		bool isMutedRight; // this too
 		bool isMutedLeft; // this too
 
+		DateTime started;
+		DateTime willEnd;
+
 
 	public: 
 		virtual property PlayerGUI^ gui { PlayerGUI^ get(); void set(PlayerGUI^ value); } 
@@ -48,7 +51,9 @@ namespace SoundBoard
 		virtual property int bassVolume{ int get(); void set(int value); } ;
 		virtual property int balanceVolume{ int get(); void set(int value); } ;
 		
-		virtual property int msLength{ int get(); void set(int value); } ;
+		virtual property int msLength{ int get();  void set(int value); } ;
+		virtual property int currentPosition{ int get(); void set(int value); } ;
+
 	private:
 		PlayerGUI^ _gui;
 		int _rightVolume;
