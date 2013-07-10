@@ -28,7 +28,6 @@ namespace SoundBoard
 
 		void static checkPlayingGUIs();
 
-
 	private: 
 		static FlowLayoutPanel^ flp;
 		static List<Player^>^ list_players = gcnew List<Player^>();

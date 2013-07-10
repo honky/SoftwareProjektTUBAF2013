@@ -35,12 +35,11 @@ namespace SoundBoard
 		if(!Directory::Exists(soundsFolder))
 		{
 			MessageBox::Show("No SoundFolder found. Please select, where your sound files are located. \n We suggest to choose a folder inside SoundBoard.");
-			//Windows::Forms::OpenFileDialog^ ofd = gcnew Windows::Forms::OpenFileDialog();
-			//ofd->InitialDirectory = Environment::CurrentDirectory;
-			//ofd->ShowDialog();
 			Windows::Forms::FolderBrowserDialog^ fbd = gcnew Windows::Forms::FolderBrowserDialog();
+			fbd->RootFolder = Environment::SpecialFolder::Personal;// Environment::CurrentDirectory;
 			fbd->Description ="We suggest to choose a folder inside SoundBoard.";
 			fbd->ShowDialog();
+
 
 			soundsFolder = fbd->SelectedPath;
 		}

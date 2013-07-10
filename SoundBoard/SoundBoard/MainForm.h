@@ -39,7 +39,7 @@ namespace SoundBoard {
 			flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
 
 			textBoxPlayCustom1->Text = configController->customSound1;
-			
+
 			textBoxPlayCustom2->Text = configController->customSound2;
 			textBoxPlayCustom3->Text = configController->customSound3;
 
@@ -699,21 +699,17 @@ namespace SoundBoard {
 
 	private: System::Void splitContainer1_Panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 			 }
-
 	private: System::Void flowLayoutPanelLeft_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 			 }
 	private: System::Void tableLayoutPanel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 			 }
 	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 			 }
-
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-
 				 PlayerGUI^ gB = gcnew PlayerGUI("snafu");			
 				 flowLayoutPanelRight->Controls->Add(gB);		
 			 }
 	private: System::Void MainForm_Load(System::Object^  sender, System::EventArgs^  e) {
-
 				 for each (SoundButtonGroup ^ sgb in configController->list_soundButtonGroups)
 				 {
 					 flowLayoutPanelButtonGroups->Controls->Add(sgb);
@@ -770,35 +766,32 @@ namespace SoundBoard {
 	private: System::Void buttonPlayCustom3_Click(System::Object^  sender, System::EventArgs^  e) {
 				 soundController->playCustomSound(textBoxPlayCustom2->Text);
 			 }
-
-
-			 
+	private: System::Void textBoxPlayCustom1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 ToolTip^ tt = gcnew ToolTip();
+				 tt->Show("Please click on this TextBox to change the path of the CustomSound1",textBoxPlayCustom1,0,0,2000);
+			 }
+	private: System::Void textBoxPlayCustom2_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 ToolTip^ tt = gcnew ToolTip();
+				 tt->Show("Please click on this TextBox to change the path of the CustomSound2",textBoxPlayCustom2,0,0,2000);
+			 }
+	private: System::Void textBoxPlayCustom3_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 ToolTip^ tt = gcnew ToolTip();
+				 tt->Show("Please click on this TextBox to change the path of the CustomSound3",textBoxPlayCustom3,0,0,2000);
+			 }
 	private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
 
 				 while(true) //(backgroundWorkerSoundController->ChancellationPending oder so
 				 {
 					 try
 					 {
-						 SoundController::checkPlayingGUIs();
+						 //SoundController::checkPlayingGUIs();
 					 }
 					 catch (Exception^ e)
 					 {
 						 MessageBox::Show(e->Message);
 					 }
-					 System::Threading::Thread::Sleep(1000);
+					 System::Threading::Thread::Sleep(100000);
 				 }
 			 }
-	private: System::Void textBoxPlayCustom1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-				 ToolTip^ tt = gcnew ToolTip();
-			     tt->Show("Please click on this TextBox to change the path of the CustomSound1",textBoxPlayCustom1,0,0,2000);
-			 }
-private: System::Void textBoxPlayCustom2_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			  ToolTip^ tt = gcnew ToolTip();
-			  tt->Show("Please click on this TextBox to change the path of the CustomSound2",textBoxPlayCustom2,0,0,2000);
-		 }
-private: System::Void textBoxPlayCustom3_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			  ToolTip^ tt = gcnew ToolTip();
-			  tt->Show("Please click on this TextBox to change the path of the CustomSound3",textBoxPlayCustom3,0,0,2000);
-		 }
-};
+	};
 }

@@ -232,7 +232,7 @@ namespace SoundBoard
 	int Player::currentPosition::get() { 
 		int currentPosition = 0;
 		DateTime snapShot = DateTime::Now;
-		if(DateTime::Compare(willEnd,willEnd) >= 0  )
+		if(DateTime::Compare(snapShot,willEnd) >= 0  )
 		{
 			return msLength;
 		}

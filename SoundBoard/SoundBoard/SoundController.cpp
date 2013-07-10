@@ -22,10 +22,12 @@ namespace SoundBoard
 				int length = eachPlayer->msLength; //eachPlayer->msLength;
 				int curPos = eachPlayer->currentPosition; //not working yet
 
-				if(length > 0 && curPos>= length)
+				if(length > 0 && curPos == length)
 				{
+					//stopping sound has highest priority
+					eachPlayer->stopSound();
 					flp->Controls->Remove(eachPlayer->gui);
-					list_players_remove->Add(eachPlayer);
+					list_players_remove->Add(eachPlayer);		
 				}
 			}
 			for each(Player^ eachPlayer in list_players_remove)
@@ -46,6 +48,7 @@ namespace SoundBoard
 
 	void SoundController::soundButton_Click(System::Object ^ sender, System::EventArgs^ e)
 	{
+		checkPlayingGUIs();
 		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
 		SoundController::play(sb);					
 	}
