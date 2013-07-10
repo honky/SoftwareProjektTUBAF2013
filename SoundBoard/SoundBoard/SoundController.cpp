@@ -13,9 +13,11 @@ namespace SoundBoard
 
 	void SoundController::checkPlayingGUIs()
 	{
+		//we use some kind of locking to improve stability
 		__int64 %trackRefCounter = _counter;
 		if(trackRefCounter!=0) { return; }
 
+		//this is the lock increment counter
 	    System::Threading::Interlocked::Increment(trackRefCounter);
 		
 		try 
@@ -44,23 +46,27 @@ namespace SoundBoard
 		}
 		catch(Exception^ e)
 		{
+			// when Button gets clicked heavy multiple times, this can occure.
 			Console::WriteLine(e->Message);
 		}
 		System::Threading::Interlocked::Decrement(trackRefCounter);
 	}
-
+	
+	//adds click event to SoundButton keeping full sound control
 	void SoundController::attachPlaySoundEventToSoundButton(SoundButton^ soundButton)
 	{
 		soundButton->Click += gcnew System::EventHandler(this, &SoundBoard::SoundController::soundButton_Click);
 	}
-
+	
+	//this is the soundButtonClick Event which gets triggered
 	void SoundController::soundButton_Click(System::Object ^ sender, System::EventArgs^ e)
 	{
 		checkPlayingGUIs();
 		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
 		SoundController::play(sb);					
 	}
-
+	
+	//plays a sound by path to sound file
 	bool SoundController::playCustomSound(String^ filePath)
 	{
 		try
@@ -77,10 +83,11 @@ namespace SoundBoard
 			return false;
 		}
 	}
-
+	
+	//plays a soundButton according to the context it has
 	bool SoundController::play(SoundButton^ sb)
 	{
-		if(list_players->Count < 4)
+		if(list_players->Count < 3)
 		{
 			PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
 			Sound^ blafu = sb->context->list_sounds[0];	
