@@ -307,6 +307,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeAll->TickFrequency = 100;
 			this->trackBarMasterVolumeAll->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeAll->Value = 500;
+			this->trackBarMasterVolumeAll->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeAll_ValueChanged);
 			// 
 			// groupBoxMasterVolumeLeft
 			// 
@@ -790,5 +791,7 @@ namespace SoundBoard {
 					 System::Threading::Thread::Sleep(100000);
 				 }
 			 }
-	};
+	private: System::Void trackBarMasterVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 }
+};
 }

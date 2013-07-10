@@ -65,6 +65,7 @@ namespace SoundBoard
 		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
 		SoundController::play(sb);					
 	}
+
 	
 	//plays a sound by path to sound file
 	bool SoundController::playCustomSound(String^ filePath)
@@ -89,17 +90,16 @@ namespace SoundBoard
 	{
 		if(list_players->Count < 3)
 		{
-			PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
-			Sound^ blafu = sb->context->list_sounds[0];	
-			gui->pictureBox->Width = 250;
-			gui->pictureBox->Height = 40;
-			//gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
+			Sound^ blafu = sb->context->list_sounds[0];
 			Player^ player = gcnew Player(blafu);
-			player->playSound();
-			player->gui = gui;
-			gui->pictureBox->Image = blafu->wf->Bmp;
-			flp->Controls->Add(gui);
+			player->playSound();	
+			player->gui->pictureBox->Width = 250;
+			player->gui->pictureBox->Height = 40;
+			player->gui->pictureBox->Image = blafu->wf->Bmp;
+			//gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;			
+			
 			list_players->Add(player);
+			flp->Controls->Add(player->gui);
 			return true;
 		}
 		else

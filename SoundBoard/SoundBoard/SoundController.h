@@ -15,6 +15,8 @@ namespace SoundBoard
 		SoundController(FlowLayoutPanel^ _flp);
 		void attachPlaySoundEventToSoundButton(SoundButton^ soundButton);
 		void soundButton_Click(System::Object ^ sender, System::EventArgs^ e);
+		
+
 		bool play(SoundButton^ sb);
 		bool playCustomSound(String^ filePath);
 
@@ -28,10 +30,10 @@ namespace SoundBoard
 
 		void static checkPlayingGUIs();
 		void changeVolumeMasterAll(int value);
-		void changeVolumeLeftAll(int
-		void changeVolumeRightAll(int
-		void changeBalanceAll(int
-		void changeTrebleAll(int
+		void changeVolumeLeftAll(int value);
+		void changeVolumeRightAll(int value);
+		void changeBalanceAll(int value);
+		void changeTrebleAll(int value);
 		void changeBassAll(int value);
 
 	private: 

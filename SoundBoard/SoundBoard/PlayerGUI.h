@@ -29,7 +29,7 @@ namespace SoundBoard
 		System::Windows::Forms::GroupBox^ groupBoxVolumeRight;
 
 	private :
-		System::Void buttonStop_Click(System::Object^  sender, System::EventArgs^  e);
+		
 				void initTableLayoutPanels(void);
 				void initButtons(void);
 				void initTrackBars(void);

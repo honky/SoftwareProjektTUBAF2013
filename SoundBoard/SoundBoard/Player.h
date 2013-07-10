@@ -68,6 +68,16 @@ namespace SoundBoard
 		
 		Player(Sound^ givenSound); //constructor
 		
+		void playerGUITrackbar_ValueVolumeAllChanged(System::Object ^ sender, System::EventArgs^ e);
+		void playerGUITrackbar_ValueVolumeLeftChanged(System::Object ^ sender, System::EventArgs^ e);
+		void playerGUITrackbar_ValueVolumeRightChanged(System::Object ^ sender, System::EventArgs^ e);
+		void playerGUITrackbar_ValueBalanceChanged(System::Object ^ sender, System::EventArgs^ e);
+		void playerGUITrackbar_ValueTrebleChanged(System::Object ^ sender, System::EventArgs^ e);
+		void playerGUITrackbar_ValueBassChanged(System::Object ^ sender, System::EventArgs^ e);
+
+		void buttonStop_Click(System::Object^  sender, System::EventArgs^  e);
+		void buttonPause_Click(System::Object^  sender, System::EventArgs^  e);
+
 		void playSound(void);
 		void playSound(Sound^ givenSound);
 

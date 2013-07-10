@@ -75,7 +75,7 @@ namespace SoundBoard
 
 		return gcnew String(rch);
 	}
-	
+
 	String^ Player::mciSendStringHandleResponse128(String^ givenHandle)
 	{ 
 		// just don't ask for mercy
@@ -90,7 +90,7 @@ namespace SoundBoard
 
 	void Player::playSound(void)
 	{
-		
+
 		//if empty dont do anything
 		if(currentSound== nullptr)
 		{
@@ -227,7 +227,7 @@ namespace SoundBoard
 		//nothing just a placeholder		
 	}
 
-	
+
 	//muting and volume control might be expanded for toggling each other
 	int Player::currentPosition::get() { 
 		int currentPosition = 0;
@@ -253,10 +253,70 @@ namespace SoundBoard
 		if(_gui == nullptr)
 		{
 			_gui = gcnew PlayerGUI("");
+			_gui->trackBarVolumeAll->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueVolumeAllChanged);
+			_gui->trackBarVolumeLeft->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueVolumeLeftChanged);
+			_gui->trackBarVolumeRight->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueVolumeRightChanged);
+			_gui->trackBarBalance->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueBalanceChanged);
+			_gui->trackBarTreble->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueTrebleChanged);
+			_gui->trackBarBass->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueBassChanged);
+			_gui->buttonStop->Click += gcnew System::EventHandler(this, &SoundBoard::Player::buttonStop_Click);
+			_gui->buttonPause->Click += gcnew System::EventHandler(this, &SoundBoard::Player::buttonPause_Click);
 		}
-		return _gui; }
+		return _gui; 
+	}
 	void Player::gui::set(PlayerGUI^ value) { 
 		_gui = value;			
+	}
+
+	void Player::playerGUITrackbar_ValueVolumeAllChanged(System::Object ^ sender, System::EventArgs^ e)
+	{
+		TrackBar^ tb = dynamic_cast<TrackBar^>(sender);
+		this->totalVolume = tb->Value;
+	}
+
+	void Player::playerGUITrackbar_ValueVolumeLeftChanged(System::Object ^ sender, System::EventArgs^ e)
+	{
+		TrackBar^ tb = dynamic_cast<TrackBar^>(sender);
+		this->leftVolume = tb->Value;
+	}
+	void Player::playerGUITrackbar_ValueVolumeRightChanged(System::Object ^ sender, System::EventArgs^ e)
+	{
+		TrackBar^ tb = dynamic_cast<TrackBar^>(sender);
+		this->rightVolume = tb->Value;
+	}
+	void Player::playerGUITrackbar_ValueBalanceChanged(System::Object ^ sender, System::EventArgs^ e)
+	{
+		TrackBar^ tb = dynamic_cast<TrackBar^>(sender);
+		this->balanceVolume = tb->Value;
+	}
+	void Player::playerGUITrackbar_ValueTrebleChanged(System::Object ^ sender, System::EventArgs^ e)
+	{
+		TrackBar^ tb = dynamic_cast<TrackBar^>(sender);
+		this->trebleVolume = tb->Value;
+	}
+	void Player::playerGUITrackbar_ValueBassChanged(System::Object ^ sender, System::EventArgs^ e)
+	{
+		TrackBar^ tb = dynamic_cast<TrackBar^>(sender);
+		this->bassVolume = tb->Value;
+	}
+	void Player::buttonStop_Click(System::Object ^ sender, System::EventArgs^ e)
+	{
+		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
+		this->stopSound();
+	}
+	void Player::buttonPause_Click(System::Object ^ sender, System::EventArgs^ e)
+	{
+		Button^ sb = dynamic_cast<Button^>(sender);
+		if(this->isPaused)
+		{
+			this->resumeSound();
+			sb->Text = "Pause";
+		}
+		else
+		{
+			this->pauseSound();
+			sb->Text = "Resume";
+		}
 	}
 
 	//muting and volume control might be expanded for toggling each other

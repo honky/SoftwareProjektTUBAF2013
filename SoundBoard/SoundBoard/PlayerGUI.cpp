@@ -82,7 +82,7 @@ namespace SoundBoard
 		this->buttonStop->Text = L"Stop";
 		this->buttonStop->UseVisualStyleBackColor = true;
 		this->buttonStop->Margin = System::Windows::Forms::Padding(0);
-		this->buttonStop->Click += gcnew System::EventHandler(this, &SoundBoard::PlayerGUI::buttonStop_Click);
+
 	}
 
 	void PlayerGUI::initTrackBars() {
@@ -99,68 +99,64 @@ namespace SoundBoard
 		this->initDefaultTrackBar(this->trackBarVolumeRight,this->groupBoxVolumeRight);
 		this->groupBoxVolumeRight->Text = L"Right";
 	}
-void PlayerGUI::buttonStop_Click(System::Object^  sender, System::EventArgs^  e) 
-			 {
-				 System::Windows::Forms::MessageBox::Show("Hallo");
-			 }
 
-			 void PlayerGUI::initPictureBox() {
+	void PlayerGUI::initPictureBox() {
 
 
 
-			 }
+	}
 
-			 void PlayerGUI::initDefaultTrackBar(System::Windows::Forms::TrackBar^ bar,System::Windows::Forms::GroupBox^ gb) {
-				 bar->LargeChange = 250;
-				 bar->Location = System::Drawing::Point(6, 19);
-				 bar->Maximum = 1000;
-				 bar->Orientation = System::Windows::Forms::Orientation::Vertical;
-				 bar->Size = System::Drawing::Size(45, 100);
-				 bar->TabIndex = 0;
-				 bar->TickFrequency = 100;
-				 bar->TickStyle = System::Windows::Forms::TickStyle::Both;
-				 bar->Value = 500;
-				 gb->Controls->Add(bar);
-				 gb->Margin = System::Windows::Forms::Padding(3);
-				 gb->Size = System::Drawing::Size(55, 125);
-				 gb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-					 static_cast<System::Byte>(0)));
-				 gb->TabStop = false;
+	void PlayerGUI::initDefaultTrackBar(System::Windows::Forms::TrackBar^ bar,System::Windows::Forms::GroupBox^ gb) {
+		bar->LargeChange = 250;
+		bar->Location = System::Drawing::Point(6, 19);
+		bar->Maximum = 1000;
+		bar->Orientation = System::Windows::Forms::Orientation::Vertical;
+		bar->Size = System::Drawing::Size(45, 100);
+		bar->TabIndex = 0;
+		bar->TickFrequency = 100;
+		bar->TickStyle = System::Windows::Forms::TickStyle::Both;
+		bar->Value = 500;
+		gb->Controls->Add(bar);
+		gb->Margin = System::Windows::Forms::Padding(3);
+		gb->Size = System::Drawing::Size(55, 125);
+		gb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			static_cast<System::Byte>(0)));
+		gb->TabStop = false;
 
-			 }
-			 void PlayerGUI::initFlowLayoutPanels() {
-				 this->initDefaultFlowLayoutPanel(this->flowLayoutPanelButtons);
+	}
+	void PlayerGUI::initFlowLayoutPanels() {
+		this->initDefaultFlowLayoutPanel(this->flowLayoutPanelButtons);
 
-				 this->flowLayoutPanelButtons->Controls->Add(this->buttonPause);
-				 this->flowLayoutPanelButtons->Controls->Add(this->buttonStop);
-				 this->flowLayoutPanelButtons->Dock = System::Windows::Forms::DockStyle::Fill;
-				 this->flowLayoutPanelButtons->Margin = System::Windows::Forms::Padding(0);
-				 this->flowLayoutPanelButtons->Name = L"flowLayoutPanelButtons";
-				 //	this->flowLayoutPanelButtons->Size = System::Drawing::Size(80, 200);
+		this->flowLayoutPanelButtons->Controls->Add(this->buttonPause);
+		this->flowLayoutPanelButtons->Controls->Add(this->buttonStop);
+		this->flowLayoutPanelButtons->Dock = System::Windows::Forms::DockStyle::Fill;
+		this->flowLayoutPanelButtons->Margin = System::Windows::Forms::Padding(0);
+		this->flowLayoutPanelButtons->Name = L"flowLayoutPanelButtons";
+		//	this->flowLayoutPanelButtons->Size = System::Drawing::Size(80, 200);
 
-				 this->initDefaultFlowLayoutPanel(this->flowLayoutPanelTrackBars);
-				 this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxVolumeAll);
-				 this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxVolumeLeft);
-				 this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxVolumeRight);
-				 this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxTreble);
-				 this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxBass);
-				 this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxBalance);
+		this->initDefaultFlowLayoutPanel(this->flowLayoutPanelTrackBars);
+		this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxVolumeAll);
+		this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxVolumeLeft);
+		this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxVolumeRight);
+		this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxTreble);
+		this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxBass);
+		this->flowLayoutPanelTrackBars->Controls->Add(this->groupBoxBalance);
 
-				 this->flowLayoutPanelTrackBars->Dock = System::Windows::Forms::DockStyle::Fill;
-				 this->flowLayoutPanelTrackBars->Margin = System::Windows::Forms::Padding(0);
-				 this->flowLayoutPanelTrackBars->Name = L"flowLayoutPanelTrackBars";
-				 this->flowLayoutPanelTrackBars->Size = System::Drawing::Size(80, 40);
-				 //	this->flowLayoutPanelButtons->BackColor = System::Drawing::SystemColors::ControlDark;
-				 //this->flowLayoutPanelTrackBars->BackColor = System::Drawing::SystemColors::ControlDark;
+		this->flowLayoutPanelTrackBars->Dock = System::Windows::Forms::DockStyle::Fill;
+		this->flowLayoutPanelTrackBars->Margin = System::Windows::Forms::Padding(0);
+		this->flowLayoutPanelTrackBars->Name = L"flowLayoutPanelTrackBars";
+		this->flowLayoutPanelTrackBars->Size = System::Drawing::Size(80, 40);
+		//	this->flowLayoutPanelButtons->BackColor = System::Drawing::SystemColors::ControlDark;
+		//this->flowLayoutPanelTrackBars->BackColor = System::Drawing::SystemColors::ControlDark;
 
 
-			 }
+	}
 
-			 void PlayerGUI::initDefaultFlowLayoutPanel(System::Windows::Forms::FlowLayoutPanel^ fp) 
-			 {
-				 fp->AutoScroll = true;
-				 fp->AutoSize = true;
-				 fp->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-				 fp->TabIndex = 1;
-			 }
-		 }
+	void PlayerGUI::initDefaultFlowLayoutPanel(System::Windows::Forms::FlowLayoutPanel^ fp) 
+	{
+		fp->AutoScroll = true;
+		fp->AutoSize = true;
+		fp->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+		fp->TabIndex = 1;
+	}
+}
