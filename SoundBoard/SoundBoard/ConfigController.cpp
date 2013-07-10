@@ -55,24 +55,32 @@ namespace SoundBoard
 	
 	DataTable^ ConfigController::getButtonGroupConfig(String^ _buttonGroupName)
 	{
-		DataTable^ dt = gcnew DataTable();	
-		dt->Columns->Add("Button Label");
-		dt->Columns->Add("Button Path");
-		dt->Columns->Add("Button Color");
-		dt->Columns->Add("Button Type");
-		dt->Columns->Add("Button Remove");
+		DataTable^ dt = gcnew DataTable();
 		
 		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
 		{	
-			for each (SoundButton^ sb in sbg->buttons)
+			String^ pathToBGC = configFolder+"/"+sbg->name+".xml";
+			if(sbg->name != _buttonGroupName) { continue; }
+			if(!File::Exists(pathToBGC))
 			{
-				DataRow^ row = dt->NewRow();
-				row["Button Label"] = sb->text;
-				row["Button Path"] = sb->soundButtonPath;
-				row["Button Color"] = sb->soundButtonColor;
-				row["Button Type"] = sb->soundButtonType;
-				row["Button Remove"] = "false";
-				dt->Rows->Add(row);
+					
+				dt->TableName = sbg->name;
+				dt->Columns->Add("Button Label");
+				dt->Columns->Add("Button Path");
+				dt->Columns->Add("Button Color");
+				dt->Columns->Add("Button Type");
+				dt->Columns->Add("Button Remove");
+				for each (SoundButton^ sb in sbg->buttons)
+				{
+					DataRow^ row = dt->NewRow();
+					row["Button Label"] = sb->text;
+					row["Button Path"] = sb->soundButtonPath;
+					row["Button Color"] = sb->soundButtonColor;
+					row["Button Type"] = sb->soundButtonType;
+					row["Button Remove"] = "false";
+					dt->Rows->Add(row);
+				}
+				dt->WriteXml(pathToBGC);
 			}
 		}
 
@@ -102,6 +110,7 @@ namespace SoundBoard
 				if(list_folderNamesToIgnore->Contains(Path::GetFileName(propablyButtonGroup)))	{ continue; }
 
 				SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
+				
 				array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
 				for each (String^ propablyButton in propablyButtons)
 				{	
@@ -120,6 +129,11 @@ namespace SoundBoard
 				
 			}
 			list_soundButtonGroups = list_return;
+		}
+		
+		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
+		{
+			getButtonGroupConfig(sbg->name);
 		}
 
 		return list_return;	
