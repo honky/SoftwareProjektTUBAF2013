@@ -12,6 +12,11 @@ namespace SoundBoard
 	public:
 		String^ configFolder;
 		String^ soundsFolder;
+		
+		String^ customSound1;
+		String^ customSound2;
+		String^ customSound3;
+
 		List<SoundButtonGroup^>^ list_soundButtonGroups;
 		SoundController^ soundController;
 

@@ -9,8 +9,13 @@ namespace SoundBoard
 
 	ConfigController::ConfigController(SoundController^ _soundController)
 	{
-		configFolder = Environment::CurrentDirectory+"/config/";
-		soundsFolder = Environment::CurrentDirectory+"/sounds/";
+		configFolder = Environment::CurrentDirectory+"\\config\\";
+		soundsFolder = Environment::CurrentDirectory+"\\sounds\\";
+		
+		customSound1 = soundsFolder + "custom/c1.mp3";
+		customSound2 = soundsFolder + "custom/c2.mp3";
+		customSound3 = soundsFolder + "custom/c3.mp3";
+		
 		this->soundController = _soundController;
 
 
@@ -21,17 +26,26 @@ namespace SoundBoard
 		list_folderNamesToIgnore->Add("..");
 		list_folderNamesToIgnore->Add(".");
 		list_folderNamesToIgnore->Add(".git");
+		list_folderNamesToIgnore->Add("custom");
 		
 
 
 		bool soundFolderChanged = false;
 
-		if(!File::Exists(soundsFolder))
+		if(!Directory::Exists(soundsFolder))
 		{
-			//go ask for it !
+			MessageBox::Show("No SoundFolder found. Please select, where your sound files are located. \n We suggest to choose a folder inside SoundBoard.");
+			//Windows::Forms::OpenFileDialog^ ofd = gcnew Windows::Forms::OpenFileDialog();
+			//ofd->InitialDirectory = Environment::CurrentDirectory;
+			//ofd->ShowDialog();
+			Windows::Forms::FolderBrowserDialog^ fbd = gcnew Windows::Forms::FolderBrowserDialog();
+			fbd->Description ="We suggest to choose a folder inside SoundBoard.";
+			fbd->ShowDialog();
+
+			soundsFolder = fbd->SelectedPath;
 		}
 
-		if(soundFolderChanged || !File::Exists(configFolder))
+		if(soundFolderChanged || !Directory::Exists(configFolder))
 		{
 			
 		}

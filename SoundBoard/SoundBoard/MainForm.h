@@ -37,6 +37,12 @@ namespace SoundBoard {
 			soundController =  gcnew SoundController(flowLayoutPanelRight);
 			configController = gcnew ConfigController(soundController);
 			flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
+
+			textBoxPlayCustom1->Text = configController->customSound1;
+			
+			textBoxPlayCustom2->Text = configController->customSound2;
+			textBoxPlayCustom3->Text = configController->customSound3;
+
 			backgroundWorkerSoundController->RunWorkerAsync();
 			//
 			//TODO: Add the constructor code here
@@ -218,7 +224,7 @@ namespace SoundBoard {
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 
 				366)));
-			this->tableLayoutPanelMain->Size = System::Drawing::Size(793, 620);
+			this->tableLayoutPanelMain->Size = System::Drawing::Size(802, 623);
 			this->tableLayoutPanelMain->TabIndex = 0;
 			// 
 			// flowLayoutPanelRight
@@ -227,9 +233,9 @@ namespace SoundBoard {
 				| System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->flowLayoutPanelRight->AutoScroll = true;
-			this->flowLayoutPanelRight->Location = System::Drawing::Point(399, 3);
+			this->flowLayoutPanelRight->Location = System::Drawing::Point(404, 3);
 			this->flowLayoutPanelRight->Name = L"flowLayoutPanelRight";
-			this->flowLayoutPanelRight->Size = System::Drawing::Size(391, 614);
+			this->flowLayoutPanelRight->Size = System::Drawing::Size(395, 617);
 			this->flowLayoutPanelRight->TabIndex = 1;
 			// 
 			// flowLayoutPanelLeft
@@ -244,7 +250,7 @@ namespace SoundBoard {
 			this->flowLayoutPanelLeft->Controls->Add(this->groupBox1);
 			this->flowLayoutPanelLeft->Location = System::Drawing::Point(3, 3);
 			this->flowLayoutPanelLeft->Name = L"flowLayoutPanelLeft";
-			this->flowLayoutPanelLeft->Size = System::Drawing::Size(390, 614);
+			this->flowLayoutPanelLeft->Size = System::Drawing::Size(395, 617);
 			this->flowLayoutPanelLeft->TabIndex = 2;
 			this->flowLayoutPanelLeft->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::flowLayoutPanelLeft_Paint);
 			// 
@@ -616,6 +622,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom1->TabIndex = 3;
 			this->textBoxPlayCustom1->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom1_DoubleClick);
 			this->textBoxPlayCustom1->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom1_Click);
+			this->textBoxPlayCustom1->MouseEnter += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom1_MouseEnter);
 			// 
 			// textBoxPlayCustom2
 			// 
@@ -626,6 +633,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom2->TabIndex = 4;
 			this->textBoxPlayCustom2->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom2_DoubleClick);
 			this->textBoxPlayCustom2->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom2_Click);
+			this->textBoxPlayCustom2->MouseEnter += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom2_MouseEnter);
 			// 
 			// textBoxPlayCustom3
 			// 
@@ -636,6 +644,7 @@ namespace SoundBoard {
 			this->textBoxPlayCustom3->TabIndex = 5;
 			this->textBoxPlayCustom3->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_DoubleClick);
 			this->textBoxPlayCustom3->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_Click);
+			this->textBoxPlayCustom3->MouseEnter += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_MouseEnter);
 			// 
 			// openFileDialogCustomSounds
 			// 
@@ -649,10 +658,10 @@ namespace SoundBoard {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(793, 620);
+			this->ClientSize = System::Drawing::Size(802, 623);
 			this->Controls->Add(this->tableLayoutPanelMain);
 			this->Name = L"MainForm";
-			this->Text = L"MainForm";
+			this->Text = L"SoundBoard SoftwareProjekt TUBAF 2013";
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->tableLayoutPanelMain->ResumeLayout(false);
 			this->flowLayoutPanelLeft->ResumeLayout(false);
@@ -779,5 +788,17 @@ namespace SoundBoard {
 					 System::Threading::Thread::Sleep(1000);
 				 }
 			 }
-	};
+	private: System::Void textBoxPlayCustom1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 ToolTip^ tt = gcnew ToolTip();
+			     tt->Show("Please click on this TextBox to change the path of the CustomSound1",textBoxPlayCustom1,0,0,2000);
+			 }
+private: System::Void textBoxPlayCustom2_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+			  ToolTip^ tt = gcnew ToolTip();
+			  tt->Show("Please click on this TextBox to change the path of the CustomSound2",textBoxPlayCustom2,0,0,2000);
+		 }
+private: System::Void textBoxPlayCustom3_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+			  ToolTip^ tt = gcnew ToolTip();
+			  tt->Show("Please click on this TextBox to change the path of the CustomSound3",textBoxPlayCustom3,0,0,2000);
+		 }
+};
 }
