@@ -23,6 +23,6 @@ namespace SoundBoard
 
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
 		List<String^>^ list_folderNamesToIgnore;
-		DataTable^ getConfig(String^ type);
+		DataTable^ getButtonGroupConfig(String^ type);
 	};
 }

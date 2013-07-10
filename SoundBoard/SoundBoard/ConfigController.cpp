@@ -53,7 +53,7 @@ namespace SoundBoard
 	}
 
 	
-	DataTable^ ConfigController::getConfig(String^ type)
+	DataTable^ ConfigController::getButtonGroupConfig(String^ _buttonGroupName)
 	{
 		DataTable^ dt = gcnew DataTable();	
 		dt->Columns->Add("Button Label");
@@ -67,6 +67,12 @@ namespace SoundBoard
 			for each (SoundButton^ sb in sbg->buttons)
 			{
 				DataRow^ row = dt->NewRow();
+				row["Button Label"] = sb->text;
+				row["Button Path"] = sb->soundButtonPath;
+				row["Button Color"] = sb->soundButtonColor;
+				row["Button Type"] = sb->soundButtonType;
+				row["Button Remove"] = "false";
+				dt->Rows->Add(row);
 			}
 		}
 
