@@ -82,6 +82,16 @@ namespace SoundBoard
 				}
 				dt->WriteXml(pathToBGC);
 			}
+			else
+			{
+				dt->TableName = sbg->name;
+				dt->Columns->Add("Button Label");
+				dt->Columns->Add("Button Path");
+				dt->Columns->Add("Button Color");
+				dt->Columns->Add("Button Type");
+				dt->Columns->Add("Button Remove");
+				dt->ReadXml(pathToBGC);
+			}
 		}
 
 		return dt;
