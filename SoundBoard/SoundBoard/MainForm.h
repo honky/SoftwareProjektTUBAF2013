@@ -594,6 +594,7 @@ namespace SoundBoard {
 			this->buttonPlayCustom2->TabIndex = 1;
 			this->buttonPlayCustom2->Text = L"Play Custom 2";
 			this->buttonPlayCustom2->UseVisualStyleBackColor = true;
+			this->buttonPlayCustom2->Click += gcnew System::EventHandler(this, &MainForm::buttonPlayCustom2_Click);
 			// 
 			// buttonPlayCustom3
 			// 
@@ -604,6 +605,7 @@ namespace SoundBoard {
 			this->buttonPlayCustom3->TabIndex = 2;
 			this->buttonPlayCustom3->Text = L"Play Custom 3";
 			this->buttonPlayCustom3->UseVisualStyleBackColor = true;
+			this->buttonPlayCustom3->Click += gcnew System::EventHandler(this, &MainForm::buttonPlayCustom3_Click);
 			// 
 			// textBoxPlayCustom1
 			// 
@@ -622,6 +624,8 @@ namespace SoundBoard {
 			this->textBoxPlayCustom2->Name = L"textBoxPlayCustom2";
 			this->textBoxPlayCustom2->Size = System::Drawing::Size(272, 20);
 			this->textBoxPlayCustom2->TabIndex = 4;
+			this->textBoxPlayCustom2->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom2_DoubleClick);
+			this->textBoxPlayCustom2->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom2_Click);
 			// 
 			// textBoxPlayCustom3
 			// 
@@ -630,6 +634,8 @@ namespace SoundBoard {
 			this->textBoxPlayCustom3->Name = L"textBoxPlayCustom3";
 			this->textBoxPlayCustom3->Size = System::Drawing::Size(272, 20);
 			this->textBoxPlayCustom3->TabIndex = 5;
+			this->textBoxPlayCustom3->DoubleClick += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_DoubleClick);
+			this->textBoxPlayCustom3->Click += gcnew System::EventHandler(this, &MainForm::textBoxPlayCustom3_Click);
 			// 
 			// openFileDialogCustomSounds
 			// 
@@ -733,13 +739,38 @@ namespace SoundBoard {
 	private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 soundController->playCustomSound(textBoxPlayCustom1->Text);
 			 }
+	private: System::Void textBoxPlayCustom2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 System::Windows::Forms::DialogResult^ d2 = openFileDialogCustomSounds->ShowDialog();
+				 textBoxPlayCustom2->Text = openFileDialogCustomSounds->FileName;
+			 }
+	private: System::Void textBoxPlayCustom2_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
+				 System::Windows::Forms::DialogResult^ d2 = openFileDialogCustomSounds->ShowDialog();
+				 textBoxPlayCustom2->Text = openFileDialogCustomSounds->FileName;
+			 }
+	private: System::Void buttonPlayCustom2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->playCustomSound(textBoxPlayCustom2->Text);
+			 }
+	private: System::Void textBoxPlayCustom3_Click(System::Object^  sender, System::EventArgs^  e) {
+				 System::Windows::Forms::DialogResult^ d3 = openFileDialogCustomSounds->ShowDialog();
+				 textBoxPlayCustom3->Text = openFileDialogCustomSounds->FileName;
+			 }
+	private: System::Void textBoxPlayCustom3_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
+				 System::Windows::Forms::DialogResult^ d3 = openFileDialogCustomSounds->ShowDialog();
+				 textBoxPlayCustom3->Text = openFileDialogCustomSounds->FileName;
+			 }
+	private: System::Void buttonPlayCustom3_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundController->playCustomSound(textBoxPlayCustom2->Text);
+			 }
+
+
+			 
 	private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
 
 				 while(true) //(backgroundWorkerSoundController->ChancellationPending oder so
 				 {
 					 try
 					 {
-						SoundController::checkPlayingGUIs();
+						 SoundController::checkPlayingGUIs();
 					 }
 					 catch (Exception^ e)
 					 {
