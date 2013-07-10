@@ -14,7 +14,9 @@ namespace SoundBoard
 		SoundButton(String^ text, SoundContext^ context);
 		System::Drawing::Color^ backgroundColor;
 		String^ text;
-		
+		String^ soundButtonPath;
+		String^ soundButtonType;
+		String^ soundButtonColor;
 		SoundContext^ context;
 	};
 

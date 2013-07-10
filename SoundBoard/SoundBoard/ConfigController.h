@@ -4,6 +4,7 @@
 namespace SoundBoard
 {
 	using namespace System::Collections::Generic;
+	using namespace System::Data;
 
 	ref class ConfigController
 	{
@@ -22,5 +23,6 @@ namespace SoundBoard
 
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
 		List<String^>^ list_folderNamesToIgnore;
+		DataTable^ getConfig(String^ type);
 	};
 }

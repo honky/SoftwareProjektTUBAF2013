@@ -5,6 +5,7 @@ namespace SoundBoard
 {
 	using namespace System;
 	using namespace System::IO;
+	using namespace System::Data;
 	using namespace System::Collections::Generic;
 
 	ConfigController::ConfigController(SoundController^ _soundController)
@@ -36,11 +37,9 @@ namespace SoundBoard
 		{
 			MessageBox::Show("No SoundFolder found. Please select, where your sound files are located. \n We suggest to choose a folder inside SoundBoard.");
 			Windows::Forms::FolderBrowserDialog^ fbd = gcnew Windows::Forms::FolderBrowserDialog();
-			fbd->RootFolder = Environment::SpecialFolder::Personal;// Environment::CurrentDirectory;
+			fbd->RootFolder = Environment::SpecialFolder::Personal; // Environment::CurrentDirectory;
 			fbd->Description ="We suggest to choose a folder inside SoundBoard.";
 			fbd->ShowDialog();
-
-
 			soundsFolder = fbd->SelectedPath;
 		}
 
@@ -53,43 +52,70 @@ namespace SoundBoard
 		this->list_soundButtonGroups = this->createDefaultButtonGroups();
 	}
 
+	
+	DataTable^ ConfigController::getConfig(String^ type)
+	{
+		DataTable^ dt = gcnew DataTable();	
+		dt->Columns->Add("Button Label");
+		dt->Columns->Add("Button Path");
+		dt->Columns->Add("Button Color");
+		dt->Columns->Add("Button Type");
+		dt->Columns->Add("Button Remove");
+		
+		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
+		{	
+			for each (SoundButton^ sb in sbg->buttons)
+			{
+				DataRow^ row = dt->NewRow();
+			}
+		}
+
+		return dt;
+	}
+
+
 	List<SoundButtonGroup^>^ ConfigController::createDefaultButtonGroups()
 	{
-		if(!File::Exists(configFolder))
-		{
-			Directory::CreateDirectory(configFolder);
-		}
-
 		List<SoundButtonGroup^>^ list_return = gcnew List<SoundButtonGroup^>();
 		
-		//we expect all folders in the sound root to be a button group
-		array<String^>^ propablyButtonGroups = Directory::GetDirectories(soundsFolder);
-
-		for each (String^ propablyButtonGroup in propablyButtonGroups)
+		if(list_soundButtonGroups == nullptr || list_soundButtonGroups->Count == 0)
 		{
-			//we skip several folder files
-			if(list_folderNamesToIgnore->Contains(Path::GetFileName(propablyButtonGroup)))	{ continue; }
+			if(!File::Exists(configFolder))
+			{
+				Directory::CreateDirectory(configFolder);
+			}
 
-			SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
-			array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
-			for each (String^ propablyButton in propablyButtons)
-			{	
-				array<String^>^ probablyButtonFiles = Directory::GetFiles(propablyButton);
-				
-				if(probablyButtonFiles->Length != 0)
-				{
-					SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
-					SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc);
-					soundController->attachPlaySoundEventToSoundButton(sb);
-					sbg->addSoundButton(sb);
+			
+			
+			//we expect all folders in the sound root to be a button group
+			array<String^>^ propablyButtonGroups = Directory::GetDirectories(soundsFolder);
+
+			for each (String^ propablyButtonGroup in propablyButtonGroups)
+			{
+				//we skip several folder files
+				if(list_folderNamesToIgnore->Contains(Path::GetFileName(propablyButtonGroup)))	{ continue; }
+
+				SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
+				array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
+				for each (String^ propablyButton in propablyButtons)
+				{	
+					array<String^>^ probablyButtonFiles = Directory::GetFiles(propablyButton);
+					
+					if(probablyButtonFiles->Length != 0)
+					{
+						SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
+						SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc);
+						soundController->attachPlaySoundEventToSoundButton(sb);
+						sbg->addSoundButton(sb);
+					}
+					
 				}
+				list_return->Add(sbg);
 				
 			}
-			list_return->Add(sbg);
-			
+			list_soundButtonGroups = list_return;
 		}
 
-		
 		return list_return;	
 	}
 }
