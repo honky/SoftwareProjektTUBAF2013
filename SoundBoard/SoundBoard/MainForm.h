@@ -334,6 +334,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeLeft->TickFrequency = 100;
 			this->trackBarMasterVolumeLeft->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeLeft->Value = 500;
+			this->trackBarMasterVolumeLeft->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeLeft_ValueChanged);
 			// 
 			// groupBoxMasterVolumeRight
 			// 
@@ -360,6 +361,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeRight->TickFrequency = 100;
 			this->trackBarMasterVolumeRight->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeRight->Value = 500;
+			this->trackBarMasterVolumeRight->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeRight_ValueChanged);
 			// 
 			// groupBoxMasterVolumeTreble
 			// 
@@ -385,6 +387,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeTreble->TickFrequency = 100;
 			this->trackBarMasterVolumeTreble->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeTreble->Value = 500;
+			this->trackBarMasterVolumeTreble->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeTreble_ValueChanged);
 			// 
 			// groupBoxMasterVolumeBass
 			// 
@@ -410,6 +413,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBass->TickFrequency = 100;
 			this->trackBarMasterVolumeBass->TickStyle = System::Windows::Forms::TickStyle::Both;
 			this->trackBarMasterVolumeBass->Value = 500;
+			this->trackBarMasterVolumeBass->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeBass_ValueChanged);
 			// 
 			// groupBoxMasterVolumeBalance
 			// 
@@ -435,6 +439,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBalance->TabIndex = 0;
 			this->trackBarMasterVolumeBalance->TickFrequency = 200;
 			this->trackBarMasterVolumeBalance->TickStyle = System::Windows::Forms::TickStyle::Both;
+			this->trackBarMasterVolumeBalance->ValueChanged += gcnew System::EventHandler(this, &MainForm::trackBarMasterVolumeBalance_ValueChanged);
 			// 
 			// groupBoxMasterPlayer
 			// 
@@ -791,7 +796,23 @@ namespace SoundBoard {
 					 System::Threading::Thread::Sleep(100000);
 				 }
 			 }
-	private: System::Void trackBarMasterVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
-			 }
+private: System::Void trackBarMasterVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->soundController->changeVolumeMasterAll(this->trackBarMasterVolumeAll->Value);
+		 }
+private: System::Void trackBarMasterVolumeLeft_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->soundController->changeVolumeLeftAll(this->trackBarMasterVolumeLeft->Value);
+		 }
+private: System::Void trackBarMasterVolumeRight_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->soundController->changeVolumeRightAll(this->trackBarMasterVolumeRight->Value);
+		 }
+private: System::Void trackBarMasterVolumeTreble_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->soundController->changeTrebleAll(this->trackBarMasterVolumeTreble->Value);
+		 }
+private: System::Void trackBarMasterVolumeBass_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->soundController->changeBassAll(this->trackBarMasterVolumeBass->Value);
+		 }
+private: System::Void trackBarMasterVolumeBalance_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+			 this->soundController->changeBalanceAll(this->trackBarMasterVolumeBalance->Value);
+		 }
 };
 }
