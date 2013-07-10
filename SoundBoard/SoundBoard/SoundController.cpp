@@ -13,38 +13,46 @@ namespace SoundBoard
 
 	void SoundController::checkPlayingGUIs()
 	{
-		if(list_players->Count > 0)
-		{
-			
-			List<Player^>^ list_players_remove = gcnew List<Player^>();
-			for each(Player^ eachPlayer in list_players)
-			{
-				int length = eachPlayer->msLength; //eachPlayer->msLength;
-				int curPos = eachPlayer->currentPosition; //not working yet
+		__int64 %trackRefCounter = _counter;
+		if(trackRefCounter!=0) { return; }
 
-				if(length > 0 && curPos == length)
+	    System::Threading::Interlocked::Increment(trackRefCounter);
+		
+		try 
+		{
+			if(list_players->Count > 0)
+			{
+				List<Player^>^ list_players_remove = gcnew List<Player^>();
+				for each(Player^ eachPlayer in list_players)
 				{
-					//stopping sound has highest priority
-					eachPlayer->stopSound();
-					flp->Controls->Remove(eachPlayer->gui);
-					list_players_remove->Add(eachPlayer);		
+					int length = eachPlayer->msLength; //eachPlayer->msLength;
+					int curPos = eachPlayer->currentPosition; //not working yet
+
+					if(length > 0 && curPos == length)
+					{
+						//stopping sound has highest priority
+						eachPlayer->stopSound();
+						flp->Controls->Remove(eachPlayer->gui);
+						list_players_remove->Add(eachPlayer);		
+					}
+				}
+				for each(Player^ eachPlayer in list_players_remove)
+				{
+					list_players->Remove(eachPlayer);
 				}
 			}
-			for each(Player^ eachPlayer in list_players_remove)
-			{
-				list_players->Remove(eachPlayer);
-			}
-			
 		}
-
+		catch(Exception^ e)
+		{
+			Console::WriteLine(e->Message);
+		}
+		System::Threading::Interlocked::Decrement(trackRefCounter);
 	}
 
 	void SoundController::attachPlaySoundEventToSoundButton(SoundButton^ soundButton)
 	{
 		soundButton->Click += gcnew System::EventHandler(this, &SoundBoard::SoundController::soundButton_Click);
 	}
-
-
 
 	void SoundController::soundButton_Click(System::Object ^ sender, System::EventArgs^ e)
 	{
@@ -71,19 +79,26 @@ namespace SoundBoard
 	}
 
 	bool SoundController::play(SoundButton^ sb)
-	{		
-		PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
-		Sound^ blafu = sb->context->list_sounds[0];	
-		gui->pictureBox->Width = 250;
-		gui->pictureBox->Height = 40;
-		//gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
-		Player^ player = gcnew Player(blafu);
-		player->playSound();
-		player->gui = gui;
-		gui->pictureBox->Image = blafu->wf->Bmp;
-		flp->Controls->Add(gui);
-		list_players->Add(player);
-		return true;
+	{
+		if(list_players->Count < 4)
+		{
+			PlayerGUI^ gui = gcnew PlayerGUI(sb->text);
+			Sound^ blafu = sb->context->list_sounds[0];	
+			gui->pictureBox->Width = 250;
+			gui->pictureBox->Height = 40;
+			//gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
+			Player^ player = gcnew Player(blafu);
+			player->playSound();
+			player->gui = gui;
+			gui->pictureBox->Image = blafu->wf->Bmp;
+			flp->Controls->Add(gui);
+			list_players->Add(player);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	void SoundController::pauseAll()

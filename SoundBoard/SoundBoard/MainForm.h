@@ -36,17 +36,14 @@ namespace SoundBoard {
 			InitializeComponent();
 			soundController =  gcnew SoundController(flowLayoutPanelRight);
 			configController = gcnew ConfigController(soundController);
-			flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
+			//flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
 
 			textBoxPlayCustom1->Text = configController->customSound1;
-
 			textBoxPlayCustom2->Text = configController->customSound2;
 			textBoxPlayCustom3->Text = configController->customSound3;
 
-			backgroundWorkerSoundController->RunWorkerAsync();
-			//
-			//TODO: Add the constructor code here
-			//
+			//backgroundWorkerSoundController->RunWorkerAsync();
+
 		}
 
 	protected:
