@@ -158,5 +158,53 @@ namespace SoundBoard
 
 		}
 	}
+	 void SoundController::changeVolumeMasterAll(int value)
+    {
+        for each(Player^ p in list_players)
+        {
+            p->leftVolume = value;
+            p->rightVolume = value;
+        }
+    }
+
+    void SoundController::changeVolumeLeftAll(int value)
+    {
+        for each(Player^ p in list_players)
+        {
+            p->leftVolume = value;
+        }
+    }
+
+    void SoundController::changeVolumeRightAll(int value)
+    {
+        for each(Player^ p in list_players)
+        {
+            p->rightVolume = value;
+        }
+    }
+
+    void SoundController::changeBalanceAll(int value)
+    {
+        for each(Player^ p in list_players)
+        {
+            p->balanceVolume = value;
+        }
+    }
+
+    void SoundController::changeTrebleAll(int value)
+    {
+        for each(Player^ p in list_players)
+        {
+            p->trebleVolume = value;
+        }
+    }
+
+    void SoundController::changeBassAll(int value)
+    {
+        for each(Player^ p in list_players)
+        {
+            p->bassVolume = value;
+        }
+    }
 
 }

@@ -27,6 +27,12 @@ namespace SoundBoard
 		void stopLast();
 
 		void static checkPlayingGUIs();
+		void changeVolumeMasterAll(int value);
+		void changeVolumeLeftAll(int
+		void changeVolumeRightAll(int
+		void changeBalanceAll(int
+		void changeTrebleAll(int
+		void changeBassAll(int value);
 
 	private: 
 		static __int64 _counter = 0;

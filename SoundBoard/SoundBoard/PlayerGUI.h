@@ -21,7 +21,7 @@ namespace SoundBoard
 		System::Windows::Forms::TableLayoutPanel^  tableLayoutPanelTop;
 		System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanelTrackBars;
 		System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanelButtons;
-				System::Windows::Forms::GroupBox^ groupBoxBalance;
+		System::Windows::Forms::GroupBox^ groupBoxBalance;
 		System::Windows::Forms::GroupBox^ groupBoxBass;
 		System::Windows::Forms::GroupBox^ groupBoxTreble;
 		System::Windows::Forms::GroupBox^ groupBoxVolumeAll;
