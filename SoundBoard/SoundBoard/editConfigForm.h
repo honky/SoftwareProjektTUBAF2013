@@ -427,6 +427,42 @@ private: System::Windows::Forms::TextBox^  textBox84;
 			this->comboBox22 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox23 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox24 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox37 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox38 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox39 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox40 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox41 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox42 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox43 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox44 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox45 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox46 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox47 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox48 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox49 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox50 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox51 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox52 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox53 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox54 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox55 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox56 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox57 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox58 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox59 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox60 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox61 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox62 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox63 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox64 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox65 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox66 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox67 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox68 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox69 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox70 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox71 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox72 = (gcnew System::Windows::Forms::TextBox());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
 			this->tableLayoutPanel3 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->label9 = (gcnew System::Windows::Forms::Label());
@@ -481,42 +517,6 @@ private: System::Windows::Forms::TextBox^  textBox84;
 			this->comboBox34 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox35 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox36 = (gcnew System::Windows::Forms::ComboBox());
-			this->textBox37 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox38 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox39 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox40 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox41 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox42 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox43 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox44 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox45 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox46 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox47 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox48 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox49 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox50 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox51 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox52 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox53 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox54 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox55 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox56 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox57 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox58 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox59 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox60 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox61 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox62 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox63 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox64 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox65 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox66 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox67 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox68 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox69 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox70 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox71 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox72 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox73 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox74 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox75 = (gcnew System::Windows::Forms::TextBox());
@@ -1863,6 +1863,402 @@ private: System::Windows::Forms::TextBox^  textBox84;
 			this->comboBox24->TabIndex = 63;
 			this->comboBox24->Visible = false;
 			// 
+			// textBox37
+			// 
+			this->textBox37->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox37->Location = System::Drawing::Point(3, 43);
+			this->textBox37->Name = L"textBox37";
+			this->textBox37->Size = System::Drawing::Size(111, 20);
+			this->textBox37->TabIndex = 64;
+			this->textBox37->Visible = false;
+			// 
+			// textBox38
+			// 
+			this->textBox38->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox38->Location = System::Drawing::Point(3, 83);
+			this->textBox38->Name = L"textBox38";
+			this->textBox38->Size = System::Drawing::Size(111, 20);
+			this->textBox38->TabIndex = 65;
+			this->textBox38->Visible = false;
+			// 
+			// textBox39
+			// 
+			this->textBox39->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox39->Location = System::Drawing::Point(3, 123);
+			this->textBox39->Name = L"textBox39";
+			this->textBox39->Size = System::Drawing::Size(111, 20);
+			this->textBox39->TabIndex = 66;
+			this->textBox39->Visible = false;
+			// 
+			// textBox40
+			// 
+			this->textBox40->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox40->Location = System::Drawing::Point(3, 163);
+			this->textBox40->Name = L"textBox40";
+			this->textBox40->Size = System::Drawing::Size(111, 20);
+			this->textBox40->TabIndex = 67;
+			this->textBox40->Visible = false;
+			// 
+			// textBox41
+			// 
+			this->textBox41->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox41->Location = System::Drawing::Point(3, 203);
+			this->textBox41->Name = L"textBox41";
+			this->textBox41->Size = System::Drawing::Size(111, 20);
+			this->textBox41->TabIndex = 68;
+			this->textBox41->Visible = false;
+			// 
+			// textBox42
+			// 
+			this->textBox42->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox42->Location = System::Drawing::Point(3, 243);
+			this->textBox42->Name = L"textBox42";
+			this->textBox42->Size = System::Drawing::Size(111, 20);
+			this->textBox42->TabIndex = 69;
+			this->textBox42->Visible = false;
+			// 
+			// textBox43
+			// 
+			this->textBox43->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox43->Location = System::Drawing::Point(3, 283);
+			this->textBox43->Name = L"textBox43";
+			this->textBox43->Size = System::Drawing::Size(111, 20);
+			this->textBox43->TabIndex = 70;
+			this->textBox43->Visible = false;
+			// 
+			// textBox44
+			// 
+			this->textBox44->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox44->Location = System::Drawing::Point(3, 323);
+			this->textBox44->Name = L"textBox44";
+			this->textBox44->Size = System::Drawing::Size(111, 20);
+			this->textBox44->TabIndex = 71;
+			this->textBox44->Visible = false;
+			// 
+			// textBox45
+			// 
+			this->textBox45->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox45->Location = System::Drawing::Point(3, 363);
+			this->textBox45->Name = L"textBox45";
+			this->textBox45->Size = System::Drawing::Size(111, 20);
+			this->textBox45->TabIndex = 72;
+			this->textBox45->Visible = false;
+			// 
+			// textBox46
+			// 
+			this->textBox46->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox46->Location = System::Drawing::Point(3, 403);
+			this->textBox46->Name = L"textBox46";
+			this->textBox46->Size = System::Drawing::Size(111, 20);
+			this->textBox46->TabIndex = 73;
+			this->textBox46->Visible = false;
+			// 
+			// textBox47
+			// 
+			this->textBox47->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox47->Location = System::Drawing::Point(3, 443);
+			this->textBox47->Name = L"textBox47";
+			this->textBox47->Size = System::Drawing::Size(111, 20);
+			this->textBox47->TabIndex = 74;
+			this->textBox47->Visible = false;
+			// 
+			// textBox48
+			// 
+			this->textBox48->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox48->Location = System::Drawing::Point(3, 483);
+			this->textBox48->Name = L"textBox48";
+			this->textBox48->Size = System::Drawing::Size(111, 20);
+			this->textBox48->TabIndex = 75;
+			this->textBox48->Visible = false;
+			// 
+			// textBox49
+			// 
+			this->textBox49->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox49->Location = System::Drawing::Point(120, 43);
+			this->textBox49->Name = L"textBox49";
+			this->textBox49->Size = System::Drawing::Size(111, 20);
+			this->textBox49->TabIndex = 76;
+			this->textBox49->Visible = false;
+			// 
+			// textBox50
+			// 
+			this->textBox50->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox50->Location = System::Drawing::Point(120, 83);
+			this->textBox50->Name = L"textBox50";
+			this->textBox50->Size = System::Drawing::Size(111, 20);
+			this->textBox50->TabIndex = 77;
+			this->textBox50->Visible = false;
+			// 
+			// textBox51
+			// 
+			this->textBox51->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox51->Location = System::Drawing::Point(120, 123);
+			this->textBox51->Name = L"textBox51";
+			this->textBox51->Size = System::Drawing::Size(111, 20);
+			this->textBox51->TabIndex = 78;
+			this->textBox51->Visible = false;
+			// 
+			// textBox52
+			// 
+			this->textBox52->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox52->Location = System::Drawing::Point(120, 163);
+			this->textBox52->Name = L"textBox52";
+			this->textBox52->Size = System::Drawing::Size(111, 20);
+			this->textBox52->TabIndex = 79;
+			this->textBox52->Visible = false;
+			// 
+			// textBox53
+			// 
+			this->textBox53->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox53->Location = System::Drawing::Point(120, 203);
+			this->textBox53->Name = L"textBox53";
+			this->textBox53->Size = System::Drawing::Size(111, 20);
+			this->textBox53->TabIndex = 80;
+			this->textBox53->Visible = false;
+			// 
+			// textBox54
+			// 
+			this->textBox54->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox54->Location = System::Drawing::Point(120, 243);
+			this->textBox54->Name = L"textBox54";
+			this->textBox54->Size = System::Drawing::Size(111, 20);
+			this->textBox54->TabIndex = 81;
+			this->textBox54->Visible = false;
+			// 
+			// textBox55
+			// 
+			this->textBox55->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox55->Location = System::Drawing::Point(120, 283);
+			this->textBox55->Name = L"textBox55";
+			this->textBox55->Size = System::Drawing::Size(111, 20);
+			this->textBox55->TabIndex = 82;
+			this->textBox55->Visible = false;
+			// 
+			// textBox56
+			// 
+			this->textBox56->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox56->Location = System::Drawing::Point(120, 323);
+			this->textBox56->Name = L"textBox56";
+			this->textBox56->Size = System::Drawing::Size(111, 20);
+			this->textBox56->TabIndex = 83;
+			this->textBox56->Visible = false;
+			// 
+			// textBox57
+			// 
+			this->textBox57->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox57->Location = System::Drawing::Point(120, 363);
+			this->textBox57->Name = L"textBox57";
+			this->textBox57->Size = System::Drawing::Size(111, 20);
+			this->textBox57->TabIndex = 84;
+			this->textBox57->Visible = false;
+			// 
+			// textBox58
+			// 
+			this->textBox58->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox58->Location = System::Drawing::Point(120, 403);
+			this->textBox58->Name = L"textBox58";
+			this->textBox58->Size = System::Drawing::Size(111, 20);
+			this->textBox58->TabIndex = 85;
+			this->textBox58->Visible = false;
+			// 
+			// textBox59
+			// 
+			this->textBox59->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox59->Location = System::Drawing::Point(120, 443);
+			this->textBox59->Name = L"textBox59";
+			this->textBox59->Size = System::Drawing::Size(111, 20);
+			this->textBox59->TabIndex = 86;
+			this->textBox59->Visible = false;
+			// 
+			// textBox60
+			// 
+			this->textBox60->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox60->Location = System::Drawing::Point(120, 483);
+			this->textBox60->Name = L"textBox60";
+			this->textBox60->Size = System::Drawing::Size(111, 20);
+			this->textBox60->TabIndex = 87;
+			this->textBox60->Visible = false;
+			// 
+			// textBox61
+			// 
+			this->textBox61->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox61->Location = System::Drawing::Point(237, 43);
+			this->textBox61->Name = L"textBox61";
+			this->textBox61->Size = System::Drawing::Size(111, 20);
+			this->textBox61->TabIndex = 88;
+			this->textBox61->Visible = false;
+			// 
+			// textBox62
+			// 
+			this->textBox62->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox62->Location = System::Drawing::Point(237, 83);
+			this->textBox62->Name = L"textBox62";
+			this->textBox62->Size = System::Drawing::Size(111, 20);
+			this->textBox62->TabIndex = 89;
+			this->textBox62->Visible = false;
+			// 
+			// textBox63
+			// 
+			this->textBox63->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox63->Location = System::Drawing::Point(237, 123);
+			this->textBox63->Name = L"textBox63";
+			this->textBox63->Size = System::Drawing::Size(111, 20);
+			this->textBox63->TabIndex = 90;
+			this->textBox63->Visible = false;
+			// 
+			// textBox64
+			// 
+			this->textBox64->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox64->Location = System::Drawing::Point(237, 163);
+			this->textBox64->Name = L"textBox64";
+			this->textBox64->Size = System::Drawing::Size(111, 20);
+			this->textBox64->TabIndex = 91;
+			this->textBox64->Visible = false;
+			// 
+			// textBox65
+			// 
+			this->textBox65->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox65->Location = System::Drawing::Point(237, 203);
+			this->textBox65->Name = L"textBox65";
+			this->textBox65->Size = System::Drawing::Size(111, 20);
+			this->textBox65->TabIndex = 92;
+			this->textBox65->Visible = false;
+			// 
+			// textBox66
+			// 
+			this->textBox66->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox66->Location = System::Drawing::Point(237, 243);
+			this->textBox66->Name = L"textBox66";
+			this->textBox66->Size = System::Drawing::Size(111, 20);
+			this->textBox66->TabIndex = 93;
+			this->textBox66->Visible = false;
+			// 
+			// textBox67
+			// 
+			this->textBox67->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox67->Location = System::Drawing::Point(237, 283);
+			this->textBox67->Name = L"textBox67";
+			this->textBox67->Size = System::Drawing::Size(111, 20);
+			this->textBox67->TabIndex = 94;
+			this->textBox67->Visible = false;
+			// 
+			// textBox68
+			// 
+			this->textBox68->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox68->Location = System::Drawing::Point(237, 323);
+			this->textBox68->Name = L"textBox68";
+			this->textBox68->Size = System::Drawing::Size(111, 20);
+			this->textBox68->TabIndex = 95;
+			this->textBox68->Visible = false;
+			// 
+			// textBox69
+			// 
+			this->textBox69->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox69->Location = System::Drawing::Point(237, 363);
+			this->textBox69->Name = L"textBox69";
+			this->textBox69->Size = System::Drawing::Size(111, 20);
+			this->textBox69->TabIndex = 96;
+			this->textBox69->Visible = false;
+			// 
+			// textBox70
+			// 
+			this->textBox70->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox70->Location = System::Drawing::Point(237, 403);
+			this->textBox70->Name = L"textBox70";
+			this->textBox70->Size = System::Drawing::Size(111, 20);
+			this->textBox70->TabIndex = 97;
+			this->textBox70->Visible = false;
+			// 
+			// textBox71
+			// 
+			this->textBox71->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox71->Location = System::Drawing::Point(237, 443);
+			this->textBox71->Name = L"textBox71";
+			this->textBox71->Size = System::Drawing::Size(111, 20);
+			this->textBox71->TabIndex = 98;
+			this->textBox71->Visible = false;
+			// 
+			// textBox72
+			// 
+			this->textBox72->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox72->Location = System::Drawing::Point(237, 483);
+			this->textBox72->Name = L"textBox72";
+			this->textBox72->Size = System::Drawing::Size(111, 20);
+			this->textBox72->TabIndex = 99;
+			this->textBox72->Visible = false;
+			// 
 			// tabPage3
 			// 
 			this->tabPage3->Controls->Add(this->tableLayoutPanel3);
@@ -2582,402 +2978,6 @@ private: System::Windows::Forms::TextBox^  textBox84;
 			this->comboBox36->Size = System::Drawing::Size(111, 21);
 			this->comboBox36->TabIndex = 63;
 			this->comboBox36->Visible = false;
-			// 
-			// textBox37
-			// 
-			this->textBox37->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox37->Location = System::Drawing::Point(3, 43);
-			this->textBox37->Name = L"textBox37";
-			this->textBox37->Size = System::Drawing::Size(111, 20);
-			this->textBox37->TabIndex = 64;
-			this->textBox37->Visible = false;
-			// 
-			// textBox38
-			// 
-			this->textBox38->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox38->Location = System::Drawing::Point(3, 83);
-			this->textBox38->Name = L"textBox38";
-			this->textBox38->Size = System::Drawing::Size(111, 20);
-			this->textBox38->TabIndex = 65;
-			this->textBox38->Visible = false;
-			// 
-			// textBox39
-			// 
-			this->textBox39->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox39->Location = System::Drawing::Point(3, 123);
-			this->textBox39->Name = L"textBox39";
-			this->textBox39->Size = System::Drawing::Size(111, 20);
-			this->textBox39->TabIndex = 66;
-			this->textBox39->Visible = false;
-			// 
-			// textBox40
-			// 
-			this->textBox40->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox40->Location = System::Drawing::Point(3, 163);
-			this->textBox40->Name = L"textBox40";
-			this->textBox40->Size = System::Drawing::Size(111, 20);
-			this->textBox40->TabIndex = 67;
-			this->textBox40->Visible = false;
-			// 
-			// textBox41
-			// 
-			this->textBox41->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox41->Location = System::Drawing::Point(3, 203);
-			this->textBox41->Name = L"textBox41";
-			this->textBox41->Size = System::Drawing::Size(111, 20);
-			this->textBox41->TabIndex = 68;
-			this->textBox41->Visible = false;
-			// 
-			// textBox42
-			// 
-			this->textBox42->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox42->Location = System::Drawing::Point(3, 243);
-			this->textBox42->Name = L"textBox42";
-			this->textBox42->Size = System::Drawing::Size(111, 20);
-			this->textBox42->TabIndex = 69;
-			this->textBox42->Visible = false;
-			// 
-			// textBox43
-			// 
-			this->textBox43->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox43->Location = System::Drawing::Point(3, 283);
-			this->textBox43->Name = L"textBox43";
-			this->textBox43->Size = System::Drawing::Size(111, 20);
-			this->textBox43->TabIndex = 70;
-			this->textBox43->Visible = false;
-			// 
-			// textBox44
-			// 
-			this->textBox44->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox44->Location = System::Drawing::Point(3, 323);
-			this->textBox44->Name = L"textBox44";
-			this->textBox44->Size = System::Drawing::Size(111, 20);
-			this->textBox44->TabIndex = 71;
-			this->textBox44->Visible = false;
-			// 
-			// textBox45
-			// 
-			this->textBox45->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox45->Location = System::Drawing::Point(3, 363);
-			this->textBox45->Name = L"textBox45";
-			this->textBox45->Size = System::Drawing::Size(111, 20);
-			this->textBox45->TabIndex = 72;
-			this->textBox45->Visible = false;
-			// 
-			// textBox46
-			// 
-			this->textBox46->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox46->Location = System::Drawing::Point(3, 403);
-			this->textBox46->Name = L"textBox46";
-			this->textBox46->Size = System::Drawing::Size(111, 20);
-			this->textBox46->TabIndex = 73;
-			this->textBox46->Visible = false;
-			// 
-			// textBox47
-			// 
-			this->textBox47->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox47->Location = System::Drawing::Point(3, 443);
-			this->textBox47->Name = L"textBox47";
-			this->textBox47->Size = System::Drawing::Size(111, 20);
-			this->textBox47->TabIndex = 74;
-			this->textBox47->Visible = false;
-			// 
-			// textBox48
-			// 
-			this->textBox48->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox48->Location = System::Drawing::Point(3, 483);
-			this->textBox48->Name = L"textBox48";
-			this->textBox48->Size = System::Drawing::Size(111, 20);
-			this->textBox48->TabIndex = 75;
-			this->textBox48->Visible = false;
-			// 
-			// textBox49
-			// 
-			this->textBox49->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox49->Location = System::Drawing::Point(120, 43);
-			this->textBox49->Name = L"textBox49";
-			this->textBox49->Size = System::Drawing::Size(111, 20);
-			this->textBox49->TabIndex = 76;
-			this->textBox49->Visible = false;
-			// 
-			// textBox50
-			// 
-			this->textBox50->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox50->Location = System::Drawing::Point(120, 83);
-			this->textBox50->Name = L"textBox50";
-			this->textBox50->Size = System::Drawing::Size(111, 20);
-			this->textBox50->TabIndex = 77;
-			this->textBox50->Visible = false;
-			// 
-			// textBox51
-			// 
-			this->textBox51->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox51->Location = System::Drawing::Point(120, 123);
-			this->textBox51->Name = L"textBox51";
-			this->textBox51->Size = System::Drawing::Size(111, 20);
-			this->textBox51->TabIndex = 78;
-			this->textBox51->Visible = false;
-			// 
-			// textBox52
-			// 
-			this->textBox52->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox52->Location = System::Drawing::Point(120, 163);
-			this->textBox52->Name = L"textBox52";
-			this->textBox52->Size = System::Drawing::Size(111, 20);
-			this->textBox52->TabIndex = 79;
-			this->textBox52->Visible = false;
-			// 
-			// textBox53
-			// 
-			this->textBox53->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox53->Location = System::Drawing::Point(120, 203);
-			this->textBox53->Name = L"textBox53";
-			this->textBox53->Size = System::Drawing::Size(111, 20);
-			this->textBox53->TabIndex = 80;
-			this->textBox53->Visible = false;
-			// 
-			// textBox54
-			// 
-			this->textBox54->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox54->Location = System::Drawing::Point(120, 243);
-			this->textBox54->Name = L"textBox54";
-			this->textBox54->Size = System::Drawing::Size(111, 20);
-			this->textBox54->TabIndex = 81;
-			this->textBox54->Visible = false;
-			// 
-			// textBox55
-			// 
-			this->textBox55->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox55->Location = System::Drawing::Point(120, 283);
-			this->textBox55->Name = L"textBox55";
-			this->textBox55->Size = System::Drawing::Size(111, 20);
-			this->textBox55->TabIndex = 82;
-			this->textBox55->Visible = false;
-			// 
-			// textBox56
-			// 
-			this->textBox56->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox56->Location = System::Drawing::Point(120, 323);
-			this->textBox56->Name = L"textBox56";
-			this->textBox56->Size = System::Drawing::Size(111, 20);
-			this->textBox56->TabIndex = 83;
-			this->textBox56->Visible = false;
-			// 
-			// textBox57
-			// 
-			this->textBox57->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox57->Location = System::Drawing::Point(120, 363);
-			this->textBox57->Name = L"textBox57";
-			this->textBox57->Size = System::Drawing::Size(111, 20);
-			this->textBox57->TabIndex = 84;
-			this->textBox57->Visible = false;
-			// 
-			// textBox58
-			// 
-			this->textBox58->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox58->Location = System::Drawing::Point(120, 403);
-			this->textBox58->Name = L"textBox58";
-			this->textBox58->Size = System::Drawing::Size(111, 20);
-			this->textBox58->TabIndex = 85;
-			this->textBox58->Visible = false;
-			// 
-			// textBox59
-			// 
-			this->textBox59->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox59->Location = System::Drawing::Point(120, 443);
-			this->textBox59->Name = L"textBox59";
-			this->textBox59->Size = System::Drawing::Size(111, 20);
-			this->textBox59->TabIndex = 86;
-			this->textBox59->Visible = false;
-			// 
-			// textBox60
-			// 
-			this->textBox60->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox60->Location = System::Drawing::Point(120, 483);
-			this->textBox60->Name = L"textBox60";
-			this->textBox60->Size = System::Drawing::Size(111, 20);
-			this->textBox60->TabIndex = 87;
-			this->textBox60->Visible = false;
-			// 
-			// textBox61
-			// 
-			this->textBox61->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox61->Location = System::Drawing::Point(237, 43);
-			this->textBox61->Name = L"textBox61";
-			this->textBox61->Size = System::Drawing::Size(111, 20);
-			this->textBox61->TabIndex = 88;
-			this->textBox61->Visible = false;
-			// 
-			// textBox62
-			// 
-			this->textBox62->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox62->Location = System::Drawing::Point(237, 83);
-			this->textBox62->Name = L"textBox62";
-			this->textBox62->Size = System::Drawing::Size(111, 20);
-			this->textBox62->TabIndex = 89;
-			this->textBox62->Visible = false;
-			// 
-			// textBox63
-			// 
-			this->textBox63->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox63->Location = System::Drawing::Point(237, 123);
-			this->textBox63->Name = L"textBox63";
-			this->textBox63->Size = System::Drawing::Size(111, 20);
-			this->textBox63->TabIndex = 90;
-			this->textBox63->Visible = false;
-			// 
-			// textBox64
-			// 
-			this->textBox64->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox64->Location = System::Drawing::Point(237, 163);
-			this->textBox64->Name = L"textBox64";
-			this->textBox64->Size = System::Drawing::Size(111, 20);
-			this->textBox64->TabIndex = 91;
-			this->textBox64->Visible = false;
-			// 
-			// textBox65
-			// 
-			this->textBox65->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox65->Location = System::Drawing::Point(237, 203);
-			this->textBox65->Name = L"textBox65";
-			this->textBox65->Size = System::Drawing::Size(111, 20);
-			this->textBox65->TabIndex = 92;
-			this->textBox65->Visible = false;
-			// 
-			// textBox66
-			// 
-			this->textBox66->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox66->Location = System::Drawing::Point(237, 243);
-			this->textBox66->Name = L"textBox66";
-			this->textBox66->Size = System::Drawing::Size(111, 20);
-			this->textBox66->TabIndex = 93;
-			this->textBox66->Visible = false;
-			// 
-			// textBox67
-			// 
-			this->textBox67->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox67->Location = System::Drawing::Point(237, 283);
-			this->textBox67->Name = L"textBox67";
-			this->textBox67->Size = System::Drawing::Size(111, 20);
-			this->textBox67->TabIndex = 94;
-			this->textBox67->Visible = false;
-			// 
-			// textBox68
-			// 
-			this->textBox68->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox68->Location = System::Drawing::Point(237, 323);
-			this->textBox68->Name = L"textBox68";
-			this->textBox68->Size = System::Drawing::Size(111, 20);
-			this->textBox68->TabIndex = 95;
-			this->textBox68->Visible = false;
-			// 
-			// textBox69
-			// 
-			this->textBox69->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox69->Location = System::Drawing::Point(237, 363);
-			this->textBox69->Name = L"textBox69";
-			this->textBox69->Size = System::Drawing::Size(111, 20);
-			this->textBox69->TabIndex = 96;
-			this->textBox69->Visible = false;
-			// 
-			// textBox70
-			// 
-			this->textBox70->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox70->Location = System::Drawing::Point(237, 403);
-			this->textBox70->Name = L"textBox70";
-			this->textBox70->Size = System::Drawing::Size(111, 20);
-			this->textBox70->TabIndex = 97;
-			this->textBox70->Visible = false;
-			// 
-			// textBox71
-			// 
-			this->textBox71->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox71->Location = System::Drawing::Point(237, 443);
-			this->textBox71->Name = L"textBox71";
-			this->textBox71->Size = System::Drawing::Size(111, 20);
-			this->textBox71->TabIndex = 98;
-			this->textBox71->Visible = false;
-			// 
-			// textBox72
-			// 
-			this->textBox72->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox72->Location = System::Drawing::Point(237, 483);
-			this->textBox72->Name = L"textBox72";
-			this->textBox72->Size = System::Drawing::Size(111, 20);
-			this->textBox72->TabIndex = 99;
-			this->textBox72->Visible = false;
 			// 
 			// textBox73
 			// 
