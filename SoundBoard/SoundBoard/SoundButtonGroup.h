@@ -7,14 +7,14 @@ namespace SoundBoard
 
 	
 	[Serializable]
-	ref class SoundButtonGroup : public Windows::Forms::GroupBox
+	public ref class SoundButtonGroup : public Windows::Forms::GroupBox
 	{
 	public:
 		SoundButtonGroup(String^ name);
 		String^ name;
 		void addSoundButton(SoundButton^ sb);
-	private:
 		List<SoundButton^>^ buttons;
+	private:
 		Windows::Forms::FlowLayoutPanel^ flPanel;
 	};
 }

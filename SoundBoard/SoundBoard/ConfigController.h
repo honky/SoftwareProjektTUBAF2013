@@ -5,7 +5,7 @@ namespace SoundBoard
 {
 	using namespace System::Collections::Generic;
 
-	ref class ConfigController
+	public ref class ConfigController
 	{
 	public:
 		ConfigController(SoundController^ _soundController);

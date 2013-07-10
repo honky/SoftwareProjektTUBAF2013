@@ -7,7 +7,7 @@ namespace SoundBoard
 	using namespace Windows::Forms;
 	using namespace System::Drawing;
 	using namespace System::Collections::Generic;
-	ref class WaveForm
+	public ref class WaveForm
 	{ //google supports a lot of stuff to this topic
 	public:
 		WaveForm(String^ path, int pbl, int pbw);
