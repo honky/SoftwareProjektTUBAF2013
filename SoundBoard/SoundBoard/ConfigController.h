@@ -11,7 +11,6 @@ namespace SoundBoard
 	public:
 		ConfigController(SoundController^ _soundController);
 	public:
-
 		//configFolderPath -> will held multiple xml files
 		String^ configFolder;
 		//soundFolder -> place where sound folder is located
@@ -25,7 +24,7 @@ namespace SoundBoard
 		String^ customSound3;
 
 		List<SoundButtonGroup^>^ list_soundButtonGroups;
-		SoundController^ soundController;		
+		SoundController^ soundController;	
 		
 
 		bool saveConfigLiterals();

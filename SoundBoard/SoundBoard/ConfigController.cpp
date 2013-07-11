@@ -10,6 +10,7 @@ namespace SoundBoard
 
 	ConfigController::ConfigController(SoundController^ _soundController)
 	{
+
 		configFolder = Environment::CurrentDirectory+"\\config\\";
 		soundsFolder = Environment::CurrentDirectory+"\\sounds\\";
 	
@@ -280,4 +281,5 @@ namespace SoundBoard
 
 		return list_return;	
 	}
+	
 }
