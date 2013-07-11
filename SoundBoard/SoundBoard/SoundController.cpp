@@ -91,11 +91,19 @@ namespace SoundBoard
 		
 		checkPlayingGUIs();
 
+		//we use some kind of locking to improve stability
+		__int64 %trackRefCounter = _counter;
+		if(trackRefCounter!=0) { return false; }
+
+		//this is the lock increment counter
+		System::Threading::Interlocked::Increment(trackRefCounter);
+
 		//cleaning up last sounds stack
 		while(last_sounds->Count >3)
 		{
 			last_sounds->RemoveAt(0);
 		}
+		//just to be sure
 		while(list_players->Count >3)
 		{
 			last_sounds->RemoveAt(0);
@@ -149,10 +157,12 @@ namespace SoundBoard
 
 			list_players->Add(player);
 			flp->Controls->Add(player->gui);
+			System::Threading::Interlocked::Decrement(trackRefCounter);
 			return true;
 		}
 		else
 		{
+			System::Threading::Interlocked::Decrement(trackRefCounter);
 			return false;
 		}
 	}
