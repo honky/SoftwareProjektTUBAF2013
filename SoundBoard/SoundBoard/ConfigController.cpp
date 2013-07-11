@@ -12,23 +12,23 @@ namespace SoundBoard
 	{
 		configFolder = Environment::CurrentDirectory+"\\config\\";
 		soundsFolder = Environment::CurrentDirectory+"\\sounds\\";
-		
+
 		customSound1 = soundsFolder + "custom/c1.mp3";
 		customSound2 = soundsFolder + "custom/c2.mp3";
 		customSound3 = soundsFolder + "custom/c3.mp3";
-		
+
 		this->soundController = _soundController;
 
 
 		list_folderNamesToIgnore = gcnew List<String^>();
-		
+
 		//for git control reasons we do not read the "subversion" files
 		list_folderNamesToIgnore->Add("git");
 		list_folderNamesToIgnore->Add("..");
 		list_folderNamesToIgnore->Add(".");
 		list_folderNamesToIgnore->Add(".git");
 		list_folderNamesToIgnore->Add("custom");
-		
+
 
 
 		bool soundFolderChanged = false;
@@ -45,25 +45,25 @@ namespace SoundBoard
 
 		if(soundFolderChanged || !Directory::Exists(configFolder))
 		{
-			
+
 		}
-		
-		
+
+
 		this->list_soundButtonGroups = this->createDefaultButtonGroups();
 	}
 
-	
+
 	DataTable^ ConfigController::getButtonGroupConfig(String^ _buttonGroupName)
 	{
 		DataTable^ dt = gcnew DataTable();
-		
+
 		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
 		{	
 			String^ pathToBGC = configFolder+"/"+sbg->name+".xml";
 			if(sbg->name != _buttonGroupName) { continue; }
 			if(!File::Exists(pathToBGC))
 			{
-					
+
 				dt->TableName = sbg->name;
 				dt->Columns->Add("Button Label");
 				dt->Columns->Add("Button Path");
@@ -85,23 +85,61 @@ namespace SoundBoard
 			else
 			{
 				dt->TableName = sbg->name;
-				dt->Columns->Add("Button Label");
-				dt->Columns->Add("Button Path");
-				dt->Columns->Add("Button Color");
-				dt->Columns->Add("Button Type");
-				dt->Columns->Add("Button Remove");
+				dt = addButtonGroupConfigColumns(dt);
 				dt->ReadXml(pathToBGC);
 			}
 		}
 
 		return dt;
 	}
+	
+	DataTable^ ConfigController::addButtonGroupConfigColumns(DataTable^ dt)
+	{
+		if(!dt->Columns->Contains("Button Label"))
+		{
+			dt->Columns->Add("Button Label");
+		}
+		if(!dt->Columns->Contains("Button Path"))
+		{
+			dt->Columns->Add("Button Path");
+		}
+		if(!dt->Columns->Contains("Button Color"))
+		{
+			dt->Columns->Add("Button Color");
+		}
+		if(!dt->Columns->Contains("Button Type"))
+		{
+			dt->Columns->Add("Button Type");
+		}
+		if(!dt->Columns->Contains("Button Remove"))
+		{
+			dt->Columns->Add("Button Remove");
+		}
+		
+		return dt;
+	}
+
+	bool ConfigController::setButtonGroupConfig(String^ _buttonGroupName,DataTable^ dt)
+	{
+		try
+		{
+			String^ pathToBGC = configFolder+"/"+_buttonGroupName+".xml";
+			dt->WriteXml(pathToBGC);
+			return true;
+		}
+		catch(Exception^ err)
+		{
+			Console::WriteLine("Error while saving: "+err->Message);
+			return false;
+		}
+		return false;
+	}
 
 
 	List<SoundButtonGroup^>^ ConfigController::createDefaultButtonGroups()
 	{
 		List<SoundButtonGroup^>^ list_return = gcnew List<SoundButtonGroup^>();
-		
+
 		if(list_soundButtonGroups == nullptr || list_soundButtonGroups->Count == 0)
 		{
 			if(!File::Exists(configFolder))
@@ -109,8 +147,8 @@ namespace SoundBoard
 				Directory::CreateDirectory(configFolder);
 			}
 
-			
-			
+
+
 			//we expect all folders in the sound root to be a button group
 			array<String^>^ propablyButtonGroups = Directory::GetDirectories(soundsFolder);
 
@@ -120,12 +158,12 @@ namespace SoundBoard
 				if(list_folderNamesToIgnore->Contains(Path::GetFileName(propablyButtonGroup)))	{ continue; }
 
 				SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
-				
+
 				array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
 				for each (String^ propablyButton in propablyButtons)
 				{	
 					array<String^>^ probablyButtonFiles = Directory::GetFiles(propablyButton);
-					
+
 					if(probablyButtonFiles->Length != 0)
 					{
 						SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
@@ -133,14 +171,14 @@ namespace SoundBoard
 						soundController->attachPlaySoundEventToSoundButton(sb);
 						sbg->addSoundButton(sb);
 					}
-					
+
 				}
 				list_return->Add(sbg);
-				
+
 			}
 			list_soundButtonGroups = list_return;
 		}
-		
+
 		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
 		{
 			getButtonGroupConfig(sbg->name);

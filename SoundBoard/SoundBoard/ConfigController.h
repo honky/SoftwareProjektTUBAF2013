@@ -11,18 +11,36 @@ namespace SoundBoard
 	public:
 		ConfigController(SoundController^ _soundController);
 	public:
+
+		//configFolderPath -> will held multiple xml files
 		String^ configFolder;
-		String^ soundsFolder;
-		
+		//soundFolder -> place where sound folder is located
+		String^ soundsFolder;	
+
+		//Path to custom Sound1
 		String^ customSound1;
+		//Path to custom Sound2
 		String^ customSound2;
+		//Path to custom Sound3
 		String^ customSound3;
 
 		List<SoundButtonGroup^>^ list_soundButtonGroups;
-		SoundController^ soundController;
+		SoundController^ soundController;		
+		
 
+		
+
+		//gets saved config or generates it if it doesn't exist yet
+		DataTable^ getButtonGroupConfig(String^ type);
+	private:	
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
 		List<String^>^ list_folderNamesToIgnore;
-		DataTable^ getButtonGroupConfig(String^ type);
+
+		//writes config to controlled xml path 
+		bool setButtonGroupConfig(String^ type, DataTable^ dt);
+
+	private:
+		//simply stops code duplication
+		DataTable^ addButtonGroupConfigColumns(DataTable^ dt); 
 	};
 }
