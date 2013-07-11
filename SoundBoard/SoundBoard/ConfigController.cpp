@@ -53,6 +53,34 @@ namespace SoundBoard
 	}
 
 
+	bool setConfigLiterals(String^ configFileName, Dictionary<String^,String^>^ dic)
+	{
+		try 
+		{
+		DataTable^ dt = gcnew DataTable();
+
+		//it is some kind of key value store
+		dt->Columns->Add("key");
+		dt->Columns->Add("value");
+
+		//we will first convert this to a datatable and write its xml down
+		for each (KeyValuePair<String^,String^> kvp in dic)
+		{
+			DataRow^ row = dt->NewRow();
+			row["key"] = kvp.Key; //<--- kvp seems to be a valueType, or for some reason it doesn't accept -> etc....
+			row["value"] = kvp.Value;
+			dt->Rows->Add(row);	
+		}
+		dt->WriteXml(configFileName+".xml");
+			return true;
+		}
+		catch(Exception^ err)
+		{
+			Console::WriteLine("Error while saving: "+err->Message);
+			return false;
+		}
+	}
+
 	DataTable^ ConfigController::getButtonGroupConfig(String^ _buttonGroupName)
 	{
 		DataTable^ dt = gcnew DataTable();
@@ -65,11 +93,7 @@ namespace SoundBoard
 			{
 
 				dt->TableName = sbg->name;
-				dt->Columns->Add("Button Label");
-				dt->Columns->Add("Button Path");
-				dt->Columns->Add("Button Color");
-				dt->Columns->Add("Button Type");
-				dt->Columns->Add("Button Remove");
+				dt = addButtonGroupConfigColumns(dt);
 				for each (SoundButton^ sb in sbg->buttons)
 				{
 					DataRow^ row = dt->NewRow();
@@ -92,7 +116,6 @@ namespace SoundBoard
 
 		return dt;
 	}
-	
 	DataTable^ ConfigController::addButtonGroupConfigColumns(DataTable^ dt)
 	{
 		if(!dt->Columns->Contains("Button Label"))
@@ -118,6 +141,8 @@ namespace SoundBoard
 		
 		return dt;
 	}
+
+
 
 	bool ConfigController::setButtonGroupConfig(String^ _buttonGroupName,DataTable^ dt)
 	{
