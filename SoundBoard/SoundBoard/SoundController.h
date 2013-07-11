@@ -40,5 +40,6 @@ namespace SoundBoard
 		static __int64 _counter = 0;
 		static FlowLayoutPanel^ flp;
 		static List<Player^>^ list_players = gcnew List<Player^>();
+		static List<String^>^ last_sounds = gcnew List<String^>();
 	};
 }

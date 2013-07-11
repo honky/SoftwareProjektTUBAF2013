@@ -243,8 +243,6 @@ namespace SoundBoard
 				Directory::CreateDirectory(configFolder);
 			}
 
-
-
 			//we expect all folders in the sound root to be a button group
 			array<String^>^ propablyButtonGroups = Directory::GetDirectories(soundsFolder);
 
