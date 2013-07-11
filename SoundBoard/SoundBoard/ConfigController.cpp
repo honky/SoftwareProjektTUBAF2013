@@ -80,6 +80,31 @@ namespace SoundBoard
 			return false;
 		}
 	}
+	
+	Dictionary<String^,String^>^ getConfigLiterals(String^ configFileName)
+	{
+		Dictionary<String^,String^>^ dic = gcnew Dictionary<String^,String^>();
+		try 
+		{
+			DataTable^ dt = gcnew DataTable();
+			//it is some kind of key value store
+			dt->Columns->Add("key"); //no extra function for this 
+			dt->Columns->Add("value"); //it will never change muharrr
+			dt->ReadXml(configFileName);
+			
+			for each(DataRow^ row in dt->Rows)
+			{
+				dic->Add(Convert::ToString(row["key"]),Convert::ToString(row["value"]));
+			}
+			return dic;
+		}
+		catch(Exception^ err)
+		{
+			Console::WriteLine("Error while saving: "+err->Message);
+			return dic;
+		}
+	}
+
 
 	DataTable^ ConfigController::getButtonGroupConfig(String^ _buttonGroupName)
 	{
