@@ -24,6 +24,7 @@ namespace SoundBoard {
 	{
 
 		SoundController^ soundController;
+		Form^ edit;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialogCustomSounds;
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorkerSoundController;
 	private: System::Windows::Forms::Button^  button1;
@@ -38,6 +39,7 @@ namespace SoundBoard {
 			InitializeComponent();
 			soundController =  gcnew SoundController(flowLayoutPanelRight);
 			configController = gcnew ConfigController(soundController);
+			edit = gcnew editConfigForm(configController);
 			//flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
 
 			textBoxPlayCustom1->Text = configController->customSound1;
@@ -224,7 +226,7 @@ namespace SoundBoard {
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanelMain->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 
 				366)));
-			this->tableLayoutPanelMain->Size = System::Drawing::Size(802, 664);
+			this->tableLayoutPanelMain->Size = System::Drawing::Size(810, 664);
 			this->tableLayoutPanelMain->TabIndex = 0;
 			// 
 			// flowLayoutPanelRight
@@ -233,9 +235,9 @@ namespace SoundBoard {
 				| System::Windows::Forms::AnchorStyles::Left) 
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->flowLayoutPanelRight->AutoScroll = true;
-			this->flowLayoutPanelRight->Location = System::Drawing::Point(404, 3);
+			this->flowLayoutPanelRight->Location = System::Drawing::Point(408, 3);
 			this->flowLayoutPanelRight->Name = L"flowLayoutPanelRight";
-			this->flowLayoutPanelRight->Size = System::Drawing::Size(395, 658);
+			this->flowLayoutPanelRight->Size = System::Drawing::Size(399, 658);
 			this->flowLayoutPanelRight->TabIndex = 1;
 			// 
 			// flowLayoutPanelLeft
@@ -251,7 +253,7 @@ namespace SoundBoard {
 			this->flowLayoutPanelLeft->Controls->Add(this->button1);
 			this->flowLayoutPanelLeft->Location = System::Drawing::Point(3, 3);
 			this->flowLayoutPanelLeft->Name = L"flowLayoutPanelLeft";
-			this->flowLayoutPanelLeft->Size = System::Drawing::Size(395, 658);
+			this->flowLayoutPanelLeft->Size = System::Drawing::Size(399, 658);
 			this->flowLayoutPanelLeft->TabIndex = 2;
 			this->flowLayoutPanelLeft->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MainForm::flowLayoutPanelLeft_Paint);
 			// 
@@ -306,7 +308,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeAll->Maximum = 1000;
 			this->trackBarMasterVolumeAll->Name = L"trackBarMasterVolumeAll";
 			this->trackBarMasterVolumeAll->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeAll->TabIndex = 0;
 			this->trackBarMasterVolumeAll->TickFrequency = 100;
 			this->trackBarMasterVolumeAll->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -333,7 +335,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeLeft->Maximum = 1000;
 			this->trackBarMasterVolumeLeft->Name = L"trackBarMasterVolumeLeft";
 			this->trackBarMasterVolumeLeft->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeLeft->TabIndex = 0;
 			this->trackBarMasterVolumeLeft->TickFrequency = 100;
 			this->trackBarMasterVolumeLeft->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -360,7 +362,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeRight->Maximum = 1000;
 			this->trackBarMasterVolumeRight->Name = L"trackBarMasterVolumeRight";
 			this->trackBarMasterVolumeRight->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeRight->TabIndex = 0;
 			this->trackBarMasterVolumeRight->TickFrequency = 100;
 			this->trackBarMasterVolumeRight->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -386,7 +388,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeTreble->Maximum = 1000;
 			this->trackBarMasterVolumeTreble->Name = L"trackBarMasterVolumeTreble";
 			this->trackBarMasterVolumeTreble->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeTreble->TabIndex = 0;
 			this->trackBarMasterVolumeTreble->TickFrequency = 100;
 			this->trackBarMasterVolumeTreble->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -412,7 +414,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBass->Maximum = 1000;
 			this->trackBarMasterVolumeBass->Name = L"trackBarMasterVolumeBass";
 			this->trackBarMasterVolumeBass->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeBass->TabIndex = 0;
 			this->trackBarMasterVolumeBass->TickFrequency = 100;
 			this->trackBarMasterVolumeBass->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -439,7 +441,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBalance->Minimum = -1000;
 			this->trackBarMasterVolumeBalance->Name = L"trackBarMasterVolumeBalance";
 			this->trackBarMasterVolumeBalance->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeBalance->TabIndex = 0;
 			this->trackBarMasterVolumeBalance->TickFrequency = 200;
 			this->trackBarMasterVolumeBalance->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -675,7 +677,7 @@ namespace SoundBoard {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(802, 664);
+			this->ClientSize = System::Drawing::Size(810, 664);
 			this->Controls->Add(this->tableLayoutPanelMain);
 			this->MinimumSize = System::Drawing::Size(818, 661);
 			this->Name = L"MainForm";
@@ -760,9 +762,7 @@ namespace SoundBoard {
 				 textBoxPlayCustom1->Text = openFileDialogCustomSounds->FileName;
 			 }
 	private: System::Void buttonPlayCustom1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 //soundController->playCustomSound(textBoxPlayCustom1->Text);
-				 Form^ edit = gcnew editConfigForm();
-				 edit->Show();
+				 soundController->playCustomSound(textBoxPlayCustom1->Text);
 			 }
 	private: System::Void textBoxPlayCustom2_Click(System::Object^  sender, System::EventArgs^  e) {
 				 System::Windows::Forms::DialogResult^ d2 = openFileDialogCustomSounds->ShowDialog();
@@ -834,7 +834,6 @@ private: System::Void trackBarMasterVolumeBalance_ValueChanged(System::Object^  
 			 this->soundController->changeBalanceAll(this->trackBarMasterVolumeBalance->Value);
 		 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Form^ edit = gcnew editConfigForm();
 			 edit->Show();
 		 }
 };
