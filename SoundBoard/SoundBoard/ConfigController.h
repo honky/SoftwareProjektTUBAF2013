@@ -37,7 +37,8 @@ namespace SoundBoard
 
 	private:	
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
-		List<String^>^ list_folderNamesToIgnore;
+		List<String^>^ list_folderNamesToIgnore;		
+		Dictionary<String^,String^>^ ConfigController::getConfigLiterals(String^ configFileName);
 
 		//writes config to controlled xml path 
 		bool setButtonGroupConfig(String^ type, DataTable^ dt);

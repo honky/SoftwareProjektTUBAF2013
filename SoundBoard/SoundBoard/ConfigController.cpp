@@ -12,13 +12,8 @@ namespace SoundBoard
 	{
 		configFolder = Environment::CurrentDirectory+"\\config\\";
 		soundsFolder = Environment::CurrentDirectory+"\\sounds\\";
-
-		customSound1 = soundsFolder + "custom\\c1.mp3";
-		customSound2 = soundsFolder + "custom\\c2.mp3";
-		customSound3 = soundsFolder + "custom\\c3.mp3";
-
-		saveConfigLiterals();
-
+	
+		loadConfigLiterals();
 
 		this->soundController = _soundController;
 
@@ -62,10 +57,10 @@ namespace SoundBoard
 		try
 		{
 			Dictionary<String^,String^>^ dic = gcnew Dictionary<String^,String^>();
-
-			dic->Add("customSound1",customSound1);
-			dic->Add("customSound2",customSound2);
-			dic->Add("customSound3",customSound3);
+			
+			dic->Add("customSound1",this->customSound1);
+			dic->Add("customSound2",this->customSound2);
+			dic->Add("customSound3",this->customSound3);
 
 			this->setConfigLiterals(this->configFolder+"configLiterals",dic);
 
@@ -82,11 +77,20 @@ namespace SoundBoard
 	{
 		try
 		{
+			Dictionary<String^,String^>^ dic = this->getConfigLiterals(this->configFolder+"configLiterals.xml");
+			
+			customSound1 = dic["customSound1"];
+			customSound2 = dic["customSound2"];
+			customSound3 = dic["customSound3"];
+			
 			return true;
 		}
 		catch(Exception^ err)
 		{
 			Console::WriteLine("Error while loading: "+err->Message);
+			customSound1 = soundsFolder + "custom\\c1.mp3";
+			customSound2 = soundsFolder + "custom\\c2.mp3";
+			customSound3 = soundsFolder + "custom\\c3.mp3";
 			return false;
 		}
 	}
@@ -96,6 +100,7 @@ namespace SoundBoard
 		try 
 		{
 			DataTable^ dt = gcnew DataTable();
+			dt->TableName = "ConfigLiterals";
 
 			//it is some kind of key value store
 			dt->Columns->Add("key");
@@ -119,12 +124,13 @@ namespace SoundBoard
 		}
 	}
 
-	Dictionary<String^,String^>^ getConfigLiterals(String^ configFileName)
+	Dictionary<String^,String^>^ ConfigController::getConfigLiterals(String^ configFileName)
 	{
 		Dictionary<String^,String^>^ dic = gcnew Dictionary<String^,String^>();
 		try 
 		{
 			DataTable^ dt = gcnew DataTable();
+			dt->TableName = "ConfigLiterals";
 			//it is some kind of key value store
 			dt->Columns->Add("key"); //no extra function for this 
 			dt->Columns->Add("value"); //it will never change muharrr
@@ -132,7 +138,9 @@ namespace SoundBoard
 
 			for each(DataRow^ row in dt->Rows)
 			{
-				dic->Add(Convert::ToString(row["key"]),Convert::ToString(row["value"]));
+				String^ value = Convert::ToString(row["value"]);
+				String^ key = Convert::ToString(row["key"]);
+				dic->Add(key,value);
 			}
 			return dic;
 		}

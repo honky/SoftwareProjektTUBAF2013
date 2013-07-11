@@ -1,1 +1,15 @@
 <?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <ConfigLiterals>
+    <key>customSound1</key>
+    <value>w:\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\custom\c1.mp3</value>
+  </ConfigLiterals>
+  <ConfigLiterals>
+    <key>customSound2</key>
+    <value>w:\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\custom\c2.mp3</value>
+  </ConfigLiterals>
+  <ConfigLiterals>
+    <key>customSound3</key>
+    <value>w:\Documents\GitHub\SoftwareProjektTUBAF2013\SoundBoard\SoundBoard\sounds\custom\c3.mp3</value>
+  </ConfigLiterals>
+</DocumentElement>
