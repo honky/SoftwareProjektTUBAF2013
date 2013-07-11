@@ -5,8 +5,6 @@ namespace SoundBoard
 	using namespace System;
 	using namespace System::Collections::Generic;
 
-
-	[Serializable]
 	public ref class SoundButtonGroup : public Windows::Forms::GroupBox
 	{
 	public:

@@ -5,51 +5,106 @@ namespace SoundBoard
 	using namespace SoundBoard;
 	using namespace Windows::Forms;
 	using namespace System::IO;
+	using namespace System::Threading;
 
-	SoundController::SoundController(FlowLayoutPanel^ _flp)
+
+
+
+	SoundController::SoundController(FlowLayoutPanel^ _flp,Windows::Forms::Form^ _form)
 	{
 		flp = _flp;
+		form = _form;
 	}
 
-	void SoundController::checkPlayingGUIs()
+	void SoundController::checkPlayingGUIs(String^ bla)
+	{
+		Monitor::Enter(form);
+		try
+		{
+			SoundControllerCheckPlayingGUIsDelegate^ action = gcnew SoundControllerCheckPlayingGUIsDelegate(this, &SoundController::checkPlayingGUIsWorker);
+			form->Invoke(action,bla);
+		}
+		finally
+		{
+			Monitor::Exit(form);
+		}
+	}
+
+	void SoundController::SoundControllerAddPlayingGUIWorker(PlayerGUI^ gui)
+	{
+		Monitor::Enter(form);
+		try
+		{
+			flp->Controls->Add(gui);
+		}
+		finally
+		{
+			Monitor::Exit(form);
+		}
+
+
+	}
+
+	void SoundController::checkPlayingGUIsWorker(String^ bla)
 	{
 		//we use some kind of locking to improve stability
 		__int64 %trackRefCounter = _counter;
 		if(trackRefCounter!=0) { return; }
 
-		//this is the lock increment counter
-		System::Threading::Interlocked::Increment(trackRefCounter);
-
-		try 
+		Monitor::Enter(form);
+		try
 		{
-			if(list_players->Count > 0)
+			Monitor::Enter(list_players);
+			try
 			{
-				List<Player^>^ list_players_remove = gcnew List<Player^>();
-				for each(Player^ eachPlayer in list_players)
-				{
-					int length = eachPlayer->msLength; //eachPlayer->msLength;
-					int curPos = eachPlayer->currentPosition; //not working yet
 
-					if(length > 0 && curPos == length)
+				//this is the lock increment counter
+				System::Threading::Interlocked::Increment(trackRefCounter);
+
+				try 
+				{
+					if(list_players->Count > 0)
 					{
-						//stopping sound has highest priority
-						eachPlayer->stopSound();
-						flp->Controls->Remove(eachPlayer->gui);
-						list_players_remove->Add(eachPlayer);		
+						List<Player^>^ list_players_remove = gcnew List<Player^>();
+						for each(Player^ eachPlayer in list_players)
+						{
+							int length = eachPlayer->msLength; //eachPlayer->msLength;
+							int curPos = eachPlayer->currentPosition; //not working yet
+
+							if(length > 0 && curPos == length)
+							{
+								//stopping sound has highest priority
+								eachPlayer->stopSound();
+								eachPlayer->gui->Visible = false;
+								//flp->Controls->Remove(eachPlayer->gui);
+								list_players_remove->Add(eachPlayer);		
+							}
+						}
+						for each(Player^ eachPlayer in list_players_remove)
+						{
+							list_players->Remove(eachPlayer);
+						}
 					}
 				}
-				for each(Player^ eachPlayer in list_players_remove)
+				catch(Exception^ e)
 				{
-					list_players->Remove(eachPlayer);
+					// when Button gets clicked heavy multiple times, this can occure.
+					Console::WriteLine(e->Message);
+				}
+				finally
+				{
+					System::Threading::Interlocked::Decrement(trackRefCounter);					
 				}
 			}
+			finally
+			{
+				Monitor::Exit(list_players);
+			}
 		}
-		catch(Exception^ e)
+		finally
 		{
-			// when Button gets clicked heavy multiple times, this can occure.
-			Console::WriteLine(e->Message);
+			Monitor::Exit(form);
 		}
-		System::Threading::Interlocked::Decrement(trackRefCounter);
 	}
 
 	//adds click event to SoundButton keeping full sound control
@@ -87,84 +142,125 @@ namespace SoundBoard
 	//plays a soundButton according to the context it has
 	bool SoundController::play(SoundButton^ sb)
 	{
-		Sound^ soundToBePlayed = sb->context->list_sounds[0]; //used as a fallback
-		
-		checkPlayingGUIs();
-
-		//we use some kind of locking to improve stability
-		__int64 %trackRefCounter = _counter;
-		if(trackRefCounter!=0) { return false; }
-
-		//this is the lock increment counter
-		System::Threading::Interlocked::Increment(trackRefCounter);
-
-		//cleaning up last sounds stack
-		while(last_sounds->Count >3)
+		playedCounter+=1;
+		if(playedCounter>8)
 		{
-			last_sounds->RemoveAt(0);
-		}
-		//just to be sure
-		while(list_players->Count >3)
-		{
-			last_sounds->RemoveAt(0);
+			playedCounter = 0;
+			this->form->Refresh();
 		}
 
-		if(list_players->Count < 3)
+		bool returnValue = false;
+		Monitor::Enter(form);
+		try
 		{
-			//now we need to take care of which Sound will be played according to its Context
-			if(Convert::ToString(sb->context->sct)=="Random")
+			Monitor::Enter(list_players);
+			try
 			{
-				int randomCounter = 0;
-				int contextCount = sb->context->list_sounds->Count;
+				Sound^ soundToBePlayed = sb->context->list_sounds[0]; //used as a fallback
 
-				//we need to find a random Sound Gentlemen.
-				while(true)
+				//we use some kind of locking to improve stability
+				__int64 %trackRefCounter = _counter;
+				if(trackRefCounter!=0) { return false; }
+
+				//this is the lock increment counter
+				//
+
+				//cleaning up last sounds stack
+				while(last_sounds->Count > 3)
 				{
-					Random^ random = gcnew Random();
-					int contextRandom = random->Next(0,contextCount-1);
-					String^ soundPath = sb->context->list_sounds[contextRandom]->path;
-					if(!last_sounds->Contains(soundPath))
+					last_sounds->RemoveAt(0);
+				}
+				//just to be sure
+				if(list_players->Count >= 2)
+				{
+					try {
+
+						SoundControllerCheckPlayingGUIsDelegate^ action = gcnew SoundControllerCheckPlayingGUIsDelegate(this, &SoundController::checkPlayingGUIsWorker);
+						form->Invoke(action,"");
+					} catch (Exception^ e)
 					{
-						soundToBePlayed = sb->context->list_sounds[contextRandom];
-						last_sounds->Add(sb->context->list_sounds[contextRandom]->path);
-						break;
+						Console::WriteLine(e->Message);
 					}
-					if(randomCounter>3)
+				}
+
+				System::Threading::Interlocked::Increment(trackRefCounter);
+
+				if(list_players->Count < 3)
+				{
+					//now we need to take care of which Sound will be played according to its Context
+					if(Convert::ToString(sb->context->sct)=="Random")
 					{
-						break;
+						int randomCounter = 0;
+						int contextCount = sb->context->list_sounds->Count;
+
+						//we need to find a random Sound Gentlemen.
+						while(true)
+						{
+							Random^ random = gcnew Random();
+							int contextRandom = random->Next(0,contextCount-1);
+							String^ soundPath = sb->context->list_sounds[contextRandom]->path;
+							if(!last_sounds->Contains(soundPath))
+							{
+								soundToBePlayed = sb->context->list_sounds[contextRandom];
+								last_sounds->Add(sb->context->list_sounds[contextRandom]->path);
+								break;
+							}
+							if(randomCounter>3)
+							{
+								break;
+							}
+
+							randomCounter++;
+						}
+					}
+					else if (Convert::ToString(sb->context)=="Single")
+					{
+						soundToBePlayed = sb->context->list_sounds[0];
+						last_sounds->Add(sb->context->list_sounds[0]->path);
 					}
 
-					randomCounter++;
+
+
+
+
+					try {
+						Player^ player = gcnew Player(soundToBePlayed);
+						player->playSound();	
+						player->gui->pictureBox->Width = 250;
+						player->gui->pictureBox->Height = 40;
+						player->gui->pictureBox->Image = soundToBePlayed->wf->Bmp;					
+						list_players->Add(player);					
+						
+						SoundControllerAddPlayingGUIDelegate ^ action = gcnew SoundControllerAddPlayingGUIDelegate(this, &SoundController::SoundControllerAddPlayingGUIWorker);
+						form->Invoke(action,player->gui);
+
+					}
+					catch (Exception^ e)
+					{
+						Console::WriteLine(e->Message);
+					}
+					finally
+					{
+						System::Threading::Interlocked::Decrement(trackRefCounter);
+					}
+					returnValue =  true;
+				}
+				else
+				{
+					System::Threading::Interlocked::Decrement(trackRefCounter);
+
 				}
 			}
-			else if (Convert::ToString(sb->context)=="Single")
+			finally
 			{
-				soundToBePlayed = sb->context->list_sounds[0];
-				last_sounds->Add(sb->context->list_sounds[0]->path);
+				Monitor::Exit(list_players);
 			}
-
-
-
-
-
-
-			Player^ player = gcnew Player(soundToBePlayed);
-			player->playSound();	
-			player->gui->pictureBox->Width = 250;
-			player->gui->pictureBox->Height = 40;
-			player->gui->pictureBox->Image = soundToBePlayed->wf->Bmp;
-			//gui->pictureBox->BorderStyle = Windows::Forms::BorderStyle::Fixed3D;			
-
-			list_players->Add(player);
-			flp->Controls->Add(player->gui);
-			System::Threading::Interlocked::Decrement(trackRefCounter);
-			return true;
 		}
-		else
+		finally
 		{
-			System::Threading::Interlocked::Decrement(trackRefCounter);
-			return false;
+			Monitor::Exit(form);
 		}
+		return returnValue;
 	}
 
 	void SoundController::pauseAll()
@@ -211,7 +307,7 @@ namespace SoundBoard
 			//disabling gui from flp
 			flp->Controls->Remove(list_players[list_players->Count-1]->gui);
 			//actually the next line is not needed but better for garbage collection
-			list_players[list_players->Count-1]->gui = nullptr;
+			//list_players[list_players->Count-1]->gui = nullptr;
 			//removing player from list
 			list_players->Remove(list_players[list_players->Count-1]);
 

@@ -1,7 +1,7 @@
 #pragma once
 namespace SoundBoard
 {
-	ref class PlayerGUI :
+	public ref class PlayerGUI :
 	public System::Windows::Forms::GroupBox
 	{
 	public:

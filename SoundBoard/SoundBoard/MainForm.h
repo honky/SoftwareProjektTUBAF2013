@@ -36,15 +36,16 @@ namespace SoundBoard {
 
 
 			InitializeComponent();
-			soundController =  gcnew SoundController(flowLayoutPanelRight);
+			soundController =  gcnew SoundController(flowLayoutPanelRight,this);
 			configController = gcnew ConfigController(soundController);
-			//flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
+			
+			flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
 
 			textBoxPlayCustom1->Text = configController->customSound1;
 			textBoxPlayCustom2->Text = configController->customSound2;
 			textBoxPlayCustom3->Text = configController->customSound3;
 
-			//backgroundWorkerSoundController->RunWorkerAsync();
+			backgroundWorkerSoundController->RunWorkerAsync();
 
 		}
 
@@ -800,20 +801,22 @@ namespace SoundBoard {
 			 }
 	private: System::Void backgroundWorkerSoundController_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
 				
+				 
 				 /*
 				 while(true) //(backgroundWorkerSoundController->ChancellationPending oder so
 				 {
 					 try
-					 {
-						//SoundController::checkPlayingGUIs();
+					 {						
+						soundController->checkPlayingGUIs(this,"");
 					 }
 					 catch (Exception^ e)
 					 {
 						 MessageBox::Show(e->Message);
 					 }
-					 System::Threading::Thread::Sleep(1000);
+					 System::Threading::Thread::Sleep(10000);
 				 }
 				 */
+				 
 			 }
 private: System::Void trackBarMasterVolumeAll_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 			 this->soundController->changeVolumeMasterAll(this->trackBarMasterVolumeAll->Value);

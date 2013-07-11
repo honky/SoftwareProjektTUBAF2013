@@ -7,7 +7,6 @@ namespace SoundBoard
 	using namespace SoundBoard;
 	using namespace System::Runtime::Serialization;
 
-	[Serializable]
 	public ref class SoundButton : public Windows::Forms::Button
 	{
 	public:
