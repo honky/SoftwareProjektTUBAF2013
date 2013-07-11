@@ -13,9 +13,12 @@ namespace SoundBoard
 		configFolder = Environment::CurrentDirectory+"\\config\\";
 		soundsFolder = Environment::CurrentDirectory+"\\sounds\\";
 
-		customSound1 = soundsFolder + "custom/c1.mp3";
-		customSound2 = soundsFolder + "custom/c2.mp3";
-		customSound3 = soundsFolder + "custom/c3.mp3";
+		customSound1 = soundsFolder + "custom\\c1.mp3";
+		customSound2 = soundsFolder + "custom\\c2.mp3";
+		customSound3 = soundsFolder + "custom\\c3.mp3";
+
+		saveConfigLiterals();
+
 
 		this->soundController = _soundController;
 
@@ -47,31 +50,25 @@ namespace SoundBoard
 		{
 
 		}
+		else
+		{
 
-
+		}
 		this->list_soundButtonGroups = this->createDefaultButtonGroups();
 	}
 
-
-	bool setConfigLiterals(String^ configFileName, Dictionary<String^,String^>^ dic)
+	bool ConfigController::saveConfigLiterals()
 	{
-		try 
+		try
 		{
-		DataTable^ dt = gcnew DataTable();
+			Dictionary<String^,String^>^ dic = gcnew Dictionary<String^,String^>();
 
-		//it is some kind of key value store
-		dt->Columns->Add("key");
-		dt->Columns->Add("value");
+			dic->Add("customSound1",customSound1);
+			dic->Add("customSound2",customSound2);
+			dic->Add("customSound3",customSound3);
 
-		//we will first convert this to a datatable and write its xml down
-		for each (KeyValuePair<String^,String^> kvp in dic)
-		{
-			DataRow^ row = dt->NewRow();
-			row["key"] = kvp.Key; //<--- kvp seems to be a valueType, or for some reason it doesn't accept -> etc....
-			row["value"] = kvp.Value;
-			dt->Rows->Add(row);	
-		}
-		dt->WriteXml(configFileName+".xml");
+			this->setConfigLiterals(this->configFolder+"configLiterals",dic);
+
 			return true;
 		}
 		catch(Exception^ err)
@@ -80,7 +77,48 @@ namespace SoundBoard
 			return false;
 		}
 	}
-	
+
+	bool ConfigController::loadConfigLiterals()
+	{
+		try
+		{
+			return true;
+		}
+		catch(Exception^ err)
+		{
+			Console::WriteLine("Error while loading: "+err->Message);
+			return false;
+		}
+	}
+
+	bool ConfigController::setConfigLiterals(String^ configFileName, Dictionary<String^,String^>^ dic)
+	{
+		try 
+		{
+			DataTable^ dt = gcnew DataTable();
+
+			//it is some kind of key value store
+			dt->Columns->Add("key");
+			dt->Columns->Add("value");
+
+			//we will first convert this to a datatable and write its xml down
+			for each (KeyValuePair<String^,String^> kvp in dic)
+			{
+				DataRow^ row = dt->NewRow();
+				row["key"] = kvp.Key; //<--- kvp seems to be a valueType, or for some reason it doesn't accept -> etc....
+				row["value"] = kvp.Value;
+				dt->Rows->Add(row);	
+			}
+			dt->WriteXml(configFileName+".xml");
+			return true;
+		}
+		catch(Exception^ err)
+		{
+			Console::WriteLine("Error while saving: "+err->Message);
+			return false;
+		}
+	}
+
 	Dictionary<String^,String^>^ getConfigLiterals(String^ configFileName)
 	{
 		Dictionary<String^,String^>^ dic = gcnew Dictionary<String^,String^>();
@@ -91,7 +129,7 @@ namespace SoundBoard
 			dt->Columns->Add("key"); //no extra function for this 
 			dt->Columns->Add("value"); //it will never change muharrr
 			dt->ReadXml(configFileName);
-			
+
 			for each(DataRow^ row in dt->Rows)
 			{
 				dic->Add(Convert::ToString(row["key"]),Convert::ToString(row["value"]));
@@ -163,7 +201,7 @@ namespace SoundBoard
 		{
 			dt->Columns->Add("Button Remove");
 		}
-		
+
 		return dt;
 	}
 

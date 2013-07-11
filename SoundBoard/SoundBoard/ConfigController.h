@@ -28,10 +28,13 @@ namespace SoundBoard
 		SoundController^ soundController;		
 		
 
-		
+		bool saveConfigLiterals();
+		bool loadConfigLiterals();
 
 		//gets saved config or generates it if it doesn't exist yet
 		DataTable^ getButtonGroupConfig(String^ type);
+		bool setConfigLiterals(String^ configFileName, Dictionary<String^,String^>^ dic);
+
 	private:	
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
 		List<String^>^ list_folderNamesToIgnore;
