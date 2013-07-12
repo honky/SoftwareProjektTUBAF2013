@@ -116,7 +116,13 @@ namespace SoundBoard {
 				TBoxes[i]->Name = "TextBox1" + Row.ToString() + Column.ToString();
 				TBoxes[i]->Size = System::Drawing::Size(111, 20);
 				//TBoxes[i]->TabIndex = 22;
-				TBoxes[i]->Visible = true;
+				if(Convert::ToString(Dtbl[0]->Rows[i/3]["Button Remove"]) == "true")
+				{
+					TBoxes[i]->Visible = false;
+				}else
+				{
+					TBoxes[i]->Visible = true;
+				}
 				this->tableLayoutPanel1->Controls->Add(this->TBoxes[i], Column, Row);
 			}
 
@@ -135,7 +141,13 @@ namespace SoundBoard {
 				TBoxes[i]->Name = "TextBox2" + Row.ToString() + Column.ToString();
 				TBoxes[i]->Size = System::Drawing::Size(111, 20);
 				//TBoxes[i]->TabIndex = 22;
-				TBoxes[i]->Visible = true;
+				if(Convert::ToString(Dtbl[1]->Rows[(i - 36)/3]["Button Remove"]) == "true")
+				{
+					TBoxes[i]->Visible = false;
+				}else
+				{
+					TBoxes[i]->Visible = true;
+				}
 				this->tableLayoutPanel2->Controls->Add(this->TBoxes[i], Column, Row);
 			}
 
@@ -154,7 +166,13 @@ namespace SoundBoard {
 				TBoxes[i]->Name = "TextBox3" + Row.ToString() + Column.ToString();
 				TBoxes[i]->Size = System::Drawing::Size(111, 20);
 				//TBoxes[i]->TabIndex = 22;
-				TBoxes[i]->Visible = true;
+				if(Convert::ToString(Dtbl[2]->Rows[(i - 72)/3]["Button Remove"]) == "true")
+				{
+					TBoxes[i]->Visible = false;
+				}else
+				{
+					TBoxes[i]->Visible = true;
+				}
 				this->tableLayoutPanel3->Controls->Add(this->TBoxes[i], Column, Row);
 			}
 
@@ -174,7 +192,13 @@ namespace SoundBoard {
 				CBoxes[i]->Name = "comboBox1" + Row.ToString() + Column.ToString();
 				CBoxes[i]->Size = System::Drawing::Size(111, 21);
 				//CBoxes[i]->comboBox2->TabIndex = 53;
-				CBoxes[i]->Visible = true;
+				if(Convert::ToString(Dtbl[0]->Rows[i]["Button Remove"]) == "true")
+				{
+					CBoxes[i]->Visible = false;
+				}else
+				{
+					CBoxes[i]->Visible = true;
+				}
 				this->tableLayoutPanel1->Controls->Add(this->CBoxes[i], Column, Row);
 			}
 
@@ -194,7 +218,13 @@ namespace SoundBoard {
 				CBoxes[i]->Name = "comboBox2" + Row.ToString() + Column.ToString();
 				CBoxes[i]->Size = System::Drawing::Size(111, 21);
 				//CBoxes[i]->comboBox2->TabIndex = 53;
-				CBoxes[i]->Visible = true;
+				if(Convert::ToString(Dtbl[1]->Rows[(i -12)]["Button Remove"]) == "true")
+				{
+					CBoxes[i]->Visible = false;
+				}else
+				{
+					CBoxes[i]->Visible = true;
+				}
 				this->tableLayoutPanel2->Controls->Add(this->CBoxes[i], Column, Row);
 			}
 
@@ -214,7 +244,13 @@ namespace SoundBoard {
 				CBoxes[i]->Name = "comboBox3" + Row.ToString() + Column.ToString();
 				CBoxes[i]->Size = System::Drawing::Size(111, 21);
 				//CBoxes[i]->comboBox2->TabIndex = 53;
-				CBoxes[i]->Visible = true;
+				if(Convert::ToString(Dtbl[2]->Rows[(i - 24)]["Button Remove"]) == "true")
+				{
+					CBoxes[i]->Visible = false;
+				}else
+				{
+					CBoxes[i]->Visible = true;
+				}
 				this->tableLayoutPanel3->Controls->Add(this->CBoxes[i], Column, Row);
 			}
 
@@ -232,7 +268,13 @@ namespace SoundBoard {
 				RButtons[i]->Name = L"button1" + Row.ToString() + Column.ToString();
 				RButtons[i]->Size = System::Drawing::Size(115, 34);
 				//RButtons[i]->TabIndex = 7;
-				RButtons[i]->Text = L"Remove";
+				if(Convert::ToString(Dtbl[0]->Rows[i]["Button Remove"]) == "true")
+				{
+					RButtons[i]->Text = L"Add";
+				}else
+				{
+					RButtons[i]->Text = L"Remove";
+				}
 				RButtons[i]->UseVisualStyleBackColor = true;
 				RButtons[i]->Visible = true;
 				this->tableLayoutPanel1->Controls->Add(this->RButtons[i], Column, Row);
@@ -252,7 +294,13 @@ namespace SoundBoard {
 				RButtons[i]->Name = L"button2" + Row.ToString() + Column.ToString();
 				RButtons[i]->Size = System::Drawing::Size(115, 34);
 				//RButtons[i]->TabIndex = 7;
-				RButtons[i]->Text = L"Remove";
+				if(Convert::ToString(Dtbl[1]->Rows[(i - 12)]["Button Remove"]) == "true")
+				{
+					RButtons[i]->Text = L"Add";
+				}else
+				{
+					RButtons[i]->Text = L"Remove";
+				}
 				RButtons[i]->UseVisualStyleBackColor = true;
 				RButtons[i]->Visible = true;
 				this->tableLayoutPanel2->Controls->Add(this->RButtons[i], Column, Row);
@@ -272,7 +320,13 @@ namespace SoundBoard {
 				RButtons[i]->Name = L"button3" + Row.ToString() + Column.ToString();
 				RButtons[i]->Size = System::Drawing::Size(115, 34);
 				//RButtons[i]->TabIndex = 7;
-				RButtons[i]->Text = L"Remove";
+				if(Convert::ToString(Dtbl[2]->Rows[(i - 24)]["Button Remove"]) == "true")
+				{
+					RButtons[i]->Text = L"Add";
+				}else
+				{
+					RButtons[i]->Text = L"Remove";
+				}
 				RButtons[i]->UseVisualStyleBackColor = true;
 				RButtons[i]->Visible = true;
 				this->tableLayoutPanel3->Controls->Add(this->RButtons[i], Column, Row);
@@ -1010,7 +1064,7 @@ private: System::Windows::Forms::Label^  label1;
 					 TBoxes[(3 * Row) + 2]->Visible = false;
 					 CBoxes[Row]->Visible = false;
 					 b->Text = "Add";
-					 Dtbl[Row / 12]->Rows[Row % 12]["Button Remove"] = "false";
+					 Dtbl[Row / 12]->Rows[Row % 12]["Button Remove"] = "true";
 				 }else
 				 {
 					 TBoxes[3 * Row]->Visible = true;
@@ -1018,7 +1072,7 @@ private: System::Windows::Forms::Label^  label1;
 					 TBoxes[(3 * Row) + 2]->Visible = true;
 					 CBoxes[Row]->Visible = true;
 					 b->Text = "Remove";
-					 Dtbl[Row / 12]->Rows[Row % 12]["Button Remove"] = "true";
+					 Dtbl[Row / 12]->Rows[Row % 12]["Button Remove"] = "false";
 				 }
 
 			 }
@@ -1080,7 +1134,7 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 				 Dtbl[1]->Rows[i - 12]["Button Color"] = TBoxes[(i * 3) + 2]->Text;
 				 Dtbl[1]->Rows[i - 12]["Button Type"] = CBoxes[i]->Text;
 			 }
-			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
+			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[1]->name, Dtbl[1]);
 			 MessageBox::Show("Please restart the program to see the effect.");
 		 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1091,7 +1145,7 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 				 Dtbl[2]->Rows[i - 24]["Button Color"] = TBoxes[(i * 3) + 1]->Text;
 				 Dtbl[2]->Rows[i - 24]["Button Type"] = CBoxes[i]->Text;
 			 }
-			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
+			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[2]->name, Dtbl[2]);
 			 MessageBox::Show("Please restart the program to see the effect.");
 		 }
 };
