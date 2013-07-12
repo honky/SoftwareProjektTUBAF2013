@@ -638,7 +638,7 @@ namespace SoundBoard {
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 5;
 			this->button1->Text = L"Edit Config";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
 			// openFileDialogCustomSounds

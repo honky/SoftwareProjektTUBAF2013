@@ -2,17 +2,23 @@
 <DocumentElement>
   <General>
     <Button_x0020_Label>GeneralButton1</Button_x0020_Label>
-    <Button_x0020_Type>Random</Button_x0020_Type>
+    <Button_x0020_Path>./General/GeneralButton1</Button_x0020_Path>
+    <Button_x0020_Color>default</Button_x0020_Color>
+    <Button_x0020_Type>random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </General>
   <General>
     <Button_x0020_Label>GeneralButton2</Button_x0020_Label>
-    <Button_x0020_Type>Random</Button_x0020_Type>
+    <Button_x0020_Path>./General/GeneralButton2</Button_x0020_Path>
+    <Button_x0020_Color>default</Button_x0020_Color>
+    <Button_x0020_Type>random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </General>
   <General>
     <Button_x0020_Label>GeneralButton3</Button_x0020_Label>
-    <Button_x0020_Type>Random</Button_x0020_Type>
+    <Button_x0020_Path>./General/GeneralButton3</Button_x0020_Path>
+    <Button_x0020_Color>default</Button_x0020_Color>
+    <Button_x0020_Type>random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </General>
   <General>

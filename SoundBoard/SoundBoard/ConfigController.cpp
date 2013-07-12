@@ -264,18 +264,88 @@ namespace SoundBoard
 			{
 				//we skip several folder files
 				if(list_folderNamesToIgnore->Contains(Path::GetFileName(propablyButtonGroup)))	{ continue; }
-
 				SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
+
+				bool configExisted = false;
+				bool configWasEmpty = false;
+
+				DataTable^ dt_config = gcnew DataTable;
+				dt_config = addButtonGroupConfigColumns(dt_config);	
+				String^ pathToBGC = configFolder+sbg->name->Replace("/","")+".xml";
+				dt_config->TableName = sbg->name;
+				dt_config->ReadXml(pathToBGC);
+				int deppenCount = dt_config->Rows->Count;
+
+				if(File::Exists(pathToBGC))
+				{		
+					configExisted = true;
+					//checking if is empty 
+					for each(DataRow^ row in dt_config->Rows)
+					{
+						if(!String::IsNullOrEmpty(Convert::ToString(row["Button Label"])))
+						{
+							configWasEmpty = false;
+							break;
+						}
+					}
+				}
+				
+				
 
 				array<String^>^ propablyButtons = Directory::GetDirectories(propablyButtonGroup);
 				for each (String^ propablyButton in propablyButtons)
 				{	
 					array<String^>^ probablyButtonFiles = Directory::GetFiles(propablyButton);
-
+					
 					if(probablyButtonFiles->Length != 0)
 					{
 						SoundContext^ sc = gcnew SoundContext(propablyButton, SoundContextType::Random);
 						SoundButton^ sb = gcnew SoundButton(Path::GetFileName(propablyButton), sc);
+						
+						if(configWasEmpty )
+						{ //taking default values
+							sb->soundButtonPath = "./"+ sbg->name + "/"+sb->text;
+							sb->soundButtonType = "random";
+							sb->soundButtonColor = "default";						
+						}
+						else
+						{//try to find the right one
+							bool found = false;
+							for each(DataRow^ row in dt_config->Rows)
+							{	
+								if(Convert::ToString(row["Button Label"])->ToLower() == sb->text->ToLower())
+								{
+									found = true;
+									//we need to parse values not beautiful but its the night before showdown
+									if(!String::IsNullOrEmpty(Convert::ToString(row["Button Color"])) && Convert::ToString(row["Button Color"])->ToLower() == "red")
+									{
+										sb->BackColor = System::Drawing::Color::Red;
+									}
+									if(!String::IsNullOrEmpty(Convert::ToString(row["Button Color"])) && Convert::ToString(row["Button Color"])->ToLower() == "blue")
+									{
+										sb->BackColor = System::Drawing::Color::Blue;
+									}
+									if(!String::IsNullOrEmpty(Convert::ToString(row["Button Remove"])) && Convert::ToString(row["Button Remove"])->ToLower() == "true")
+									{
+										sb->Visible = false;
+									}									
+									if(!String::IsNullOrEmpty(Convert::ToString(row["Button Type"])) && Convert::ToString(row["Button Type"])->ToLower() == "Single")
+									{
+										sb->context->sct = SoundContextType::Single;
+									}
+
+								}
+							}
+
+							if(found == false)
+							{
+								sb->soundButtonPath = "./"+ sbg->name + "/"+sb->text;
+								sb->soundButtonType = "random";
+								sb->soundButtonColor = "default";	
+							}
+						}
+
+
 						soundController->attachPlaySoundEventToSoundButton(sb);
 						sbg->addSoundButton(sb);
 					}
@@ -290,7 +360,7 @@ namespace SoundBoard
 		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
 		{
 			DataTable^ dt = getButtonGroupConfig(sbg->name);
-			setButtonGroupConfig(sbg->name,dt);
+			//setButtonGroupConfig(sbg->name,dt);
 		}
 
 		return list_return;	
