@@ -1,15 +1,45 @@
 <?xml version="1.0" standalone="yes"?>
 <DocumentElement>
   <Heim>
+    <Button_x0020_Label>HeimButton1</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Heim>
   <Heim>
+    <Button_x0020_Label>HeimButton2</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Heim>
   <Heim>
+    <Button_x0020_Label>HeimButton3</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Heim>
+  <Heim>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Heim>
 </DocumentElement>

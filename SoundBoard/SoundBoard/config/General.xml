@@ -1,15 +1,45 @@
 <?xml version="1.0" standalone="yes"?>
 <DocumentElement>
   <General>
+    <Button_x0020_Label>GeneralButton1</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </General>
   <General>
+    <Button_x0020_Label>GeneralButton2</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </General>
   <General>
+    <Button_x0020_Label>GeneralButton3</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </General>
+  <General>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </General>
 </DocumentElement>

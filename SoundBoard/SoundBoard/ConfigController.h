@@ -26,7 +26,6 @@ namespace SoundBoard
 		List<SoundButtonGroup^>^ list_soundButtonGroups;
 		SoundController^ soundController;	
 		
-
 		bool saveConfigLiterals();
 		bool loadConfigLiterals();
 

@@ -32,8 +32,9 @@ int main(array<System::String ^> ^args)
 	int curPos = examplePlayer->getCurrentPosition();
 	int i = 0;
 	*/
-
+	
 	Application::Run(gcnew MainForm());
+
 	return 0;
 }
 }

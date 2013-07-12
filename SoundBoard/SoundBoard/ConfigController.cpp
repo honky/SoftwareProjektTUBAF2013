@@ -176,6 +176,13 @@ namespace SoundBoard
 					row["Button Remove"] = "false";
 					dt->Rows->Add(row);
 				}
+
+				while(dt->Rows->Count<12)
+				{ //adding empty rows
+					DataRow^ row = dt->NewRow();
+					row["Button Remove"] = "false";
+					dt->Rows->Add(row);
+				}
 				dt->WriteXml(pathToBGC);
 			}
 			else
@@ -221,6 +228,12 @@ namespace SoundBoard
 		try
 		{
 			String^ pathToBGC = configFolder+"/"+_buttonGroupName+".xml";
+			while(dt->Rows->Count<12)
+			{ //adding empty rows
+					DataRow^ row = dt->NewRow();
+					row["Button Remove"] = "false";
+					dt->Rows->Add(row);
+			}
 			dt->WriteXml(pathToBGC);
 			return true;
 		}
@@ -276,7 +289,8 @@ namespace SoundBoard
 
 		for each (SoundButtonGroup^ sbg in list_soundButtonGroups)
 		{
-			getButtonGroupConfig(sbg->name);
+			DataTable^ dt = getButtonGroupConfig(sbg->name);
+			setButtonGroupConfig(sbg->name,dt);
 		}
 
 		return list_return;	

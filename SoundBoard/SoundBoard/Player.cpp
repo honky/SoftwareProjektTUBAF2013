@@ -252,7 +252,17 @@ namespace SoundBoard
 	{
 		if(_gui == nullptr)
 		{
-			_gui = gcnew PlayerGUI("");
+			String^ playerString = gcnew String("");
+			try
+			{
+				playerString = System::IO::Path::GetFileName(currentSound->path);
+			}
+			catch (Exception^ e)
+			{
+				Console::WriteLine(e->Message);
+				playerString = this->alias;
+			}
+			_gui = gcnew PlayerGUI(playerString);
 			_gui->trackBarVolumeAll->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueVolumeAllChanged);
 			_gui->trackBarVolumeLeft->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueVolumeLeftChanged);
 			_gui->trackBarVolumeRight->ValueChanged += gcnew System::EventHandler(this, &SoundBoard::Player::playerGUITrackbar_ValueVolumeRightChanged);
@@ -303,6 +313,7 @@ namespace SoundBoard
 	{
 		SoundButton^ sb = dynamic_cast<SoundButton^>(sender);
 		this->stopSound();
+		this->gui->Visible = false;
 	}
 	void Player::buttonPause_Click(System::Object ^ sender, System::EventArgs^ e)
 	{

@@ -1,16 +1,45 @@
 <?xml version="1.0" standalone="yes"?>
 <DocumentElement>
   <Gegner>
-    <Button_x0020_Label>bla</Button_x0020_Label>
+    <Button_x0020_Label>GegnerButton2</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Gegner>
   <Gegner>
+    <Button_x0020_Label>GegnerButton3</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Gegner>
   <Gegner>
+    <Button_x0020_Label>Gegnerbutton1</Button_x0020_Label>
     <Button_x0020_Type>Random</Button_x0020_Type>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
+    <Button_x0020_Remove>false</Button_x0020_Remove>
+  </Gegner>
+  <Gegner>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Gegner>
 </DocumentElement>
