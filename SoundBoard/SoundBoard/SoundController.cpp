@@ -143,10 +143,11 @@ namespace SoundBoard
 	bool SoundController::play(SoundButton^ sb)
 	{
 		playedCounter+=1;
-		if(playedCounter>8)
+		if(playedCounter>6)
 		{
 			playedCounter = 0;
-			this->form->Refresh();
+			form->Refresh();
+			Application::Restart();
 		}
 
 		bool returnValue = false;
