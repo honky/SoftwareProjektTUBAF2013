@@ -39,7 +39,7 @@ namespace SoundBoard {
 			InitializeComponent();
 			soundController =  gcnew SoundController(flowLayoutPanelRight,this);
 			configController = gcnew ConfigController(soundController);
-			//edit = gcnew editConfigForm(configController);
+			edit = gcnew editConfigForm(configController);
 			flowLayoutPanelRight->CheckForIllegalCrossThreadCalls = false;
 
 
@@ -284,7 +284,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeAll->Maximum = 1000;
 			this->trackBarMasterVolumeAll->Name = L"trackBarMasterVolumeAll";
 			this->trackBarMasterVolumeAll->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeAll->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeAll->TabIndex = 0;
 			this->trackBarMasterVolumeAll->TickFrequency = 100;
 			this->trackBarMasterVolumeAll->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -311,7 +311,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeLeft->Maximum = 1000;
 			this->trackBarMasterVolumeLeft->Name = L"trackBarMasterVolumeLeft";
 			this->trackBarMasterVolumeLeft->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeLeft->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeLeft->TabIndex = 0;
 			this->trackBarMasterVolumeLeft->TickFrequency = 100;
 			this->trackBarMasterVolumeLeft->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -338,7 +338,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeRight->Maximum = 1000;
 			this->trackBarMasterVolumeRight->Name = L"trackBarMasterVolumeRight";
 			this->trackBarMasterVolumeRight->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeRight->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeRight->TabIndex = 0;
 			this->trackBarMasterVolumeRight->TickFrequency = 100;
 			this->trackBarMasterVolumeRight->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -364,7 +364,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeTreble->Maximum = 1000;
 			this->trackBarMasterVolumeTreble->Name = L"trackBarMasterVolumeTreble";
 			this->trackBarMasterVolumeTreble->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeTreble->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeTreble->TabIndex = 0;
 			this->trackBarMasterVolumeTreble->TickFrequency = 100;
 			this->trackBarMasterVolumeTreble->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -390,7 +390,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBass->Maximum = 1000;
 			this->trackBarMasterVolumeBass->Name = L"trackBarMasterVolumeBass";
 			this->trackBarMasterVolumeBass->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeBass->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeBass->TabIndex = 0;
 			this->trackBarMasterVolumeBass->TickFrequency = 100;
 			this->trackBarMasterVolumeBass->TickStyle = System::Windows::Forms::TickStyle::Both;
@@ -417,7 +417,7 @@ namespace SoundBoard {
 			this->trackBarMasterVolumeBalance->Minimum = -1000;
 			this->trackBarMasterVolumeBalance->Name = L"trackBarMasterVolumeBalance";
 			this->trackBarMasterVolumeBalance->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(45, 100);
+			this->trackBarMasterVolumeBalance->Size = System::Drawing::Size(42, 100);
 			this->trackBarMasterVolumeBalance->TabIndex = 0;
 			this->trackBarMasterVolumeBalance->TickFrequency = 200;
 			this->trackBarMasterVolumeBalance->TickStyle = System::Windows::Forms::TickStyle::Both;

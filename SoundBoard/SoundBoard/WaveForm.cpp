@@ -24,7 +24,6 @@ namespace SoundBoard
 		String^ _Output = nullptr;
 		String^ _Error = nullptr;
 
-		//this is the actual filename without the extension.
 		//String^ temp = path->Substring(Environment::CurrentDirectory->Length + 8,path->Length - Environment::CurrentDirectory->Length - 12);
 		String^ temp = Path::GetFileNameWithoutExtension(path);
 		
@@ -48,13 +47,13 @@ namespace SoundBoard
 		}
 		
 		//deletes the raw-file that was previously created
-		/*if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
+		if(File::Exists(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw"))
 		{
 
 			File::Delete(Environment::CurrentDirectory + "\\sox\\" + temp + ".raw");
 
 		}
-		*/
+		
 		return bmp;
 	}
 
@@ -156,11 +155,6 @@ List<int> ^ WaveForm::createSamples(String^ fileName, int pbl)
 		  Samples->Add(max);
 		  Samples->Add(min);
 		  }
-
-	  // This function used to read the audio data in a previous version
-	  /*while (br->BaseStream->Position < br->BaseStream->Length){
-		  Samples[(int)(br->BaseStream->Position/2)] = br->ReadInt16();
-	  }*/
       
 	  fs->Close( );
    }

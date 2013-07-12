@@ -58,6 +58,11 @@ namespace SoundBoard {
 			RButtons = gcnew List<Button^>();
 			Dtbl = gcnew List<DataTable^>();
 			
+			for each(SoundButtonGroup^ sbg in configController->list_soundButtonGroups)
+			{
+				Dtbl->Add(configController->getButtonGroupConfig(sbg->name));
+			}
+
 			for(int i = 0; i < 108; i++)
 			{
 				TBoxes->Add(gcnew TextBox());
@@ -73,11 +78,6 @@ namespace SoundBoard {
 				Button^ btn = gcnew Button();
 				btn->Click += gcnew System::EventHandler(this, &editConfigForm::removeButton_Click);
 				RButtons->Add(btn);
-			}
-			
-			for each(SoundButtonGroup^ sbg in configController->list_soundButtonGroups)
-			{
-				Dtbl->Add(configController->getButtonGroupConfig(sbg->name));
 			}
 
 			int RowCount = 0;
@@ -704,7 +704,7 @@ private: System::Windows::Forms::Label^  label1;
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(111, 40);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"Button Color";
+			this->label3->Text = L"Button Color\r\nOnly BLUE or RED";
 			// 
 			// label4
 			// 
@@ -818,9 +818,9 @@ private: System::Windows::Forms::Label^  label1;
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(237, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(65, 13);
+			this->label7->Size = System::Drawing::Size(97, 26);
 			this->label7->TabIndex = 14;
-			this->label7->Text = L"Button Color";
+			this->label7->Text = L"Button Color\r\nOnly BLUE or RED";
 			// 
 			// label8
 			// 
@@ -931,9 +931,9 @@ private: System::Windows::Forms::Label^  label1;
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(237, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(65, 13);
+			this->label11->Size = System::Drawing::Size(97, 26);
 			this->label11->TabIndex = 2;
-			this->label11->Text = L"Button Color";
+			this->label11->Text = L"Button Color\r\nOnly BLUE or RED";
 			// 
 			// label12
 			// 
@@ -1004,11 +1004,23 @@ private: System::Windows::Forms::Label^  label1;
 				 {
 					 if(b->Name == RButtons[Row]->Name)break;
 				 }
-				 TBoxes[3 * Row]->Visible = false;
-				 TBoxes[(3 * Row) + 1]->Visible = false;
-				 TBoxes[(3 * Row) + 2]->Visible = false;
-				 CBoxes[Row]->Visible = false;
-				 RButtons[Row]->Visible = false;
+				 if(b->Text == "Remove")
+				 {
+					 TBoxes[3 * Row]->Visible = false;
+					 TBoxes[(3 * Row) + 1]->Visible = false;
+					 TBoxes[(3 * Row) + 2]->Visible = false;
+					 CBoxes[Row]->Visible = false;
+					 b->Text = "Add";
+					 Dtbl[Row / 12]->Rows[Row % 12]["Button Remove"] = "false";
+				 }else
+				 {
+					 TBoxes[3 * Row]->Visible = true;
+					 TBoxes[(3 * Row) + 1]->Visible = true;
+					 TBoxes[(3 * Row) + 2]->Visible = true;
+					 CBoxes[Row]->Visible = true;
+					 b->Text = "Remove";
+					 Dtbl[Row / 12]->Rows[Row % 12]["Button Remove"] = "true";
+				 }
 
 			 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1016,7 +1028,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				 int Row;
 				 for(Row = 0; Row < 11; Row++)
 				 {
-					 if(RButtons[Row]->Visible == false)break;
+					 if(CBoxes[Row]->Visible == false)break;
 				 }
 				 TBoxes[3 * Row]->Visible = true;
 				 TBoxes[(3 * Row) + 1]->Visible = true;
@@ -1029,7 +1041,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 int Row;
 				 for(Row = 12; Row < 23; Row++)
 				 {
-					 if(RButtons[Row]->Visible == false)break;
+					 if(CBoxes[Row]->Visible == false)break;
 				 }
 				 TBoxes[3 * Row]->Visible = true;
 				 TBoxes[(3 * Row) + 1]->Visible = true;
@@ -1042,7 +1054,7 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 			 int Row;
 				 for(Row = 24; Row < 35; Row++)
 				 {
-					 if(RButtons[Row]->Visible == false)break;
+					 if(CBoxes[Row]->Visible == false)break;
 				 }
 				 TBoxes[3 * Row]->Visible = true;
 				 TBoxes[(3 * Row) + 1]->Visible = true;
@@ -1053,51 +1065,30 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 			 for(int i = 0; i < 11; i++)
 			 {
-				 DataRow^ row;
-				 if(Dtbl[0]->Rows->Count < (i + 1))
-				 {
-					 row = Dtbl[0]->NewRow();
-				 }else{row = Dtbl[0]->Rows[i];}
-
-				 row["Button Label"] = TBoxes[i * 3]->Text;
-				 row["Button Path"] = TBoxes[(i * 3) + 1]->Text;
-				 row["Button Color"] = TBoxes[(i * 3) + 2]->Text;
-				 row["Button Type"] = CBoxes[i]->Text;
-				 if(Dtbl[0]->Rows->Count < (i + 1))Dtbl[0]->Rows->Add(row);
+				 Dtbl[0]->Rows[i]["Button Label"] = TBoxes[i * 3]->Text;
+				 Dtbl[0]->Rows[i]["Button Path"] = TBoxes[(i * 3) + 1]->Text;
+				 Dtbl[0]->Rows[i]["Button Color"] = TBoxes[(i * 3) + 2]->Text;
+				 Dtbl[0]->Rows[i]["Button Type"] = CBoxes[i]->Text;
 				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
 			 }
 		 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 			 for(int i = 12; i < 23; i++)
 			 {
-				 DataRow^ row;
-				 if(Dtbl[1]->Rows->Count < (i + 1))
-				 {
-					 row = Dtbl[1]->NewRow();
-				 }else{row = Dtbl[1]->Rows[i];}
-
-				 row["Button Label"] = TBoxes[i * 3]->Text;
-				 row["Button Path"] = TBoxes[(i * 3) + 1]->Text;
-				 row["Button Color"] = TBoxes[(i * 3) + 2]->Text;
-				 row["Button Type"] = CBoxes[i]->Text;
-				 if(Dtbl[1]->Rows->Count < (i + 1))Dtbl[1]->Rows->Add(row);
+				 Dtbl[1]->Rows[i - 12]["Button Label"] = TBoxes[i * 3]->Text;
+				 Dtbl[1]->Rows[i - 12]["Button Path"] = TBoxes[(i * 3) + 1]->Text;
+				 Dtbl[1]->Rows[i - 12]["Button Color"] = TBoxes[(i * 3) + 2]->Text;
+				 Dtbl[1]->Rows[i - 12]["Button Type"] = CBoxes[i]->Text;
 				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[1]->name, Dtbl[1]);
 			 }
 		 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 			 for(int i = 24; i < 35; i++)
-			 {
-				 DataRow^ row;
-				 if(Dtbl[2]->Rows->Count < (i + 1))
-				 {
-					 row = Dtbl[2]->NewRow();
-				 }else{row = Dtbl[2]->Rows[i];}
-
-				 row["Button Label"] = TBoxes[i * 3]->Text;
-				 row["Button Path"] = TBoxes[(i * 3) + 1]->Text;
-				 row["Button Color"] = TBoxes[(i * 3) + 1]->Text;
-				 row["Button Type"] = CBoxes[i]->Text;
-				 if(Dtbl[2]->Rows->Count < (i + 1))Dtbl[2]->Rows->Add(row);
+			 {		
+				 Dtbl[2]->Rows[i - 24]["Button Label"] = TBoxes[i * 3]->Text;
+				 Dtbl[2]->Rows[i - 24]["Button Path"] = TBoxes[(i * 3) + 1]->Text;
+				 Dtbl[2]->Rows[i - 24]["Button Color"] = TBoxes[(i * 3) + 1]->Text;
+				 Dtbl[2]->Rows[i - 24]["Button Type"] = CBoxes[i]->Text;
 				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[2]->name, Dtbl[2]);
 			 }
 		 }
