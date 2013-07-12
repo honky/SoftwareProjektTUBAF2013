@@ -97,7 +97,6 @@ namespace SoundBoard {
 						TBoxes[(3 * Zeile) + 2]->Visible = true;
 						CBoxes[Zeile]->Text = Convert::ToString(row["Button Type"]);
 						RButtons[Zeile]->Visible = true;
-						//row["Button Remove"]
 						Zeile++;
 					}
 				RowCount += 12;
@@ -1069,8 +1068,9 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 				 Dtbl[0]->Rows[i]["Button Path"] = TBoxes[(i * 3) + 1]->Text;
 				 Dtbl[0]->Rows[i]["Button Color"] = TBoxes[(i * 3) + 2]->Text;
 				 Dtbl[0]->Rows[i]["Button Type"] = CBoxes[i]->Text;
-				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
 			 }
+			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
+			 MessageBox::Show("Please restart the program to see the effect.");
 		 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 			 for(int i = 12; i < 23; i++)
@@ -1079,8 +1079,9 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 				 Dtbl[1]->Rows[i - 12]["Button Path"] = TBoxes[(i * 3) + 1]->Text;
 				 Dtbl[1]->Rows[i - 12]["Button Color"] = TBoxes[(i * 3) + 2]->Text;
 				 Dtbl[1]->Rows[i - 12]["Button Type"] = CBoxes[i]->Text;
-				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[1]->name, Dtbl[1]);
 			 }
+			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
+			 MessageBox::Show("Please restart the program to see the effect.");
 		 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 			 for(int i = 24; i < 35; i++)
@@ -1089,8 +1090,9 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 				 Dtbl[2]->Rows[i - 24]["Button Path"] = TBoxes[(i * 3) + 1]->Text;
 				 Dtbl[2]->Rows[i - 24]["Button Color"] = TBoxes[(i * 3) + 1]->Text;
 				 Dtbl[2]->Rows[i - 24]["Button Type"] = CBoxes[i]->Text;
-				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[2]->name, Dtbl[2]);
 			 }
+			 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
+			 MessageBox::Show("Please restart the program to see the effect.");
 		 }
 };
 }
