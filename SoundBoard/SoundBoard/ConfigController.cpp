@@ -267,17 +267,19 @@ namespace SoundBoard
 				SoundButtonGroup^ sbg = gcnew SoundButtonGroup(Path::GetFileName(propablyButtonGroup));
 
 				bool configExisted = false;
-				bool configWasEmpty = false;
+				bool configWasEmpty = true;
 
 				DataTable^ dt_config = gcnew DataTable;
 				dt_config = addButtonGroupConfigColumns(dt_config);	
 				String^ pathToBGC = configFolder+sbg->name->Replace("/","")+".xml";
 				dt_config->TableName = sbg->name;
-				dt_config->ReadXml(pathToBGC);
-				int deppenCount = dt_config->Rows->Count;
-
+				
+				try
+				{
 				if(File::Exists(pathToBGC))
-				{		
+				{	
+					dt_config->ReadXml(pathToBGC);
+					int deppenCount = dt_config->Rows->Count;
 					configExisted = true;
 					//checking if is empty 
 					for each(DataRow^ row in dt_config->Rows)
@@ -288,6 +290,11 @@ namespace SoundBoard
 							break;
 						}
 					}
+				}
+				}
+				catch(Exception^ e)
+				{
+					Console::WriteLine(e->Message);
 				}
 				
 				

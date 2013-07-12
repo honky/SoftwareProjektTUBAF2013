@@ -10,14 +10,14 @@
   <Gegner>
     <Button_x0020_Label>GegnerButton3</Button_x0020_Label>
     <Button_x0020_Path>./Gegner/GegnerButton3</Button_x0020_Path>
-    <Button_x0020_Color>default</Button_x0020_Color>
+    <Button_x0020_Color>red</Button_x0020_Color>
     <Button_x0020_Type>random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Gegner>
   <Gegner>
     <Button_x0020_Label>Gegnerbutton1</Button_x0020_Label>
     <Button_x0020_Path>./Gegner/Gegnerbutton1</Button_x0020_Path>
-    <Button_x0020_Color>red</Button_x0020_Color>
+    <Button_x0020_Color>default</Button_x0020_Color>
     <Button_x0020_Type>random</Button_x0020_Type>
     <Button_x0020_Remove>false</Button_x0020_Remove>
   </Gegner>
