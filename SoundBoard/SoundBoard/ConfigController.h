@@ -34,13 +34,13 @@ namespace SoundBoard
 		DataTable^ getButtonGroupConfig(String^ type);
 		bool setConfigLiterals(String^ configFileName, Dictionary<String^,String^>^ dic);
 
+		//writes config to controlled xml path 
+		bool setButtonGroupConfig(String^ type, DataTable^ dt);
+
 	private:	
 		List<SoundButtonGroup^>^ createDefaultButtonGroups();
 		List<String^>^ list_folderNamesToIgnore;		
 		Dictionary<String^,String^>^ ConfigController::getConfigLiterals(String^ configFileName);
-
-		//writes config to controlled xml path 
-		bool setButtonGroupConfig(String^ type, DataTable^ dt);
 
 	private:
 		//simply stops code duplication

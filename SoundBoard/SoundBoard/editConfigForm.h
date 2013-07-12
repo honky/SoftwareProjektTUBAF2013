@@ -29,8 +29,12 @@ namespace SoundBoard {
 	public: 
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  button4;
+	private: System::Windows::Forms::Button^  button5;
+	private: System::Windows::Forms::Button^  button6;
 
 			 List<Button^> ^ RButtons;
+			 List<DataTable^> ^ Dtbl;
 	public:
 		editConfigForm(void)
 		{
@@ -38,225 +42,6 @@ namespace SoundBoard {
 			//
 			//TODO: Add the constructor code here
 			//
-
-			TBoxes = gcnew List<TextBox^>();
-			CBoxes = gcnew List<ComboBox^>();
-			RButtons = gcnew List<Button^>();
-			
-			for(int i = 0; i < 108; i++)
-			{
-				TBoxes->Add(gcnew TextBox());
-			}
-
-			for(int i = 0; i < 36; i++)
-			{
-				CBoxes->Add(gcnew ComboBox());
-			}
-
-			for(int i = 0; i < 36; i++)
-			{
-				Button^ btn = gcnew Button();
-				btn->Click += gcnew System::EventHandler(this, &editConfigForm::removeButton_Click);
-				RButtons->Add(btn);
-			}
-
-			int RowCount = 0;
-			for each(SoundButtonGroup^ sbg in configController->list_soundButtonGroups)
-			{
-				DataTable^ dt = configController->getButtonGroupConfig(sbg->Name);
-				int Zeile = 0 + RowCount;
-					for each (DataRow^ row in dt->Rows)
-					{
-						TBoxes[3 * Zeile]->Text = Convert::ToString(row["Button Label"]);
-						TBoxes[3 * Zeile]->Visible = true;
-						TBoxes[(3 * Zeile) + 1]->Text = Convert::ToString(row["Button Path"]);
-						TBoxes[(3 * Zeile) + 1]->Visible = true;
-						TBoxes[(3 * Zeile) + 2]->Text = Convert::ToString(row["Button Color"]);
-						TBoxes[(3 * Zeile) + 2]->Visible = true;
-						CBoxes[Zeile]->Text = Convert::ToString(row["Button Type"]);
-						RButtons[Zeile]->Visible = true;
-						//row["Button Remove"]
-						Zeile++;
-					}
-				RowCount += 12;
-			}
-
-			
-			for(int i = 0; i < 36; i++)
-			{
-				// There is a 0th column
-				int Column	=	(i % 3);
-				// There is no 0th row
-				int Row	=	(i + 3) / 3;
-			
-				TBoxes[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				TBoxes[i]->Location = System::Drawing::Point(3 + (117 * Column), (3 + 40 * Row));
-				TBoxes[i]->Name = "TextBox1" + Row.ToString() + Column.ToString();
-				TBoxes[i]->Size = System::Drawing::Size(111, 20);
-				//TBoxes[i]->TabIndex = 22;
-				TBoxes[i]->Visible = true;
-				this->tableLayoutPanel1->Controls->Add(this->TBoxes[i], Column, Row);
-			}
-
-			for(int i = 36; i < 72; i++)
-			{
-			
-				// There is a 0th column
-				int Column	=	((i - 36) % 3);
-				// There is no 0th row
-				int Row	=	((i - 36) + 3) / 3;
-			
-				TBoxes[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				TBoxes[i]->Location = System::Drawing::Point(3 + (117 * Column), (3 + 40 * Row));
-				TBoxes[i]->Name = "TextBox2" + Row.ToString() + Column.ToString();
-				TBoxes[i]->Size = System::Drawing::Size(111, 20);
-				//TBoxes[i]->TabIndex = 22;
-				TBoxes[i]->Visible = true;
-				this->tableLayoutPanel2->Controls->Add(this->TBoxes[i], Column, Row);
-			}
-
-			for(int i = 72; i < 108; i++)
-			{
-			
-				// There is a 0th column
-				int Column	=	((i - 72) % 3);
-				// There is no 0th row
-				int Row	=	((i - 72) + 3) / 3;
-			
-				TBoxes[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				TBoxes[i]->Location = System::Drawing::Point(3 + (117 * Column), 3 + (40 * Row));
-				TBoxes[i]->Name = "TextBox3" + Row.ToString() + Column.ToString();
-				TBoxes[i]->Size = System::Drawing::Size(111, 20);
-				//TBoxes[i]->TabIndex = 22;
-				TBoxes[i]->Visible = true;
-				this->tableLayoutPanel3->Controls->Add(this->TBoxes[i], Column, Row);
-			}
-
-			for(int i = 0; i < 12; i++)
-			{
-				// The column is always 3
-				int Column	=	3;
-				// There is no 0th row
-				int Row		=	i + 1;
-
-				CBoxes[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				CBoxes[i]->FormattingEnabled = true;
-				CBoxes[i]->Items->AddRange(gcnew cli::array< System::Object^  >(4) {L"Random", L"Loop", L"Single", L"Playlist"});
-				CBoxes[i]->Location = System::Drawing::Point(354, 3 + (40 * Row));
-				CBoxes[i]->Name = "comboBox1" + Row.ToString() + Column.ToString();
-				CBoxes[i]->Size = System::Drawing::Size(111, 21);
-				//CBoxes[i]->comboBox2->TabIndex = 53;
-				CBoxes[i]->Visible = true;
-				this->tableLayoutPanel1->Controls->Add(this->CBoxes[i], Column, Row);
-			}
-
-			for(int i = 12; i < 24; i++)
-			{
-				// The column is always 3
-				int Column	=	3;
-				// There is no 0th row
-				int Row		=	(i - 12) + 1;
-
-				CBoxes[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				CBoxes[i]->FormattingEnabled = true;
-				CBoxes[i]->Items->AddRange(gcnew cli::array< System::Object^  >(4) {L"Random", L"Loop", L"Single", L"Playlist"});
-				CBoxes[i]->Location = System::Drawing::Point(354, 3 + (40 * Row));
-				CBoxes[i]->Name = "comboBox2" + Row.ToString() + Column.ToString();
-				CBoxes[i]->Size = System::Drawing::Size(111, 21);
-				//CBoxes[i]->comboBox2->TabIndex = 53;
-				CBoxes[i]->Visible = true;
-				this->tableLayoutPanel2->Controls->Add(this->CBoxes[i], Column, Row);
-			}
-
-			for(int i = 24; i < 36; i++)
-			{
-				// The column is always 3
-				int Column	=	3;
-				// There is no 0th row
-				int Row		=	(i - 24) + 1;
-
-				CBoxes[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				CBoxes[i]->FormattingEnabled = true;
-				CBoxes[i]->Items->AddRange(gcnew cli::array< System::Object^  >(4) {L"Random", L"Loop", L"Single", L"Playlist"});
-				CBoxes[i]->Location = System::Drawing::Point(354, 3 + (40 * Row));
-				CBoxes[i]->Name = "comboBox3" + Row.ToString() + Column.ToString();
-				CBoxes[i]->Size = System::Drawing::Size(111, 21);
-				//CBoxes[i]->comboBox2->TabIndex = 53;
-				CBoxes[i]->Visible = true;
-				this->tableLayoutPanel3->Controls->Add(this->CBoxes[i], Column, Row);
-			}
-
-			for(int i = 0; i < 12; i++)
-			{
-				// The column is always 4
-				int Column	=	4;
-				// There is no 0th row
-				int Row		=	i + 1;
-
-				RButtons[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				RButtons[i]->Location = System::Drawing::Point(471, 3 + (40 * Row));
-				RButtons[i]->Name = L"button1" + Row.ToString() + Column.ToString();
-				RButtons[i]->Size = System::Drawing::Size(115, 34);
-				//RButtons[i]->TabIndex = 7;
-				RButtons[i]->Text = L"Remove";
-				RButtons[i]->UseVisualStyleBackColor = true;
-				RButtons[i]->Visible = true;
-				this->tableLayoutPanel1->Controls->Add(this->RButtons[i], Column, Row);
-			}
-
-			for(int i = 12; i < 24; i++)
-			{
-				// The column is always 4
-				int Column	=	4;
-				// There is no 0th row
-				int Row		=	(i - 12) + 1;
-
-				RButtons[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				RButtons[i]->Location = System::Drawing::Point(471, 3 + (40 * Row));
-				RButtons[i]->Name = L"button2" + Row.ToString() + Column.ToString();
-				RButtons[i]->Size = System::Drawing::Size(115, 34);
-				//RButtons[i]->TabIndex = 7;
-				RButtons[i]->Text = L"Remove";
-				RButtons[i]->UseVisualStyleBackColor = true;
-				RButtons[i]->Visible = true;
-				this->tableLayoutPanel2->Controls->Add(this->RButtons[i], Column, Row);
-			}
-
-			for(int i = 24; i < 36; i++)
-			{
-				// The column is always 4
-				int Column	=	4;
-				// There is no 0th row
-				int Row		=	(i - 24) + 1;
-
-				RButtons[i]->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
-				| System::Windows::Forms::AnchorStyles::Left) 
-				| System::Windows::Forms::AnchorStyles::Right));
-				RButtons[i]->Location = System::Drawing::Point(471, 3 + (40 * Row));
-				RButtons[i]->Name = L"button3" + Row.ToString() + Column.ToString();
-				RButtons[i]->Size = System::Drawing::Size(115, 34);
-				//RButtons[i]->TabIndex = 7;
-				RButtons[i]->Text = L"Remove";
-				RButtons[i]->UseVisualStyleBackColor = true;
-				RButtons[i]->Visible = true;
-				this->tableLayoutPanel3->Controls->Add(this->RButtons[i], Column, Row);
-			}
 
 		}
 
@@ -271,6 +56,7 @@ namespace SoundBoard {
 			TBoxes = gcnew List<TextBox^>();
 			CBoxes = gcnew List<ComboBox^>();
 			RButtons = gcnew List<Button^>();
+			Dtbl = gcnew List<DataTable^>();
 			
 			for(int i = 0; i < 108; i++)
 			{
@@ -289,11 +75,16 @@ namespace SoundBoard {
 				RButtons->Add(btn);
 			}
 			
-			int RowCount = 0;
-			int count = configController->list_soundButtonGroups->Count;
 			for each(SoundButtonGroup^ sbg in configController->list_soundButtonGroups)
 			{
-				DataTable^ dt = configController->getButtonGroupConfig(sbg->name);
+				Dtbl->Add(configController->getButtonGroupConfig(sbg->name));
+			}
+
+			int RowCount = 0;
+			int count = configController->list_soundButtonGroups->Count;
+			for each(DataTable^ dt in Dtbl)
+			{
+				int mi = dt->Rows->Count;
 				int Zeile = 0 + RowCount;
 					for each (DataRow^ row in dt->Rows)
 					{
@@ -306,13 +97,12 @@ namespace SoundBoard {
 						TBoxes[(3 * Zeile) + 2]->Visible = true;
 						CBoxes[Zeile]->Text = Convert::ToString(row["Button Type"]);
 						RButtons[Zeile]->Visible = true;
-						TBoxes[4]->Text = "Guckguck";
 						//row["Button Remove"]
 						Zeile++;
 					}
 				RowCount += 12;
 			}
-			TBoxes[5]->Text = "Guckguck";
+
 			for(int i = 0; i < 36; i++)
 			{
 				// There is a 0th column
@@ -790,6 +580,7 @@ private: System::Windows::Forms::Label^  label1;
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -797,6 +588,7 @@ private: System::Windows::Forms::Label^  label1;
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
 			this->tableLayoutPanel3 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->label9 = (gcnew System::Windows::Forms::Label());
@@ -804,6 +596,7 @@ private: System::Windows::Forms::Label^  label1;
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->tabControleditConfigForm->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
@@ -822,7 +615,7 @@ private: System::Windows::Forms::Label^  label1;
 			this->tabControleditConfigForm->Location = System::Drawing::Point(0, 0);
 			this->tabControleditConfigForm->Name = L"tabControleditConfigForm";
 			this->tabControleditConfigForm->SelectedIndex = 0;
-			this->tabControleditConfigForm->Size = System::Drawing::Size(603, 552);
+			this->tabControleditConfigForm->Size = System::Drawing::Size(603, 600);
 			this->tabControleditConfigForm->TabIndex = 0;
 			// 
 			// tabPage1
@@ -831,7 +624,7 @@ private: System::Windows::Forms::Label^  label1;
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(595, 526);
+			this->tabPage1->Size = System::Drawing::Size(595, 574);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"tabPage1";
 			this->tabPage1->UseVisualStyleBackColor = true;
@@ -855,10 +648,11 @@ private: System::Windows::Forms::Label^  label1;
 			this->tableLayoutPanel1->Controls->Add(this->label3, 2, 0);
 			this->tableLayoutPanel1->Controls->Add(this->label4, 3, 0);
 			this->tableLayoutPanel1->Controls->Add(this->button1, 4, 0);
+			this->tableLayoutPanel1->Controls->Add(this->button4, 2, 13);
 			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel1->Location = System::Drawing::Point(3, 3);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 13;
+			this->tableLayoutPanel1->RowCount = 14;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
@@ -871,8 +665,9 @@ private: System::Windows::Forms::Label^  label1;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(589, 520);
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(589, 568);
 			this->tableLayoutPanel1->TabIndex = 0;
 			// 
 			// label1
@@ -936,13 +731,26 @@ private: System::Windows::Forms::Label^  label1;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &editConfigForm::button1_Click);
 			// 
+			// button4
+			// 
+			this->button4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button4->Location = System::Drawing::Point(237, 523);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(111, 42);
+			this->button4->TabIndex = 5;
+			this->button4->Text = L"Save Changes";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &editConfigForm::button4_Click);
+			// 
 			// tabPage2
 			// 
 			this->tabPage2->Controls->Add(this->tableLayoutPanel2);
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(595, 526);
+			this->tabPage2->Size = System::Drawing::Size(595, 574);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"tabPage2";
 			this->tabPage2->UseVisualStyleBackColor = true;
@@ -965,10 +773,11 @@ private: System::Windows::Forms::Label^  label1;
 			this->tableLayoutPanel2->Controls->Add(this->label7, 2, 0);
 			this->tableLayoutPanel2->Controls->Add(this->label8, 3, 0);
 			this->tableLayoutPanel2->Controls->Add(this->button2, 4, 0);
+			this->tableLayoutPanel2->Controls->Add(this->button5, 2, 13);
 			this->tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel2->Location = System::Drawing::Point(3, 3);
 			this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
-			this->tableLayoutPanel2->RowCount = 13;
+			this->tableLayoutPanel2->RowCount = 14;
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
@@ -981,8 +790,9 @@ private: System::Windows::Forms::Label^  label1;
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
-			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel2->Size = System::Drawing::Size(589, 520);
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
+			this->tableLayoutPanel2->Size = System::Drawing::Size(589, 568);
 			this->tableLayoutPanel2->TabIndex = 0;
 			// 
 			// label5
@@ -1034,13 +844,26 @@ private: System::Windows::Forms::Label^  label1;
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &editConfigForm::button2_Click);
 			// 
+			// button5
+			// 
+			this->button5->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button5->Location = System::Drawing::Point(237, 523);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(111, 42);
+			this->button5->TabIndex = 17;
+			this->button5->Text = L"Save Changes";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &editConfigForm::button5_Click);
+			// 
 			// tabPage3
 			// 
 			this->tabPage3->Controls->Add(this->tableLayoutPanel3);
 			this->tabPage3->Location = System::Drawing::Point(4, 22);
 			this->tabPage3->Name = L"tabPage3";
 			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage3->Size = System::Drawing::Size(595, 526);
+			this->tabPage3->Size = System::Drawing::Size(595, 574);
 			this->tabPage3->TabIndex = 2;
 			this->tabPage3->Text = L"tabPage3";
 			this->tabPage3->UseVisualStyleBackColor = true;
@@ -1063,10 +886,11 @@ private: System::Windows::Forms::Label^  label1;
 			this->tableLayoutPanel3->Controls->Add(this->label11, 2, 0);
 			this->tableLayoutPanel3->Controls->Add(this->label12, 3, 0);
 			this->tableLayoutPanel3->Controls->Add(this->button3, 4, 0);
+			this->tableLayoutPanel3->Controls->Add(this->button6, 2, 13);
 			this->tableLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel3->Location = System::Drawing::Point(3, 3);
 			this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
-			this->tableLayoutPanel3->RowCount = 13;
+			this->tableLayoutPanel3->RowCount = 14;
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
@@ -1079,8 +903,9 @@ private: System::Windows::Forms::Label^  label1;
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
-			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel3->Size = System::Drawing::Size(589, 520);
+			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
+			this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
+			this->tableLayoutPanel3->Size = System::Drawing::Size(589, 568);
 			this->tableLayoutPanel3->TabIndex = 0;
 			// 
 			// label9
@@ -1132,11 +957,24 @@ private: System::Windows::Forms::Label^  label1;
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &editConfigForm::button3_Click);
 			// 
+			// button6
+			// 
+			this->button6->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom) 
+				| System::Windows::Forms::AnchorStyles::Left) 
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button6->Location = System::Drawing::Point(237, 523);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(111, 42);
+			this->button6->TabIndex = 5;
+			this->button6->Text = L"SaveChanges";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &editConfigForm::button6_Click);
+			// 
 			// editConfigForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(603, 552);
+			this->ClientSize = System::Drawing::Size(603, 600);
 			this->Controls->Add(this->tabControleditConfigForm);
 			this->Name = L"editConfigForm";
 			this->Text = L"editConfigForm";
@@ -1211,6 +1049,57 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 				 TBoxes[(3 * Row) + 2]->Visible = true;
 				 CBoxes[Row]->Visible = true;
 				 RButtons[Row]->Visible = true;
+		 }
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+			 for(int i = 0; i < 11; i++)
+			 {
+				 DataRow^ row;
+				 if(Dtbl[0]->Rows->Count < (i + 1))
+				 {
+					 row = Dtbl[0]->NewRow();
+				 }else{row = Dtbl[0]->Rows[i];}
+
+				 row["Button Label"] = TBoxes[i * 3]->Text;
+				 row["Button Path"] = TBoxes[(i * 3) + 1]->Text;
+				 row["Button Color"] = TBoxes[(i * 3) + 2]->Text;
+				 row["Button Type"] = CBoxes[i]->Text;
+				 if(Dtbl[0]->Rows->Count < (i + 1))Dtbl[0]->Rows->Add(row);
+				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[0]->name, Dtbl[0]);
+			 }
+		 }
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+			 for(int i = 12; i < 23; i++)
+			 {
+				 DataRow^ row;
+				 if(Dtbl[1]->Rows->Count < (i + 1))
+				 {
+					 row = Dtbl[1]->NewRow();
+				 }else{row = Dtbl[1]->Rows[i];}
+
+				 row["Button Label"] = TBoxes[i * 3]->Text;
+				 row["Button Path"] = TBoxes[(i * 3) + 1]->Text;
+				 row["Button Color"] = TBoxes[(i * 3) + 2]->Text;
+				 row["Button Type"] = CBoxes[i]->Text;
+				 if(Dtbl[1]->Rows->Count < (i + 1))Dtbl[1]->Rows->Add(row);
+				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[1]->name, Dtbl[1]);
+			 }
+		 }
+private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+			 for(int i = 24; i < 35; i++)
+			 {
+				 DataRow^ row;
+				 if(Dtbl[2]->Rows->Count < (i + 1))
+				 {
+					 row = Dtbl[2]->NewRow();
+				 }else{row = Dtbl[2]->Rows[i];}
+
+				 row["Button Label"] = TBoxes[i * 3]->Text;
+				 row["Button Path"] = TBoxes[(i * 3) + 1]->Text;
+				 row["Button Color"] = TBoxes[(i * 3) + 1]->Text;
+				 row["Button Type"] = CBoxes[i]->Text;
+				 if(Dtbl[2]->Rows->Count < (i + 1))Dtbl[2]->Rows->Add(row);
+				 configController->setButtonGroupConfig(configController->list_soundButtonGroups[2]->name, Dtbl[2]);
+			 }
 		 }
 };
 }
