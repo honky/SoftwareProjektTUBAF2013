@@ -33,7 +33,7 @@
     <Button_x0020_Path />
     <Button_x0020_Color>red</Button_x0020_Color>
     <Button_x0020_Type>Loop</Button_x0020_Type>
-    <Button_x0020_Remove>false</Button_x0020_Remove>
+    <Button_x0020_Remove>true</Button_x0020_Remove>
   </Gegner>
   <Gegner>
     <Button_x0020_Label />

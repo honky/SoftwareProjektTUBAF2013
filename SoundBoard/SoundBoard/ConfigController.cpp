@@ -320,7 +320,8 @@ namespace SoundBoard
 							bool found = false;
 							for each(DataRow^ row in dt_config->Rows)
 							{	
-								if(Convert::ToString(row["Button Label"])->ToLower() == sb->text->ToLower())
+								String^ checkPath =  "./"+ sbg->name + "/"+sb->text;
+								if(Convert::ToString(row["Button Path"])->ToLower() == checkPath->ToLower())
 								{
 									found = true;
 									//we need to parse values not beautiful but its the night before showdown
@@ -339,6 +340,10 @@ namespace SoundBoard
 									if(!String::IsNullOrEmpty(Convert::ToString(row["Button Type"])) && Convert::ToString(row["Button Type"])->ToLower() == "Single")
 									{
 										sb->context->sct = SoundContextType::Single;
+									}								
+									if(!String::IsNullOrEmpty(Convert::ToString(row["Button Label"])) && Convert::ToString(row["Button Label"])->ToLower() != sb->text)
+									{
+										sb->Text =  Convert::ToString(row["Button Label"]);
 									}
 
 								}
