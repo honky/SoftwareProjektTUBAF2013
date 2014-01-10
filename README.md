@@ -1,5 +1,21 @@
-SoftwareProjektTUBAF2013
-========================
+#DEPRICATED#
+(and way to crappy CLI c++ software done for university)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## SoftwareProjektTUBAF2013 ##
+
 
 currently in work, readme will be updated, when there is something to talk about :)
 
